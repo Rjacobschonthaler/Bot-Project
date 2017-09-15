@@ -4,7 +4,8 @@
 //
 //  Created by Sarit Ghildayal on 1/24/15.
 //  Copyright (c) 2015 Sarit Ghildayal. All rights reserved.
-//
+//  Editted by R .Jacob Schonthaler 9/15/17
+//  Added DecoyDuck and MysteryDuck
 
 #include <iostream>
 #include "MallardDuck.h"
