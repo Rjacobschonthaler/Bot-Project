@@ -1,6 +1,6 @@
 ### Feedback for Lab 02
 
-Run on September 15, 15:46:03 PM.
+Run on September 15, 16:11:47 PM.
 
 + Pass: Check that directory "labs" exists.
 
@@ -16,11 +16,7 @@ Run on September 15, 15:46:03 PM.
 
 + Pass: Check that file "MysteryDuck.cpp" exists.
 
-+ Fail: Check that file/directory "duck" does not exist.
++ Pass: Check that file/directory "duck" does not exist.
 
-     "duck" found.
-
-+ Skip: Check that no files with extension ".o" exist in directory "."
-
-  This test was not run because of an earlier failing test.
++ Pass: Check that no files with extension ".o" exist in directory "."
 
