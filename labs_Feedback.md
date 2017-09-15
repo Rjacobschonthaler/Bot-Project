@@ -1,30 +1,26 @@
-### Feedback for Lab 01
+### Feedback for Lab 02
 
-Run on September 08, 14:57:57 PM.
+Run on September 15, 15:46:03 PM.
 
 + Pass: Check that directory "labs" exists.
 
-+ Pass: Check that directory "labs/lab01" exists.
++ Pass: Check that directory "labs/lab02" exists.
 
-+ Pass: Change into directory "labs/lab01".
++ Pass: Change into directory "labs/lab02".
 
-+ Pass: Check that file "makefile" exists.
++ Pass: Check that file "DecoyDuck.h" exists.
 
-+ Pass: Check that file "main.cpp" exists.
++ Pass: Check that file "DecoyDuck.cpp" exists.
 
-+ Pass: Check that file/directory "private.pvt" does not exist.
++ Pass: Check that file "MysteryDuck.h" exists.
 
-+ Pass: Check that no files with extension ".o" exist in directory "."
++ Pass: Check that file "MysteryDuck.cpp" exists.
 
-+ Pass: Check that no files with extension ".out" exist in directory "."
++ Fail: Check that file/directory "duck" does not exist.
 
-+ Pass: Check that file "shared.md" exists.
+     "duck" found.
 
-+ Pass: Check that make succeeds on the specified target when invoked from the specified directory.
++ Skip: Check that no files with extension ".o" exist in directory "."
 
-    make finished compiling target=all, directory=. with no errors.
-
-
-
-    Result lab01.out found
+  This test was not run because of an earlier failing test.
 
