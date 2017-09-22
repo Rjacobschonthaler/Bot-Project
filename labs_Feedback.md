@@ -1,6 +1,6 @@
 ### Feedback for Lab 03
 
-Run on September 22, 15:29:06 PM.
+Run on September 22, 15:43:07 PM.
 
 + Pass: Check that directory "labs" exists.
 
@@ -12,9 +12,11 @@ Run on September 22, 15:29:06 PM.
 
 + Pass: Check that no files with extension ".out" exist in directory "."
 
-+ Fail: Check that make succeeds on the specified target when invoked from the specified directory.
++ Pass: Check that make succeeds on the specified target when invoked from the specified directory.
 
-    make finished compiling target=all, directory=. with errors.
+    make finished compiling target=all, directory=. with no errors.
 
 
+
+    Result lab03.out found
 
