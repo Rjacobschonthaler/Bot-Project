@@ -1,22 +1,20 @@
-### Feedback for Lab 02
+### Feedback for Lab 03
 
-Run on September 15, 16:11:47 PM.
+Run on September 22, 15:29:06 PM.
 
 + Pass: Check that directory "labs" exists.
 
-+ Pass: Check that directory "labs/lab02" exists.
++ Pass: Check that directory "labs/lab03" exists.
 
-+ Pass: Change into directory "labs/lab02".
++ Pass: Change into directory "labs/lab03".
 
-+ Pass: Check that file "DecoyDuck.h" exists.
++ Pass: Check that file "Makefile" exists.
 
-+ Pass: Check that file "DecoyDuck.cpp" exists.
++ Pass: Check that no files with extension ".out" exist in directory "."
 
-+ Pass: Check that file "MysteryDuck.h" exists.
++ Fail: Check that make succeeds on the specified target when invoked from the specified directory.
 
-+ Pass: Check that file "MysteryDuck.cpp" exists.
+    make finished compiling target=all, directory=. with errors.
 
-+ Pass: Check that file/directory "duck" does not exist.
 
-+ Pass: Check that no files with extension ".o" exist in directory "."
 
