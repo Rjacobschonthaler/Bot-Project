@@ -1,7 +1,9 @@
 CXX = g++
 CXXFLAGS = -Wall -c -std=c++11
 
-all: 
+all: Dep
+	
+Dep: main.o Squeak.o RubberDuck.o QuackBehavior.o Quack.o MuteQuack.o MallardDuck.o Duck.o DecoyDuck.o
 	$(CXX) -o lab03.out main.o Squeak.o RubberDuck.o QuackBehavior.o Quack.o MuteQuack.o MallardDuck.o Duck.o DecoyDuck.o
 
 DecoyDuck.o: DecoyDuck.h DecoyDuck.cpp
