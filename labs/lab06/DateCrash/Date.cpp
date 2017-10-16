@@ -18,29 +18,30 @@ Date::Date() {
 
 Date::Date(int y, int m, int d) {
     if (DEBUG)
-        cout << "... calling parameterize constructor for Date..." << endl ; 
+        cout << "... calling parameterize constructor for Date..." << endl ;
 
     //assert ( y >= 1900 )
-    //assert ( 0 <= m && m <= 12 ) 
-    //assert ( 0 <= d && d <= 31 ) 
+    //assert ( 0 <= m && m <= 12 )
+    //assert ( 0 <= d && d <= 31 )
 
     year = y; month = m; day = d;
 }
 
 Date::~Date() {
     if (DEBUG)
-        cout << "... calling destructor for Date \"" 
-             << show() << "\" ..." << endl ; 
+        cout << "... calling destructor for Date \""
+             << show() << "\" ..." << endl ;
 }
 
 Date Date::copy() const {
   Date myDateCopy(year,month,day);
+  return myDateCopy;
 }
 
 bool Date::equals(const Date &d) const {
     assert ( d.year >= 1900 )
-    assert ( 0 <= d.month && d.month <= 12 ) 
-    assert ( 0 <= d.day && d.day <= 31 ) 
+    assert ( 0 <= d.month && d.month <= 12 )
+    assert ( 0 <= d.day && d.day <= 31 )
 
     return year == d.year && month == d.month &&
            day == d.day ;
@@ -74,8 +75,8 @@ string Date::show() const {
 
 
 bool is_valid_date (int y, int m, int d) {
-    int month_length[] = { 0, 
-                           31, 28, 31, 30, 31, 30, 
+    int month_length[] = { 0,
+                           31, 28, 31, 30, 31, 30,
                            31, 31, 30, 31, 30, 31 } ;
 
     if ( y >= 1900 &&
@@ -97,7 +98,7 @@ bool is_valid_date (int y, int m, int d) {
 
 
 void Date::day_inc(int n) {
-    int month_length[] = { 31, 28, 31, 30, 31, 30, 
+    int month_length[] = { 31, 28, 31, 30, 31, 30,
                            31, 31, 30, 31, 30, 31 } ;
 
     assert (n >= 0) ;
@@ -109,7 +110,7 @@ void Date::day_inc(int n) {
     }
 
     while (n > month_length[month]) {
-        ++ month ; 
+        ++ month ;
         n = n - month_length[month] ;
     }
     day = day + n ;
@@ -127,7 +128,7 @@ bool Date::before(const Date &d) const {
 
     if (year < d.year)
         return true ;
-    else 
+    else
     if (year > d.year)
         return false ;
     else
@@ -146,7 +147,7 @@ bool Date::before(const Date &d) const {
 
 Date mkDate(int y, int m, int d) {
     if (DEBUG)
-        cout << "... calling mkDate to create Date ..." << endl ; 
+        cout << "... calling mkDate to create Date ..." << endl ;
 
     if ( ! is_valid_date(y, m, d) )
         throw InvalidData ("Invalid Date passed to Date::before.") ;
@@ -158,7 +159,7 @@ Date mkDate(int y, int m, int d) {
 
 Date * mkDate_ptr(int y, int m, int d) {
     if (DEBUG)
-        cout << "... calling mkDate to create Date ..." << endl ; 
+        cout << "... calling mkDate to create Date ..." << endl ;
 
     if ( ! is_valid_date(y, m, d) )
         throw InvalidData ("Invalid Date passed to Date::before.") ;
@@ -167,4 +168,3 @@ Date * mkDate_ptr(int y, int m, int d) {
 
     return  date ;
 }
-
