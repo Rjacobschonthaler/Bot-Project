@@ -35,6 +35,9 @@ enum event_commands EventKeypress::keypress_to_cmd(int key) {
     case 265:
     return COM_FORWARD;
     break;
+    case 264:
+    return COM_SLOW;
+    break;
     default:
     printf("Unknown keypress: %d\n", key);
     assert(0);

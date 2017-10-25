@@ -44,7 +44,7 @@ class RobotMotionHandler {
   /**
    * @brief Reset the actuators to their newly constructed/un-commanded state.
    */
-  void Reset(void) {}
+  void Reset(void);
 
   /**
    * @brief Command from user keypress via the viewer.

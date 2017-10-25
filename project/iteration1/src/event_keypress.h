@@ -29,6 +29,12 @@ class EventKeypress : public EventBaseClass {
  public:
   explicit EventKeypress(int key) : key_(key) {}
 
+  //I added get_key
+  int get_key(void) {return key_;}
+
+  //I added get_command
+  enum event_commands get_command() {return keypress_to_cmd(get_key());}
+
   void EmitMessage(void) { printf("Keypress command received\n"); }
 
  private:

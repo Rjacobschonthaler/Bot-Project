@@ -18,14 +18,19 @@ NAMESPACE_BEGIN(csci3081);
 /*******************************************************************************
  * Member Functions
  ******************************************************************************/
-double RobotBattery::Deplete(__unused Position old_pos,
-  __unused Position new_pos, __unused double dt) {
-  /* @todo deplete battery by some value based on movement and speed */
+double RobotBattery::Deplete(Position old_pos, Position new_pos, double dt)
+{
+  //I defined battery depletion
+  int x_dif=new_pos.x-old_pos.x;
+  int y_dif=new_pos.y-old_pos.y;
+  int dif=sqrt(x_dif*x_dif+y_dif*y_dif);
+  charge_=charge_-0.02*dif*dt;
   return charge_;
 } /* deplete() */
 
 void Accept(__unused EventCollision * e) {
   /* @todo deplete battery by some value -- arbitrary selected for bumping */
+  //charge_=charge_-20;
 }
 
 NAMESPACE_END(csci3081);

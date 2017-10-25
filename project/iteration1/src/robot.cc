@@ -54,6 +54,7 @@ void Robot::TimestepUpdate(uint dt) {
 
 void Robot::Accept(__unused EventRecharge * e) {
   battery_.EventRecharge();
+  //std::cout << battery_level() << std::endl;
 }
 
 // Pass along a collision event (from arena) to the touch sensor.
@@ -72,6 +73,8 @@ void Robot::Reset(void) {
   battery_.Reset();
   motion_handler_.Reset();
   sensor_touch_.Reset();
+  pos_.x=500;
+  pos_.y=500;
 } /* Reset() */
 
 void Robot::ResetBattery(void) {

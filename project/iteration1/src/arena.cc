@@ -79,7 +79,7 @@ std::vector<Obstacle*> Arena::obstacles(void) {
 } /* robots() */
 
 void Arena::AdvanceTime(uint dt) {
-  std::cout << "Advancing simulation time by " << dt << " timesteps\n";
+  //std::cout << "Advancing simulation time by " << dt << " timesteps\n";
   for (size_t i = 0; i < 1; ++i) {
     UpdateEntitiesTimestep();
   } /* for(i..) */
@@ -98,6 +98,8 @@ void Arena::UpdateEntitiesTimestep(void) {
    * Next, check if the robot has run out of battery
    */
   if (robot_->battery_level() <=0) {
+    //This is where losing happens
+    std::cout<<"You Lose!"<<std::endl;
     assert(0); /* not implemented yet */
   }
 
@@ -109,9 +111,10 @@ void Arena::UpdateEntitiesTimestep(void) {
    */
 
   EventCollision ec;
-
+  //std::cout<<"YO"<<std::endl;
   CheckForEntityCollision(robot_, home_base_, &ec, robot_->collision_delta());
   if (ec.collided()) {
+      std::cout<<"You Win!"<<std::endl;
        assert(0); /* not implemented yet */
   }
 
@@ -156,11 +159,11 @@ void Arena::CheckForEntityOutOfBounds(const ArenaMobileEntity * const ent,
     // Right Wall
     event->collided(true);
     event->point_of_contact(Position(x_dim_, ent->pos().y));
-    event->angle_of_contact(-180);
+    event->angle_of_contact(ent->heading_angle()-180);
   } else if (ent->pos().x- ent->radius() <= 0) {
     event->collided(true);
     event->point_of_contact(Position(0, ent->pos().y));
-    event->angle_of_contact(0);
+    event->angle_of_contact(ent->heading_angle()+180);
   } else if (ent->pos().y+ ent->radius() >= y_dim_) {
     // Bottom Wall
     event->collided(true);
@@ -183,23 +186,45 @@ void Arena::CheckForEntityCollision(const ArenaEntity* const ent1,
   /* Note: this assumes circular entities */
   double ent1_x = ent1->pos().x;
   double ent1_y = ent1->pos().y;
+  //hardcoding to fix ent1 bug
+  ent1_x=robot_->pos().x;
+  ent1_y=robot_->pos().y;
+
   double ent2_x = ent2->pos().x;
   double ent2_y = ent2->pos().y;
   double dist = std::sqrt(
     std::pow(ent2_x - ent1_x, 2) + std::pow(ent2_y - ent1_y, 2));
+  /*std::cout <<"For sure " << robot_->name() << "," << robot_->pos().x << "," << robot_->pos().y << std::endl;
+
+  robot_ always gets passed in as ent1 in this iteration of the project. For some reason,
+  ent1->pos()!=robot_->pos(). The 2 cout statements prove it. robot_->pos has been
+  hardcoded in to fix the problem. Must fix for future iterations.
+
+  std::cout << ent1->name() << "," << ent1->pos().x << "," << ent1->pos().y << std::endl;*/
   if (dist > ent1->radius() + ent2->radius() + collision_delta) {
     event->collided(false);
   } else {
     // Populate the collision event.
     // Collided is true
+    event->collided(true);
+
     // Point of contact is point along perimeter of ent1
+    double ratio = ent1->radius()/ent2->radius();
+    double collision_x=ent1_x+ratio*(ent1_x-ent2_x);
+    double collision_y=ent1_y+ratio*(ent1_y-ent2_y);
+    event->point_of_contact(Position(collision_x,collision_y));
+
     // Angle of contact is angle to that point of contact
-    event->collided(false);
+    
+
     /// >>>>>>> FILL THIS IN
   }
 } /* entities_have_collided() */
 
-void Arena::Accept(__unused EventKeypress * e) {
+//working
+void Arena::Accept(EventKeypress * e)
+{
+  robot_->EventCmd(e->get_command());
 }
 
 NAMESPACE_END(csci3081);

@@ -29,9 +29,9 @@ void RobotMotionBehavior::UpdatePosition(ArenaMobileEntity * const ent,
   new_pos.y += sin(ent->heading_angle()*M_PI/180.0)*ent->speed()*dt;
   ent->pos(new_pos);
 
-  printf(
+  /*printf(
       "Updated %s kinematics: old_pos=(%d, %d), new_pos=(%d, %d)\n",
-      ent->name().c_str(), old_pos.x, old_pos.y, new_pos.x, new_pos.y);
-} /* update_position() */
+      ent->name().c_str(), old_pos.x, old_pos.y, new_pos.x, new_pos.y);*/
+} /* update_position()*/
 
 NAMESPACE_END(csci3081);

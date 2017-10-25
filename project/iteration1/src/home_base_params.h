@@ -21,9 +21,17 @@ NAMESPACE_BEGIN(csci3081);
  * Structure Definitions
  ******************************************************************************/
 struct home_base_params : public arena_entity_params {
+  home_base_params(void) : arena_entity_params(),
+                               collision_delta() {}
+
+      double collision_delta;
+};
+//Mobile attempt
+
+/*struct home_base_params : public arena_entity_params {
   home_base_params(void) :
       arena_entity_params() {}
-};
+};*/
 
 NAMESPACE_END(csci3081);
 

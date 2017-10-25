@@ -21,10 +21,12 @@ NAMESPACE_BEGIN(csci3081);
 /*******************************************************************************
  * Type Definitions
  ******************************************************************************/
+ //I added COM_SLOW
 enum event_commands {
   COM_TURN_LEFT,
   COM_TURN_RIGHT,
-  COM_FORWARD
+  COM_FORWARD,
+  COM_SLOW
 };
 NAMESPACE_END(csci3081);
 

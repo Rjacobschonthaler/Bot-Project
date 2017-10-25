@@ -38,12 +38,31 @@ int main(int, char **) {
   aparams.home_base.radius = 20.0;
   aparams.home_base.pos = {400, 400};
   aparams.home_base.color = nanogui::Color(255, 0, 0, 255); /* red */
+  //aparams.home_base.collision_delta = 1;
+  //That is for making homebase mobile
 
   aparams.obstacles[0].radius = 30.0;
   aparams.obstacles[0].pos = {200, 200};
   aparams.obstacles[0].color = nanogui::Color(255, 255, 255, 255); /* white */
 
-  aparams.n_obstacles = 1;
+  aparams.obstacles[1].radius = 40.0;
+  aparams.obstacles[1].pos = {600, 600};
+  aparams.obstacles[1].color = nanogui::Color(255, 255, 255, 255); /* white */
+
+  aparams.obstacles[2].radius = 60.0;
+  aparams.obstacles[2].pos = {500, 200};
+  aparams.obstacles[2].color = nanogui::Color(255, 255, 255, 255); /* white */
+
+  aparams.obstacles[3].radius = 50.0;
+  aparams.obstacles[3].pos = {800, 300};
+  aparams.obstacles[3].color = nanogui::Color(255, 255, 255, 255); /* white */
+
+  aparams.obstacles[4].radius = 35.0;
+  aparams.obstacles[4].pos = {100, 600};
+  aparams.obstacles[4].color = nanogui::Color(255, 255, 255, 255); /* white */
+
+
+  aparams.n_obstacles = 5;
   aparams.x_dim = 1024;
   aparams.y_dim = 768;
 
