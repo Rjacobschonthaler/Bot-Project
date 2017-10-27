@@ -41,6 +41,7 @@ class Robot : public ArenaMobileEntity {
   void EventCmd(enum event_commands cmd);
 
   double battery_level(void) { return battery_.level(); }
+  void battery_loss() { }
   double heading_angle(void) const { return motion_handler_.heading_angle(); }
   void heading_angle(double ha) { motion_handler_.heading_angle(ha); }
   double speed(void) { return motion_handler_.speed(); }
@@ -51,6 +52,8 @@ class Robot : public ArenaMobileEntity {
   std::string name(void) const {
     return "Robot" + std::to_string(id());
   }
+
+  std::string string_battery_level() const { return std::to_string(battery_.level()); }
 
  private:
   static unsigned int next_id_;

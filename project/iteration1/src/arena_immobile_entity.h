@@ -23,7 +23,7 @@ NAMESPACE_BEGIN(csci3081);
 class ArenaImmobileEntity : public ArenaEntity {
  public:
   ArenaImmobileEntity(double radius, const Position& pos,
-                    const nanogui::Color& color) :
+                    const Color& color) :
       ArenaEntity(radius, pos, color) {}
 
   bool is_mobile(void) { return false; }

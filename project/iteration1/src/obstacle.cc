@@ -23,7 +23,7 @@ uint Obstacle::next_id_ = 0;
  * Constructors/Destructor
  ******************************************************************************/
 Obstacle::Obstacle(double radius, const Position& pos,
-                                   const nanogui::Color& color) :
+                                   const Color& color) :
     ArenaImmobileEntity(radius, pos, color),
     id_(-1) {
   id_ = next_id_++;

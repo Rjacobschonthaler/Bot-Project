@@ -24,7 +24,7 @@ NAMESPACE_BEGIN(csci3081);
 class Obstacle: public ArenaImmobileEntity {
  public:
   Obstacle(double radius, const Position& pos,
-                   const nanogui::Color& color);
+                   const Color& color);
 
   std::string name(void) const {
     return "Obstacle" + std::to_string(id_);

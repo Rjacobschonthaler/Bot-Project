@@ -28,9 +28,8 @@ double RobotBattery::Deplete(Position old_pos, Position new_pos, double dt)
   return charge_;
 } /* deplete() */
 
-void Accept(__unused EventCollision * e) {
-  /* @todo deplete battery by some value -- arbitrary selected for bumping */
-  //charge_=charge_-20;
+void RobotBattery::Accept(EventCollision * e) {
+  charge_=charge_-20;
 }
 
 NAMESPACE_END(csci3081);

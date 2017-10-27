@@ -50,6 +50,10 @@ GraphicsArenaViewer::GraphicsArenaViewer(
 // This is the primary driver for state change in the arena.
 // It will be called at each iteration of nanogui::mainloop()
 void GraphicsArenaViewer::UpdateSimulation(double dt) {
+  if(arena_->gameover())
+  {
+    paused_=true;
+  }
   if (!paused_) {
     arena_->AdvanceTime(dt);
   }
@@ -60,6 +64,7 @@ void GraphicsArenaViewer::UpdateSimulation(double dt) {
  ******************************************************************************/
 void GraphicsArenaViewer::OnRestartBtnPressed() {
   arena_->Reset();
+  paused_=false;
 }
 
 void GraphicsArenaViewer::OnPauseBtnPressed() {
@@ -152,9 +157,9 @@ void GraphicsArenaViewer::DrawRobot(NVGcontext *ctx, const Robot* const robot) {
   // robot's circle
   nvgBeginPath(ctx);
   nvgCircle(ctx, 0.0, 0.0, robot->radius());
-  nvgFillColor(ctx, nvgRGBA(static_cast<int>(robot->color().r() * 255),
-                            static_cast<int>(robot->color().g() * 255),
-                            static_cast<int>(robot->color().b() * 255),
+  nvgFillColor(ctx, nvgRGBA(static_cast<int>(robot->color().red),
+                            static_cast<int>(robot->color().yellow),
+                            static_cast<int>(robot->color().blue),
                             255));
   nvgFill(ctx);
   nvgStrokeColor(ctx, nvgRGBA(0, 0, 0, 255));
@@ -164,7 +169,8 @@ void GraphicsArenaViewer::DrawRobot(NVGcontext *ctx, const Robot* const robot) {
   nvgSave(ctx);
   nvgRotate(ctx, M_PI / 2.0);
   nvgFillColor(ctx, nvgRGBA(0, 0, 0, 255));
-  nvgText(ctx, 0.0, 10.0, robot->name().c_str(), NULL);
+  nvgText(ctx, 0.0, 0.0, robot->name().c_str(), NULL);
+  nvgText(ctx, 0.0, 10.0, robot->string_battery_level().c_str(), NULL);
   nvgRestore(ctx);
   nvgRestore(ctx);
 }
@@ -173,9 +179,9 @@ void GraphicsArenaViewer::DrawObstacle(NVGcontext *ctx,
                                        const Obstacle* const obstacle) {
   nvgBeginPath(ctx);
   nvgCircle(ctx, obstacle->pos().x, obstacle->pos().y, obstacle->radius());
-  nvgFillColor(ctx, nvgRGBA(static_cast<int>(obstacle->color().r() * 255),
-                            static_cast<int>(obstacle->color().g() * 255),
-                            static_cast<int>(obstacle->color().b() * 255),
+  nvgFillColor(ctx, nvgRGBA(static_cast<int>(obstacle->color().red),
+                            static_cast<int>(obstacle->color().yellow),
+                            static_cast<int>(obstacle->color().blue),
                             255));
   nvgFill(ctx);
   nvgStrokeColor(ctx, nvgRGBA(0, 0, 0, 255));
@@ -190,9 +196,9 @@ void GraphicsArenaViewer::DrawHomeBase(NVGcontext *ctx,
                                const HomeBase* const home) {
   nvgBeginPath(ctx);
   nvgCircle(ctx, home->pos().x, home->pos().y, home->radius());
-  nvgFillColor(ctx, nvgRGBA(static_cast<int>(home->color().r() * 255),
-                            static_cast<int>(home->color().g() * 255),
-                            static_cast<int>(home->color().b() * 255),
+  nvgFillColor(ctx, nvgRGBA(static_cast<int>(home->color().red),
+                            static_cast<int>(home->color().yellow),
+                            static_cast<int>(home->color().blue),
                             255));
   nvgFill(ctx);
   nvgStrokeColor(ctx, nvgRGBA(0, 0, 0, 255));

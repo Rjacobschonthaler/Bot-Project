@@ -13,6 +13,7 @@
 #include <vector>
 #include <utility>
 
+#include <src/sensor.h>
 #include "src/common.h"
 #include "src/event_collision.h"
 
@@ -33,15 +34,15 @@ class ArenaEntity;
  * at a particular point of contact, which translates to an angle of contact
  *
  */
-class SensorTouch {
+class SensorTouch : public Sensor {
  public:
   SensorTouch();
 
   /**
    * @brief Get the current activation reading from the sensor.
    */
-  bool activated(void) { return activated_; }
-  void activated(bool value) { activated_ = value; }
+  //bool activated(void) { return activated_; }
+  //void activated(bool value) { activated_ = value; }
 
   Position point_of_contact() { return point_of_contact_; }
   void point_of_contact(Position p) {
@@ -68,7 +69,7 @@ class SensorTouch {
   void Reset(void);
 
  private:
-  bool activated_;
+  //bool activated_;
   Position point_of_contact_;
   double angle_of_contact_;
 };

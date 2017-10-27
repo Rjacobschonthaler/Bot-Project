@@ -56,7 +56,7 @@ class RobotBattery {
    * @brief Handle a recharge event by instantly restoring the robot's battery
    * to its maximum value.
    */
-  void EventRecharge(void) { charge_ = max_charge_; }
+  void EventRecharge(void) { charge_ = max_charge_+20; }
 
   /**
    * @brief Reset the robot's battery to its newly constructed/undepleted state.
@@ -71,8 +71,7 @@ class RobotBattery {
    *
    * @return The updated battery level.
    */
-  double Deplete(__unused Position old_pos,
-    __unused Position new_pos, __unused double dt);
+  double Deplete(Position old_pos, Position new_pos, double dt);
 
   // This is how the battery can be informed a collision occured.
   // Deplete accordingly.

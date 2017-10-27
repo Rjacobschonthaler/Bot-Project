@@ -46,6 +46,7 @@ void Robot::TimestepUpdate(uint dt) {
   Position old_pos = pos_;
   // Update heading and speed as indicated by touch sensor
   motion_handler_.UpdateVelocity(sensor_touch_);
+  std::cout<<heading_angle()<<std::endl;
   // Use velocity and position to update position
   motion_behavior_.UpdatePosition(this, dt);
   // Deplete battery as appropriate given distance and speed of movement
@@ -62,6 +63,11 @@ void Robot::Accept(__unused EventRecharge * e) {
 // types of information from different sources.
 void Robot::Accept(EventCollision * e) {
   sensor_touch_.Accept(e);
+  if(e->collided())
+  {
+    speed(1);
+    //battery_.Accept(e);
+  }
 }
 
 // User input commands to change heading or speed

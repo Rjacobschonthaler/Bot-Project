@@ -51,6 +51,8 @@ Arena::Arena(const struct arena_params* const params) :
         params->obstacles[i].pos,
         params->obstacles[i].color));
   } /* for(i..) */
+
+  gameover_=false;
 }
 
 Arena::~Arena(void) {
@@ -65,6 +67,7 @@ void Arena::Reset(void) {
   for (auto ent : entities_) {
     ent->Reset();
   } /* for(ent..) */
+  gameover(false);
 } /* reset() */
 
 std::vector<Obstacle*> Arena::obstacles(void) {
@@ -100,7 +103,8 @@ void Arena::UpdateEntitiesTimestep(void) {
   if (robot_->battery_level() <=0) {
     //This is where losing happens
     std::cout<<"You Lose!"<<std::endl;
-    assert(0); /* not implemented yet */
+    gameover(true);
+    //assert(0); /* not implemented yet */
   }
 
   /*
@@ -115,7 +119,8 @@ void Arena::UpdateEntitiesTimestep(void) {
   CheckForEntityCollision(robot_, home_base_, &ec, robot_->collision_delta());
   if (ec.collided()) {
       std::cout<<"You Win!"<<std::endl;
-       assert(0); /* not implemented yet */
+      gameover(true);
+       //assert(0); /* not implemented yet */
   }
 
   CheckForEntityCollision(robot_, recharge_station_,
@@ -196,9 +201,8 @@ void Arena::CheckForEntityCollision(const ArenaEntity* const ent1,
     std::pow(ent2_x - ent1_x, 2) + std::pow(ent2_y - ent1_y, 2));
   /*std::cout <<"For sure " << robot_->name() << "," << robot_->pos().x << "," << robot_->pos().y << std::endl;
 
-  robot_ always gets passed in as ent1 in this iteration of the project. For some reason,
-  ent1->pos()!=robot_->pos(). The 2 cout statements prove it. robot_->pos has been
-  hardcoded in to fix the problem. Must fix for future iterations.
+  //For some reason, ent1->pos()!=the_actual_entity->pos(). The 2 cout statements prove it. robot_->pos has been
+  //hardcoded in to fix the problem temporarily. Must fix tor this iteration.
 
   std::cout << ent1->name() << "," << ent1->pos().x << "," << ent1->pos().y << std::endl;*/
   if (dist > ent1->radius() + ent2->radius() + collision_delta) {
@@ -208,15 +212,16 @@ void Arena::CheckForEntityCollision(const ArenaEntity* const ent1,
     // Collided is true
     event->collided(true);
 
+    // Angle of contact is angle to that point of contact
+    //double a=(((atan2(ent2_y-ent1_y, ent2_x-ent1_x))*180)/3.14);
+    //event->angle_of_contact(a);
+    //std::cout <<"angle of contact" << a<<std::endl;
+
     // Point of contact is point along perimeter of ent1
     double ratio = ent1->radius()/ent2->radius();
     double collision_x=ent1_x+ratio*(ent1_x-ent2_x);
     double collision_y=ent1_y+ratio*(ent1_y-ent2_y);
     event->point_of_contact(Position(collision_x,collision_y));
-
-    // Angle of contact is angle to that point of contact
-    
-
     /// >>>>>>> FILL THIS IN
   }
 } /* entities_have_collided() */

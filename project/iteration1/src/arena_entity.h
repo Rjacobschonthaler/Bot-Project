@@ -10,9 +10,9 @@
 /*******************************************************************************
  * Includes
  ******************************************************************************/
-#include <nanogui/nanogui.h>
 #include <string>
 #include "src/common.h"
+#include "src/color.h"
 
 /*******************************************************************************
  * Namespaces
@@ -37,7 +37,7 @@ NAMESPACE_BEGIN(csci3081);
 class ArenaEntity {
  public:
   ArenaEntity(double radius, const Position& pos,
-              const nanogui::Color& color) :
+              const Color& color) :
       radius_(radius), pos_(pos), color_(color) {}
   virtual ~ArenaEntity(void) {}
 
@@ -56,15 +56,15 @@ class ArenaEntity {
 
   void pos(const Position& pos) { pos_ = pos; }
   const Position& pos(void) const { return pos_; }
-  const nanogui::Color& color(void) const { return color_; }
-  void color(const nanogui::Color& color) { color_ = color; }
+  const Color& color(void) const { return color_; }
+  void color(const Color& color) { color_ = color; }
   virtual bool is_mobile(void) = 0;
   double radius(void) const { return radius_; }
 
  private:
   double radius_;
   Position pos_;
-  nanogui::Color color_;
+  Color color_;
 };
 
 NAMESPACE_END(csci3081);

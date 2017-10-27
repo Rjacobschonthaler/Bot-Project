@@ -9,6 +9,7 @@
  ******************************************************************************/
 #include "src/graphics_arena_viewer.h"
 #include "src/arena_params.h"
+#include "color.h"
 
 /*******************************************************************************
  * Non-Member Functions
@@ -25,7 +26,7 @@ int main(int, char **) {
   rparams.collision_delta = 1;
   rparams.radius = 20.0;
   rparams.pos = Position(500, 500);
-  rparams.color = nanogui::Color(0, 0, 255, 255); /* blue */
+  rparams.color = Color(0, 0, 255, 255); /* blue */
 
   csci3081::arena_params aparams;
 
@@ -33,33 +34,33 @@ int main(int, char **) {
 
   aparams.recharge_station.radius = 20.0;
   aparams.recharge_station.pos = {500, 300};
-  aparams.recharge_station.color = nanogui::Color(0, 128, 128, 255); /* green */
+  aparams.recharge_station.color = Color(0, 128, 128, 255); /* green */
 
   aparams.home_base.radius = 20.0;
   aparams.home_base.pos = {400, 400};
-  aparams.home_base.color = nanogui::Color(255, 0, 0, 255); /* red */
+  aparams.home_base.color = Color(255, 0, 0, 255); /* red */
   //aparams.home_base.collision_delta = 1;
   //That is for making homebase mobile
 
   aparams.obstacles[0].radius = 30.0;
   aparams.obstacles[0].pos = {200, 200};
-  aparams.obstacles[0].color = nanogui::Color(255, 255, 255, 255); /* white */
+  aparams.obstacles[0].color = Color(255, 255, 255, 255); /* white */
 
   aparams.obstacles[1].radius = 40.0;
   aparams.obstacles[1].pos = {600, 600};
-  aparams.obstacles[1].color = nanogui::Color(255, 255, 255, 255); /* white */
+  aparams.obstacles[1].color = Color(255, 255, 255, 255); /* white */
 
   aparams.obstacles[2].radius = 60.0;
   aparams.obstacles[2].pos = {500, 200};
-  aparams.obstacles[2].color = nanogui::Color(255, 255, 255, 255); /* white */
+  aparams.obstacles[2].color = Color(255, 255, 255, 255); /* white */
 
   aparams.obstacles[3].radius = 50.0;
   aparams.obstacles[3].pos = {800, 300};
-  aparams.obstacles[3].color = nanogui::Color(255, 255, 255, 255); /* white */
+  aparams.obstacles[3].color = Color(255, 255, 255, 255); /* white */
 
   aparams.obstacles[4].radius = 35.0;
   aparams.obstacles[4].pos = {100, 600};
-  aparams.obstacles[4].color = nanogui::Color(255, 255, 255, 255); /* white */
+  aparams.obstacles[4].color = Color(255, 255, 255, 255); /* white */
 
 
   aparams.n_obstacles = 5;

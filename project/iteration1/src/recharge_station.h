@@ -24,7 +24,7 @@ NAMESPACE_BEGIN(csci3081);
 class RechargeStation: public Obstacle {
  public:
   RechargeStation(double radius, const Position& pos,
-                  const nanogui::Color& color) :
+                  const Color& color) :
       Obstacle(radius, pos, color) {}
   std::string name(void) const {
     return "Recharge Station";

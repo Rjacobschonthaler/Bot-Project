@@ -90,6 +90,9 @@ class Arena {
   HomeBase* home_base(void) const { return home_base_; }
   RechargeStation* recharge_station(void) const { return recharge_station_; }
 
+  void gameover(bool change) { gameover_=change; }
+  bool gameover(void) { return gameover_; }
+
 
  private:
   /**
@@ -142,6 +145,9 @@ class Arena {
   HomeBase * home_base_;
   std::vector<class ArenaEntity*> entities_;
   std::vector<class ArenaMobileEntity*> mobile_entities_;
+
+  //gameover flag
+  bool gameover_;
 };
 
 NAMESPACE_END(csci3081);
