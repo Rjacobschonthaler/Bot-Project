@@ -26,15 +26,19 @@ enum event_commands EventKeypress::keypress_to_cmd(int key) {
   * functionality.
   */
   switch (key) {
+    // Left arrow key
     case 263:
     return COM_TURN_LEFT;
     break;
+    // Right arrow key
     case 262:
     return COM_TURN_RIGHT;
     break;
+    // Up arrow key
     case 265:
     return COM_FORWARD;
     break;
+    // Down arrow key
     case 264:
     return COM_SLOW;
     break;

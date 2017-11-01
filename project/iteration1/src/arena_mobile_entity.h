@@ -4,8 +4,8 @@
  * @copyright 2017 3081 Staff, All rights reserved.
  */
 
-#ifndef SRC_ARENA_MOBILE_ENTITY_H_
-#define SRC_ARENA_MOBILE_ENTITY_H_
+#ifndef PROJECT_ITERATION1_SRC_ARENA_MOBILE_ENTITY_H_
+#define PROJECT_ITERATION1_SRC_ARENA_MOBILE_ENTITY_H_
 
 /*******************************************************************************
  * Includes
@@ -24,6 +24,9 @@ NAMESPACE_BEGIN(csci3081);
 /*******************************************************************************
  * Class Definitions
  ******************************************************************************/
+ /**
+  * @brief Base class for Robot and HomeBase
+  */
 class ArenaMobileEntity : public ArenaEntity {
  public:
   ArenaMobileEntity(double radius, double collision_delta,
@@ -33,8 +36,6 @@ class ArenaMobileEntity : public ArenaEntity {
   bool is_mobile(void) { return true; }
   virtual double heading_angle(void) const = 0;
   virtual void heading_angle(double heading_angle) = 0;
-  virtual Position pos() const = 0;
-  virtual void pos(Position pos) = 0;
   virtual double speed(void) = 0;
   virtual void speed(double sp) = 0;
   double collision_delta(void) const { return collision_delta_; }
@@ -48,4 +49,4 @@ class ArenaMobileEntity : public ArenaEntity {
 
 NAMESPACE_END(csci3081);
 
-#endif /* SRC_ARENA_MOBILE_ENTITY_H_ */
+#endif  // PROJECT_ITERATION1_SRC_ARENA_MOBILE_ENTITY_H_

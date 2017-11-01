@@ -97,7 +97,7 @@ Inheritance diagram for Robot:</div>
  <div class="center">
   <img src="class_robot.png" usemap="#Robot_map" alt=""/>
   <map id="Robot_map" name="Robot_map">
-<area href="class_arena_mobile_entity.html" alt="ArenaMobileEntity" shape="rect" coords="0,56,116,80"/>
+<area href="class_arena_mobile_entity.html" title="Base class for Robot and HomeBase. " alt="ArenaMobileEntity" shape="rect" coords="0,56,116,80"/>
 <area href="class_arena_entity.html" title="A base class representing an entity within the arena. All entities within the arena know how to : ..." alt="ArenaEntity" shape="rect" coords="0,0,116,24"/>
 </map>
  </div></div>
@@ -135,6 +135,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>EventCmd</b> (enum ev
 <tr class="memitem:a9aca9e2e6d0a47d4fe1cfee75b5852b9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9aca9e2e6d0a47d4fe1cfee75b5852b9"></a>
 double&#160;</td><td class="memItemRight" valign="bottom"><b>battery_level</b> (void)</td></tr>
 <tr class="separator:a9aca9e2e6d0a47d4fe1cfee75b5852b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a801c64b66f3d06991cc25fbcaf901463"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a801c64b66f3d06991cc25fbcaf901463"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>battery_loss</b> ()</td></tr>
+<tr class="separator:a801c64b66f3d06991cc25fbcaf901463"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a50650205ad3383cee04c0194c96598f4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a50650205ad3383cee04c0194c96598f4"></a>
 double&#160;</td><td class="memItemRight" valign="bottom"><b>heading_angle</b> (void) const </td></tr>
 <tr class="separator:a50650205ad3383cee04c0194c96598f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -150,19 +153,16 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>speed</b> (double sp)
 <tr class="memitem:a96f81bdd61724ec2d1bcf0cb6823f015"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a96f81bdd61724ec2d1bcf0cb6823f015"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>id</b> (void) const </td></tr>
 <tr class="separator:a96f81bdd61724ec2d1bcf0cb6823f015"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a907c9e1840f04bba354fcff9797276f4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a907c9e1840f04bba354fcff9797276f4"></a>
-<a class="el" href="struct_position.html">Position</a>&#160;</td><td class="memItemRight" valign="bottom"><b>pos</b> () const </td></tr>
-<tr class="separator:a907c9e1840f04bba354fcff9797276f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad219d85c9bf490745c3093cc900fc780"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad219d85c9bf490745c3093cc900fc780"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>pos</b> (<a class="el" href="struct_position.html">Position</a> pos)</td></tr>
-<tr class="separator:ad219d85c9bf490745c3093cc900fc780"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4556bf3e94f6ec7b72eab5b955acb6a2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4556bf3e94f6ec7b72eab5b955acb6a2"></a>
 std::string&#160;</td><td class="memItemRight" valign="bottom"><b>name</b> (void) const </td></tr>
 <tr class="separator:a4556bf3e94f6ec7b72eab5b955acb6a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35395bd9cea7d13c344d6d4e0551c0bc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a35395bd9cea7d13c344d6d4e0551c0bc"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>string_battery_level</b> () const </td></tr>
+<tr class="separator:a35395bd9cea7d13c344d6d4e0551c0bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_arena_mobile_entity"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_arena_mobile_entity')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_arena_mobile_entity.html">ArenaMobileEntity</a></td></tr>
-<tr class="memitem:a67fc15e2f55cde7a3634b892ba248ecb inherit pub_methods_class_arena_mobile_entity"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a67fc15e2f55cde7a3634b892ba248ecb"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>ArenaMobileEntity</b> (double radius, double collision_delta, const <a class="el" href="struct_position.html">Position</a> &amp;pos, const nanogui::Color &amp;color)</td></tr>
-<tr class="separator:a67fc15e2f55cde7a3634b892ba248ecb inherit pub_methods_class_arena_mobile_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a721723c0010f2fd2d95de50245de3b0c inherit pub_methods_class_arena_mobile_entity"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a721723c0010f2fd2d95de50245de3b0c"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>ArenaMobileEntity</b> (double radius, double collision_delta, const <a class="el" href="struct_position.html">Position</a> &amp;pos, const <a class="el" href="struct_color.html">Color</a> &amp;color)</td></tr>
+<tr class="separator:a721723c0010f2fd2d95de50245de3b0c inherit pub_methods_class_arena_mobile_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8c8700188eb9e0404b3b7153a384c71b inherit pub_methods_class_arena_mobile_entity"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8c8700188eb9e0404b3b7153a384c71b"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_mobile</b> (void)</td></tr>
 <tr class="separator:a8c8700188eb9e0404b3b7153a384c71b inherit pub_methods_class_arena_mobile_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -173,25 +173,25 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>collision_delta</b>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>TimestepUpdate</b> (uint dt)</td></tr>
 <tr class="separator:a93c05d5ae19faabe3c2cdf927cdaf537 inherit pub_methods_class_arena_mobile_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_arena_entity"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_arena_entity')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_arena_entity.html">ArenaEntity</a></td></tr>
-<tr class="memitem:a65761ac532ba5c39977ce0a31b561612 inherit pub_methods_class_arena_entity"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a65761ac532ba5c39977ce0a31b561612"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>ArenaEntity</b> (double radius, const <a class="el" href="struct_position.html">Position</a> &amp;pos, const nanogui::Color &amp;color)</td></tr>
-<tr class="separator:a65761ac532ba5c39977ce0a31b561612 inherit pub_methods_class_arena_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8844ffd57124cc2ae3a50b99997cc005 inherit pub_methods_class_arena_entity"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8844ffd57124cc2ae3a50b99997cc005"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>ArenaEntity</b> (double radius, const <a class="el" href="struct_position.html">Position</a> &amp;pos, const <a class="el" href="struct_color.html">Color</a> &amp;color)</td></tr>
+<tr class="separator:a8844ffd57124cc2ae3a50b99997cc005 inherit pub_methods_class_arena_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af01b8889f46572c25bae0b23358e03a5 inherit pub_methods_class_arena_entity"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af01b8889f46572c25bae0b23358e03a5"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_arena_entity.html#af01b8889f46572c25bae0b23358e03a5">TimestepUpdate</a> (__unused uint dt)</td></tr>
 <tr class="memdesc:af01b8889f46572c25bae0b23358e03a5 inherit pub_methods_class_arena_entity"><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform whatever updates are needed for a particular entity after 1 timestep (updating position, changing color, etc.). <br /></td></tr>
 <tr class="separator:af01b8889f46572c25bae0b23358e03a5 inherit pub_methods_class_arena_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab772c9822966fc63ccb464992e56ff88 inherit pub_methods_class_arena_entity"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab772c9822966fc63ccb464992e56ff88"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>pos</b> (const <a class="el" href="struct_position.html">Position</a> &amp;pos)</td></tr>
-<tr class="separator:ab772c9822966fc63ccb464992e56ff88 inherit pub_methods_class_arena_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a83a949d76bee42a8b6233fd41d34c538 inherit pub_methods_class_arena_entity"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a83a949d76bee42a8b6233fd41d34c538"></a>
-const <a class="el" href="struct_position.html">Position</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>pos</b> (void) const </td></tr>
-<tr class="separator:a83a949d76bee42a8b6233fd41d34c538 inherit pub_methods_class_arena_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a71037b6bdd028d213309030c706e8df0 inherit pub_methods_class_arena_entity"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a71037b6bdd028d213309030c706e8df0"></a>
-const nanogui::Color &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>color</b> (void) const </td></tr>
-<tr class="separator:a71037b6bdd028d213309030c706e8df0 inherit pub_methods_class_arena_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:add9c6d13ab211df794ed162b2fa13e21 inherit pub_methods_class_arena_entity"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="add9c6d13ab211df794ed162b2fa13e21"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>color</b> (const nanogui::Color &amp;color)</td></tr>
-<tr class="separator:add9c6d13ab211df794ed162b2fa13e21 inherit pub_methods_class_arena_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a772ce323b8e331450b1b49e9e8011212 inherit pub_methods_class_arena_entity"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a772ce323b8e331450b1b49e9e8011212"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>set_pos</b> (const <a class="el" href="struct_position.html">Position</a> &amp;pos)</td></tr>
+<tr class="separator:a772ce323b8e331450b1b49e9e8011212 inherit pub_methods_class_arena_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23b3d6debe2affb988b52f45edec7f4c inherit pub_methods_class_arena_entity"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a23b3d6debe2affb988b52f45edec7f4c"></a>
+const <a class="el" href="struct_position.html">Position</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>get_pos</b> (void) const </td></tr>
+<tr class="separator:a23b3d6debe2affb988b52f45edec7f4c inherit pub_methods_class_arena_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8cfc44aad8a21ba8227b54476748948 inherit pub_methods_class_arena_entity"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac8cfc44aad8a21ba8227b54476748948"></a>
+const <a class="el" href="struct_color.html">Color</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>color</b> (void) const </td></tr>
+<tr class="separator:ac8cfc44aad8a21ba8227b54476748948 inherit pub_methods_class_arena_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8df50817e9da014ccd194c2f771704d0 inherit pub_methods_class_arena_entity"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8df50817e9da014ccd194c2f771704d0"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>color</b> (const <a class="el" href="struct_color.html">Color</a> &amp;color)</td></tr>
+<tr class="separator:a8df50817e9da014ccd194c2f771704d0 inherit pub_methods_class_arena_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0a83b1dda5fd1ddeb112776685929318 inherit pub_methods_class_arena_entity"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0a83b1dda5fd1ddeb112776685929318"></a>
 double&#160;</td><td class="memItemRight" valign="bottom"><b>radius</b> (void) const </td></tr>
 <tr class="separator:a0a83b1dda5fd1ddeb112776685929318 inherit pub_methods_class_arena_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>

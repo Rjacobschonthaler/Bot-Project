@@ -5,8 +5,8 @@
  *
  */
 
-#ifndef SRC_EVENT_COMMANDS_H_
-#define SRC_EVENT_COMMANDS_H_
+#ifndef PROJECT_ITERATION1_SRC_EVENT_COMMANDS_H_
+#define PROJECT_ITERATION1_SRC_EVENT_COMMANDS_H_
 
 /*******************************************************************************
  * Includes
@@ -21,7 +21,7 @@ NAMESPACE_BEGIN(csci3081);
 /*******************************************************************************
  * Type Definitions
  ******************************************************************************/
- //I added COM_SLOW
+// R. Jacob Schonthaler added COM_SLOW
 enum event_commands {
   COM_TURN_LEFT,
   COM_TURN_RIGHT,
@@ -30,4 +30,4 @@ enum event_commands {
 };
 NAMESPACE_END(csci3081);
 
-#endif /* SRC_EVENT_COMMANDS_H_ */
+#endif  // PROJECT_ITERATION1_SRC_EVENT_COMMANDS_H_

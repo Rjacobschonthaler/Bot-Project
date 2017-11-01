@@ -33,7 +33,6 @@ Robot::Robot(const struct robot_params* const params) :
   motion_behavior_(),
   sensor_touch_(),
   id_(-1) {
-  pos_ = params->pos,
   motion_handler_.heading_angle(270);
   motion_handler_.speed(5);
   id_ = next_id_++;
@@ -43,19 +42,23 @@ Robot::Robot(const struct robot_params* const params) :
  * Member Functions
  ******************************************************************************/
 void Robot::TimestepUpdate(uint dt) {
-  Position old_pos = pos_;
+  Position old_pos = get_pos();
   // Update heading and speed as indicated by touch sensor
   motion_handler_.UpdateVelocity(sensor_touch_);
-  std::cout<<heading_angle()<<std::endl;
   // Use velocity and position to update position
   motion_behavior_.UpdatePosition(this, dt);
   // Deplete battery as appropriate given distance and speed of movement
-  battery_.Deplete(old_pos, pos_, dt);
+  battery_.Deplete(old_pos, get_pos(), dt);
+
+  if (sensor_touch_.activated()) {
+    // This line causes the bug of a stopped robot if set to lower than 3 when
+    // bouncing off obstacles ocassionally.
+    speed(3);
+  }
 } /* TimestepUpdate() */
 
 void Robot::Accept(__unused EventRecharge * e) {
   battery_.EventRecharge();
-  //std::cout << battery_level() << std::endl;
 }
 
 // Pass along a collision event (from arena) to the touch sensor.
@@ -63,10 +66,8 @@ void Robot::Accept(__unused EventRecharge * e) {
 // types of information from different sources.
 void Robot::Accept(EventCollision * e) {
   sensor_touch_.Accept(e);
-  if(e->collided())
-  {
-    speed(1);
-    //battery_.Accept(e);
+  if (e->collided()) {
+    battery_.Accept(e);
   }
 }
 
@@ -79,8 +80,8 @@ void Robot::Reset(void) {
   battery_.Reset();
   motion_handler_.Reset();
   sensor_touch_.Reset();
-  pos_.x=500;
-  pos_.y=500;
+  Position pos = Position(500, 500);
+  set_pos(pos);
 } /* Reset() */
 
 void Robot::ResetBattery(void) {

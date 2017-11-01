@@ -4,8 +4,8 @@
  * @copyright 2017 3081 Staff, All rights reserved.
  */
 
-#ifndef SRC_ROBOT_PARAMS_H_
-#define SRC_ROBOT_PARAMS_H_
+#ifndef PROJECT_ITERATION1_SRC_ROBOT_PARAMS_H_
+#define PROJECT_ITERATION1_SRC_ROBOT_PARAMS_H_
 
 /*******************************************************************************
  * Includes
@@ -27,9 +27,9 @@ struct robot_params : public arena_mobile_entity_params {
       angle_delta() {}
 
   double battery_max_charge;
-  uint angle_delta;
+  unsigned int angle_delta;
 };
 
 NAMESPACE_END(csci3081);
 
-#endif /* SRC_ROBOT_PARAMS_H_ */
+#endif  // PROJECT_ITERATION1_SRC_ROBOT_PARAMS_H_

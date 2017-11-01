@@ -50,12 +50,15 @@ GraphicsArenaViewer::GraphicsArenaViewer(
 // This is the primary driver for state change in the arena.
 // It will be called at each iteration of nanogui::mainloop()
 void GraphicsArenaViewer::UpdateSimulation(double dt) {
-  if(arena_->gameover())
-  {
-    paused_=true;
+  if (arena_->gameover()) {
+    paused_ = true;
   }
   if (!paused_) {
-    arena_->AdvanceTime(dt);
+    last_dt += dt;
+    while (last_dt > 0.05) {
+      arena_->AdvanceTime();
+      last_dt -= 0.05;
+    }
   }
 }
 
@@ -64,7 +67,7 @@ void GraphicsArenaViewer::UpdateSimulation(double dt) {
  ******************************************************************************/
 void GraphicsArenaViewer::OnRestartBtnPressed() {
   arena_->Reset();
-  paused_=false;
+  paused_ = false;
 }
 
 void GraphicsArenaViewer::OnPauseBtnPressed() {
@@ -77,58 +80,54 @@ void GraphicsArenaViewer::OnPauseBtnPressed() {
 }
 
 void GraphicsArenaViewer::OnMouseMove(int x, int y) {
-  if(!paused_)
-  {
-    //std::cout << "Mouse moved to (" << x << ", " << y << ")" << std::endl;
+  if (!paused_) {
+    // std::cout << "Mouse moved to (" << x << ", " << y << ")" << std::endl;
   }
 }
 
 void GraphicsArenaViewer::OnLeftMouseDown(int x, int y) {
-  if(!paused_)
-  {
-    //std::cout << "Left mouse button DOWN (" << x << ", " << y << ")" << std::endl;
+  if (!paused_) {
+    /*std::cout << "Left mouse button DOWN (" << x << ", " << y << ")" <<
+    std::endl;*/
   }
 }
 
 void GraphicsArenaViewer::OnLeftMouseUp(int x, int y) {
-  if(!paused_)
-  {
-    //std::cout << "Left mouse button UP (" << x << ", " << y << ")" << std::endl;
+  if (!paused_) {
+    /*std::cout << "Left mouse button UP (" << x << ", " << y << ")" <<
+    std::endl;*/
   }
 }
 
 void GraphicsArenaViewer::OnRightMouseDown(int x, int y) {
-  if(!paused_)
-  {
-    //std::cout << "Right mouse button DOWN (" << x << ", " << y << ")\n";
+  if (!paused_) {
+    // std::cout << "Right mouse button DOWN (" << x << ", " << y << ")\n";
   }
 }
 
 void GraphicsArenaViewer::OnRightMouseUp(int x, int y) {
-  if(!paused_)
-  {
-    //std::cout << "Right mouse button UP (" << x << ", " << y << ")" << std::endl;
+  if (!paused_) {
+    /*std::cout << "Right mouse button UP (" << x << ", " << y << ")" <<
+    std::endl;*/
   }
 }
 
 void GraphicsArenaViewer::OnKeyDown(const char *c, int modifiers) {
-  if(!paused_)
-  {
-    //std::cout << "Key DOWN (" << c << ") modifiers=" << modifiers << std::endl;
+  if (!paused_) {
+    /*std::cout << "Key DOWN (" << c << ") modifiers=" << modifiers <<
+    std::endl;*/
   }
 }
 
 void GraphicsArenaViewer::OnKeyUp(const char *c, int modifiers) {
-  if(!paused_)
-  {
-    //std::cout << "Key UP (" << c << ") modifiers=" << modifiers << std::endl;
+  if (!paused_) {
+    // std::cout << "Key UP (" << c << ") modifiers=" << modifiers << std::endl;
   }
 }
 
 void GraphicsArenaViewer::OnSpecialKeyDown(int key, int scancode,
   int modifiers) {
-    if(!paused_)
-    {
+    if (!paused_) {
       EventKeypress e(key);
       arena_->Accept(&e);
       /*std::cout << "Special Key DOWN key=" << key << " scancode=" << scancode
@@ -137,8 +136,7 @@ void GraphicsArenaViewer::OnSpecialKeyDown(int key, int scancode,
 }
 
 void GraphicsArenaViewer::OnSpecialKeyUp(int key, int scancode, int modifiers) {
-  if(!paused_)
-  {
+  if (!paused_) {
     /*std::cout << "Special Key UP key=" << key << " scancode=" << scancode
               << " modifiers=" << modifiers << std::endl;*/
   }
@@ -151,16 +149,16 @@ void GraphicsArenaViewer::DrawRobot(NVGcontext *ctx, const Robot* const robot) {
   // translate and rotate all graphics calls that follow so that they are
   // centered, at the position and heading for this robot
   nvgSave(ctx);
-  nvgTranslate(ctx, robot->pos().x, robot->pos().y);
+  nvgTranslate(ctx, robot->get_pos().x, robot->get_pos().y);
   nvgRotate(ctx, robot->heading_angle());
 
   // robot's circle
   nvgBeginPath(ctx);
   nvgCircle(ctx, 0.0, 0.0, robot->radius());
-  nvgFillColor(ctx, nvgRGBA(static_cast<int>(robot->color().red),
-                            static_cast<int>(robot->color().yellow),
-                            static_cast<int>(robot->color().blue),
-                            255));
+  nvgFillColor(ctx, nvgRGBA(static_cast<int>(robot->color().r),
+                            static_cast<int>(robot->color().g),
+                            static_cast<int>(robot->color().b),
+                            robot->color().a));
   nvgFill(ctx);
   nvgStrokeColor(ctx, nvgRGBA(0, 0, 0, 255));
   nvgStroke(ctx);
@@ -170,6 +168,8 @@ void GraphicsArenaViewer::DrawRobot(NVGcontext *ctx, const Robot* const robot) {
   nvgRotate(ctx, M_PI / 2.0);
   nvgFillColor(ctx, nvgRGBA(0, 0, 0, 255));
   nvgText(ctx, 0.0, 0.0, robot->name().c_str(), NULL);
+
+  // R. Jacob Schonthaler added this to show battery level below robot name
   nvgText(ctx, 0.0, 10.0, robot->string_battery_level().c_str(), NULL);
   nvgRestore(ctx);
   nvgRestore(ctx);
@@ -178,34 +178,36 @@ void GraphicsArenaViewer::DrawRobot(NVGcontext *ctx, const Robot* const robot) {
 void GraphicsArenaViewer::DrawObstacle(NVGcontext *ctx,
                                        const Obstacle* const obstacle) {
   nvgBeginPath(ctx);
-  nvgCircle(ctx, obstacle->pos().x, obstacle->pos().y, obstacle->radius());
-  nvgFillColor(ctx, nvgRGBA(static_cast<int>(obstacle->color().red),
-                            static_cast<int>(obstacle->color().yellow),
-                            static_cast<int>(obstacle->color().blue),
-                            255));
+  nvgCircle(ctx, obstacle->get_pos().x, obstacle->get_pos().y,
+  obstacle->radius());
+  nvgFillColor(ctx, nvgRGBA(static_cast<int>(obstacle->color().r),
+                            static_cast<int>(obstacle->color().g),
+                            static_cast<int>(obstacle->color().b),
+                            obstacle->color().a));
   nvgFill(ctx);
   nvgStrokeColor(ctx, nvgRGBA(0, 0, 0, 255));
   nvgStroke(ctx);
 
   nvgFillColor(ctx, nvgRGBA(0, 0, 0, 255));
-  nvgText(ctx, obstacle->pos().x, obstacle->pos().y,
+  nvgText(ctx, obstacle->get_pos().x, obstacle->get_pos().y,
           obstacle->name().c_str(), NULL);
 }
 
 void GraphicsArenaViewer::DrawHomeBase(NVGcontext *ctx,
                                const HomeBase* const home) {
   nvgBeginPath(ctx);
-  nvgCircle(ctx, home->pos().x, home->pos().y, home->radius());
-  nvgFillColor(ctx, nvgRGBA(static_cast<int>(home->color().red),
-                            static_cast<int>(home->color().yellow),
-                            static_cast<int>(home->color().blue),
-                            255));
+  nvgCircle(ctx, home->get_pos().x, home->get_pos().y, home->radius());
+  nvgFillColor(ctx, nvgRGBA(static_cast<int>(home->color().r),
+                            static_cast<int>(home->color().g),
+                            static_cast<int>(home->color().b),
+                            home->color().a));
   nvgFill(ctx);
   nvgStrokeColor(ctx, nvgRGBA(0, 0, 0, 255));
   nvgStroke(ctx);
 
   nvgFillColor(ctx, nvgRGBA(0, 0, 0, 255));
-  nvgText(ctx, home->pos().x, home->pos().y, home->name().c_str(), NULL);
+  nvgText(ctx, home->get_pos().x, home->get_pos().y, home->name().c_str(),
+    NULL);
 }
 
 // This is the primary driver for drawing all entities in the arena.

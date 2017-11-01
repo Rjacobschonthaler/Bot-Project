@@ -4,8 +4,8 @@
  * @copyright 2017 3081 Staff, All rights reserved.
  */
 
-#ifndef SRC_ARENA_H_
-#define SRC_ARENA_H_
+#ifndef PROJECT_ITERATION1_SRC_ARENA_H_
+#define PROJECT_ITERATION1_SRC_ARENA_H_
 
 /*******************************************************************************
  * Includes
@@ -48,11 +48,9 @@ class Arena {
   ~Arena(void);
 
   /**
-   * @brief Advance the simulation by the specified # of steps.
-   *
-   * @param[in] dt The # of steps to increment by.
+   * @brief Advance the simulation by a single step.
    */
-  void AdvanceTime(unsigned int dt);
+  void AdvanceTime(void);
 
   /**
   * @brief Handle the key press passed along by the viewer.
@@ -90,7 +88,7 @@ class Arena {
   HomeBase* home_base(void) const { return home_base_; }
   RechargeStation* recharge_station(void) const { return recharge_station_; }
 
-  void gameover(bool change) { gameover_=change; }
+  void gameover(bool change) { gameover_ = change; }
   bool gameover(void) { return gameover_; }
 
 
@@ -106,7 +104,7 @@ class Arena {
    *
    * Collision Event is populated appropriately.
    */
-  void CheckForEntityCollision(const class ArenaEntity* const ent1,
+  void CheckForEntityCollision(const class ArenaMobileEntity* const ent1,
     const class ArenaEntity* const ent2,
     EventCollision * ec,
     double collision_delta);
@@ -146,10 +144,10 @@ class Arena {
   std::vector<class ArenaEntity*> entities_;
   std::vector<class ArenaMobileEntity*> mobile_entities_;
 
-  //gameover flag
+  // R. Jacob Schonthaler add gameover flag for game completion
   bool gameover_;
 };
 
 NAMESPACE_END(csci3081);
 
-#endif  // SRC_ARENA_H_
+#endif  // PROJECT_ITERATION1_SRC_ARENA_H_

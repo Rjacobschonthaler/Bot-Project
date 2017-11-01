@@ -4,8 +4,8 @@
  * @copyright 2017 3081 Staff, All rights reserved.
  */
 
-#ifndef SRC_ARENA_ENTITY_H_
-#define SRC_ARENA_ENTITY_H_
+#ifndef PROJECT_ITERATION1_SRC_ARENA_ENTITY_H_
+#define PROJECT_ITERATION1_SRC_ARENA_ENTITY_H_
 
 /*******************************************************************************
  * Includes
@@ -54,8 +54,8 @@ class ArenaEntity {
 
   virtual std::string name(void) const = 0;
 
-  void pos(const Position& pos) { pos_ = pos; }
-  const Position& pos(void) const { return pos_; }
+  void set_pos(const Position& pos) { pos_ = pos; }
+  const Position& get_pos(void) const { return pos_; }
   const Color& color(void) const { return color_; }
   void color(const Color& color) { color_ = color; }
   virtual bool is_mobile(void) = 0;
@@ -69,4 +69,4 @@ class ArenaEntity {
 
 NAMESPACE_END(csci3081);
 
-#endif /* SRC_ARENA_ENTITY_H_ */
+#endif  // PROJECT_ITERATION1_SRC_ARENA_ENTITY_H_

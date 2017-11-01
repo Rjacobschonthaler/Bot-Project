@@ -4,8 +4,8 @@
  * @copyright 2017 3081 Staff, All rights reserved.
  */
 
-#ifndef SRC_SENSOR_TOUCH_H_
-#define SRC_SENSOR_TOUCH_H_
+#ifndef PROJECT_ITERATION1_SRC_SENSOR_TOUCH_H_
+#define PROJECT_ITERATION1_SRC_SENSOR_TOUCH_H_
 
 /*******************************************************************************
  * Includes
@@ -13,7 +13,7 @@
 #include <vector>
 #include <utility>
 
-#include <src/sensor.h>
+#include "src/sensor.h"
 #include "src/common.h"
 #include "src/event_collision.h"
 
@@ -41,8 +41,8 @@ class SensorTouch : public Sensor {
   /**
    * @brief Get the current activation reading from the sensor.
    */
-  //bool activated(void) { return activated_; }
-  //void activated(bool value) { activated_ = value; }
+  // bool activated(void) { return activated_; }
+  // void activated(bool value) { activated_ = value; }
 
   Position point_of_contact() { return point_of_contact_; }
   void point_of_contact(Position p) {
@@ -69,11 +69,11 @@ class SensorTouch : public Sensor {
   void Reset(void);
 
  private:
-  //bool activated_;
+  // bool activated_;
   Position point_of_contact_;
   double angle_of_contact_;
 };
 
 NAMESPACE_END(csci3081);
 
-#endif   /* SRC_SENSOR_TOUCH_H_ */
+#endif   // PROJECT_ITERATION1_SRC_SENSOR_TOUCH_H_

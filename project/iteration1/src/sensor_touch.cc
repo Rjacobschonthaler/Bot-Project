@@ -19,8 +19,7 @@ NAMESPACE_BEGIN(csci3081);
 /*******************************************************************************
  * Constructors/Destructor
  ******************************************************************************/
-SensorTouch::SensorTouch() : point_of_contact_(0,0)
-{
+SensorTouch::SensorTouch() : point_of_contact_(0, 0) {
   activated(false);
   angle_of_contact(0);
 }

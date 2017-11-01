@@ -4,8 +4,11 @@
  * @copyright 2017 3081 Staff, All rights reserved.
  */
 
-#ifndef SRC_COMMON_H_
-#define SRC_COMMON_H_
+#ifndef PROJECT_ITERATION1_SRC_COMMON_H_
+#define PROJECT_ITERATION1_SRC_COMMON_H_
+
+#include <assert.h>
+#include <iostream>
 
 /*******************************************************************************
  * Macros
@@ -24,4 +27,4 @@ Position(int in_x, int in_y) : x(in_x), y(in_y) { }
   int y;
 };
 
-#endif  // SRC_COMMON_H_
+#endif  // PROJECT_ITERATION1_SRC_COMMON_H_

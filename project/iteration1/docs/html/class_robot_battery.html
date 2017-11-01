@@ -115,11 +115,12 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_robot_battery.html#af9c73841506973f779a36a91d7ae7aed">Reset</a> (void)</td></tr>
 <tr class="memdesc:af9c73841506973f779a36a91d7ae7aed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset the robot's battery to its newly constructed/undepleted state. <br /></td></tr>
 <tr class="separator:af9c73841506973f779a36a91d7ae7aed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a80627be25eb681c02f2186a7c03702d5"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_robot_battery.html#a80627be25eb681c02f2186a7c03702d5">Deplete</a> (__unused <a class="el" href="struct_position.html">Position</a> old_pos, __unused <a class="el" href="struct_position.html">Position</a> new_pos, __unused double dt)</td></tr>
-<tr class="memdesc:a80627be25eb681c02f2186a7c03702d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the new battery level based on the current linear/angular speed.  <a href="#a80627be25eb681c02f2186a7c03702d5">More...</a><br /></td></tr>
-<tr class="separator:a80627be25eb681c02f2186a7c03702d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6cde16ae45f11a1f8424ae7899525018"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_robot_battery.html#a6cde16ae45f11a1f8424ae7899525018">Deplete</a> (<a class="el" href="struct_position.html">Position</a> old_pos, <a class="el" href="struct_position.html">Position</a> new_pos, double dt)</td></tr>
+<tr class="memdesc:a6cde16ae45f11a1f8424ae7899525018"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the new battery level based on the current linear/angular speed.  <a href="#a6cde16ae45f11a1f8424ae7899525018">More...</a><br /></td></tr>
+<tr class="separator:a6cde16ae45f11a1f8424ae7899525018"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8836b4c7536ebaeb3e4ae0696688ce4e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8836b4c7536ebaeb3e4ae0696688ce4e"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>Accept</b> (<a class="el" href="class_event_collision.html">EventCollision</a> *e)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_robot_battery.html#a8836b4c7536ebaeb3e4ae0696688ce4e">Accept</a> (<a class="el" href="class_event_collision.html">EventCollision</a> *e)</td></tr>
+<tr class="memdesc:a8836b4c7536ebaeb3e4ae0696688ce4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lose 20 charge for running into wall or obstacle. <br /></td></tr>
 <tr class="separator:a8836b4c7536ebaeb3e4ae0696688ce4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
@@ -139,28 +140,27 @@ double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cl
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The battery for a robot. </p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000003">Todo:</a></b></dt><dd>: implement depletion for movement and collision </dd></dl>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a80627be25eb681c02f2186a7c03702d5"></a>
+<a class="anchor" id="a6cde16ae45f11a1f8424ae7899525018"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">double RobotBattery::Deplete </td>
           <td>(</td>
-          <td class="paramtype">__unused <a class="el" href="struct_position.html">Position</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="struct_position.html">Position</a>&#160;</td>
           <td class="paramname"><em>old_pos</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">__unused <a class="el" href="struct_position.html">Position</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="struct_position.html">Position</a>&#160;</td>
           <td class="paramname"><em>new_pos</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">__unused double&#160;</td>
+          <td class="paramtype">double&#160;</td>
           <td class="paramname"><em>dt</em>&#160;</td>
         </tr>
         <tr>

@@ -100,16 +100,18 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ac442d519facc5feebfd7612a53817e9a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac442d519facc5feebfd7612a53817e9a"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Arena</b> (const struct <a class="el" href="structarena__params.html">arena_params</a> *const params)</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_arena.html#ac442d519facc5feebfd7612a53817e9a">Arena</a> (const struct <a class="el" href="structarena__params.html">arena_params</a> *const params)</td></tr>
+<tr class="memdesc:ac442d519facc5feebfd7612a53817e9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is the place where arena entities interact with eachother. <br /></td></tr>
 <tr class="separator:ac442d519facc5feebfd7612a53817e9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2813b94ad8443421e81f08d2ea3a5d76"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_arena.html#a2813b94ad8443421e81f08d2ea3a5d76">AdvanceTime</a> (unsigned int dt)</td></tr>
-<tr class="memdesc:a2813b94ad8443421e81f08d2ea3a5d76"><td class="mdescLeft">&#160;</td><td class="mdescRight">Advance the simulation by the specified # of steps.  <a href="#a2813b94ad8443421e81f08d2ea3a5d76">More...</a><br /></td></tr>
-<tr class="separator:a2813b94ad8443421e81f08d2ea3a5d76"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a458efec4ba1a72561796caace2bb22b8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_arena.html#a458efec4ba1a72561796caace2bb22b8">AdvanceTime</a> (void)</td></tr>
+<tr class="memdesc:a458efec4ba1a72561796caace2bb22b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Advance the simulation by a single step.  <a href="#a458efec4ba1a72561796caace2bb22b8">More...</a><br /></td></tr>
+<tr class="separator:a458efec4ba1a72561796caace2bb22b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4a677fcedab944a410d58da6385aae5f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_arena.html#a4a677fcedab944a410d58da6385aae5f">Accept</a> (<a class="el" href="class_event_keypress.html">EventKeypress</a> *e)</td></tr>
 <tr class="memdesc:a4a677fcedab944a410d58da6385aae5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle the key press passed along by the viewer.  <a href="#a4a677fcedab944a410d58da6385aae5f">More...</a><br /></td></tr>
 <tr class="separator:a4a677fcedab944a410d58da6385aae5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6ac584696fcbfebe3c1073585489da27"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6ac584696fcbfebe3c1073585489da27"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>Reset</b> (void)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_arena.html#a6ac584696fcbfebe3c1073585489da27">Reset</a> (void)</td></tr>
+<tr class="memdesc:a6ac584696fcbfebe3c1073585489da27"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resets arena and called by pressing the reset button. <br /></td></tr>
 <tr class="separator:a6ac584696fcbfebe3c1073585489da27"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a47843253aaf109ebc16337a1cfe4e2a1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a47843253aaf109ebc16337a1cfe4e2a1"></a>
 unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>n_robots</b> (void)</td></tr>
@@ -134,6 +136,12 @@ std::vector&lt; class <a class="el" href="class_arena_mobile_entity.html">ArenaM
 <tr class="memitem:a9bab90237dc1eef9f30fa53d7324d4b3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9bab90237dc1eef9f30fa53d7324d4b3"></a>
 <a class="el" href="class_recharge_station.html">RechargeStation</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>recharge_station</b> (void) const </td></tr>
 <tr class="separator:a9bab90237dc1eef9f30fa53d7324d4b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af45c135c90a3c0e5bf33ca33736784ab"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af45c135c90a3c0e5bf33ca33736784ab"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>gameover</b> (bool change)</td></tr>
+<tr class="separator:af45c135c90a3c0e5bf33ca33736784ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5bf61623c841bf298806c613773d1468"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5bf61623c841bf298806c613773d1468"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>gameover</b> (void)</td></tr>
+<tr class="separator:a5bf61623c841bf298806c613773d1468"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The main class for the simulation of a 2D world with many robots running around. </p>
@@ -155,6 +163,7 @@ std::vector&lt; class <a class="el" href="class_arena_mobile_entity.html">ArenaM
 </div><div class="memdoc">
 
 <p>Handle the key press passed along by the viewer. </p>
+<p>Sends command robot to change heading_angle or speed.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">an</td><td>event holding the key press. </td></tr>
@@ -164,27 +173,22 @@ std::vector&lt; class <a class="el" href="class_arena_mobile_entity.html">ArenaM
 
 </div>
 </div>
-<a class="anchor" id="a2813b94ad8443421e81f08d2ea3a5d76"></a>
+<a class="anchor" id="a458efec4ba1a72561796caace2bb22b8"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void Arena::AdvanceTime </td>
           <td>(</td>
-          <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>dt</em></td><td>)</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Advance the simulation by the specified # of steps. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">dt</td><td>The # of steps to increment by. </td></tr>
-  </table>
-  </dd>
-</dl>
+<p>Advance the simulation by a single step. </p>
+<p>Calls AdvanceTime to update the arena. </p>
 
 </div>
 </div>

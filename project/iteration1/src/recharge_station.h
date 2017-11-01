@@ -4,8 +4,8 @@
  * @copyright 2017 3081 Staff, All rights reserved.
  */
 
-#ifndef SRC_RECHARGE_STATION_H_
-#define SRC_RECHARGE_STATION_H_
+#ifndef PROJECT_ITERATION1_SRC_RECHARGE_STATION_H_
+#define PROJECT_ITERATION1_SRC_RECHARGE_STATION_H_
 
 /*******************************************************************************
  * Includes
@@ -33,4 +33,4 @@ class RechargeStation: public Obstacle {
 
 NAMESPACE_END(csci3081);
 
-#endif /* SRC_RECHARGE_STATION_H_ */
+#endif  // PROJECT_ITERATION1_SRC_RECHARGE_STATION_H_

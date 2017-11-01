@@ -26,6 +26,9 @@ NAMESPACE_BEGIN(csci3081);
 /*******************************************************************************
  * Constructors/Destructor
  ******************************************************************************/
+ /**
+  * @brief This is the place where arena entities interact with eachother.
+  */
 Arena::Arena(const struct arena_params* const params) :
   x_dim_(params->x_dim), y_dim_(params->y_dim),
   robot_(new Robot(&params->robot)),
@@ -41,6 +44,9 @@ Arena::Arena(const struct arena_params* const params) :
   entities_.push_back(robot_);
   mobile_entities_.push_back(robot_);
 
+  // R. Jacob Schonthaler added this so that Home Base would bounce
+  mobile_entities_.push_back(home_base_);
+
   entities_.push_back(recharge_station_);
 
   entities_.push_back(home_base_);
@@ -52,7 +58,8 @@ Arena::Arena(const struct arena_params* const params) :
         params->obstacles[i].color));
   } /* for(i..) */
 
-  gameover_=false;
+  // R. Jacob Schonthaler added this for game completion
+  gameover_ = false;
 }
 
 Arena::~Arena(void) {
@@ -63,6 +70,9 @@ Arena::~Arena(void) {
 /*******************************************************************************
  * Member Functions
  ******************************************************************************/
+ /**
+  * @brief Resets arena and called by pressing the reset button
+  */
 void Arena::Reset(void) {
   for (auto ent : entities_) {
     ent->Reset();
@@ -81,13 +91,17 @@ std::vector<Obstacle*> Arena::obstacles(void) {
   return res;
 } /* robots() */
 
-void Arena::AdvanceTime(uint dt) {
-  //std::cout << "Advancing simulation time by " << dt << " timesteps\n";
-  for (size_t i = 0; i < 1; ++i) {
-    UpdateEntitiesTimestep();
-  } /* for(i..) */
+/**
+ * @brief Calls AdvanceTime to update the arena.
+ */
+void Arena::AdvanceTime(void) {
+  // std::cout << "Advancing simulation time by 1 timestep\n";
+  UpdateEntitiesTimestep();
 } /* AdvanceTime() */
 
+/**
+ * @brief Updates mobile_entity positions, checks for win or loss, and checks for collisions.
+ */
 void Arena::UpdateEntitiesTimestep(void) {
   /*
    * First, update the position of all entities, according to their current
@@ -100,11 +114,10 @@ void Arena::UpdateEntitiesTimestep(void) {
   /*
    * Next, check if the robot has run out of battery
    */
-  if (robot_->battery_level() <=0) {
-    //This is where losing happens
-    std::cout<<"You Lose!"<<std::endl;
+  if (robot_->battery_level() <= 0) {
+    // R. Jacob Schonthaler added This for game completion
+    std::cout << "You Lose!" << std::endl;
     gameover(true);
-    //assert(0); /* not implemented yet */
   }
 
   /*
@@ -115,18 +128,22 @@ void Arena::UpdateEntitiesTimestep(void) {
    */
 
   EventCollision ec;
-  //std::cout<<"YO"<<std::endl;
   CheckForEntityCollision(robot_, home_base_, &ec, robot_->collision_delta());
   if (ec.collided()) {
-      std::cout<<"You Win!"<<std::endl;
+    // R. Jacob Schonthaler added this for game completion
+      std::cout << "You Win!" << std::endl;
       gameover(true);
-       //assert(0); /* not implemented yet */
   }
+
+  /**
+   * @brief Check if the robot has collided with recharge station.
+   */
 
   CheckForEntityCollision(robot_, recharge_station_,
     &ec, robot_->collision_delta());
   if (ec.collided()) {
     EventRecharge er;
+    er.EmitMessage();
     robot_->Accept(&er);
   }
 
@@ -158,23 +175,39 @@ void Arena::UpdateEntitiesTimestep(void) {
   } /* for(ent..) */
 } /* UpdateEntities() */
 
+// fixed jittering at walls
 void Arena::CheckForEntityOutOfBounds(const ArenaMobileEntity * const ent,
   EventCollision * event) {
-  if (ent->pos().x+ ent->radius() >= x_dim_) {
+  /**
+   * R. Jacob Schonaler added bouncing off of left and right walls
+   * and checking of heading to fix jittering along the walls. Jittering
+   * by cancelling the collision if the heading of the mobile_arena_entity
+   * is directed away from the wall.
+   */
+  double heading = ent->heading_angle();
+  if (ent->get_pos().x+ ent->radius() >= x_dim_ &&
+  ((heading > 0 && (heading < 90 || heading > 270))
+  || (heading < 0 && (heading > -90 || heading < -270)))) {
     // Right Wall
     event->collided(true);
-    event->point_of_contact(Position(x_dim_, ent->pos().y));
+    event->point_of_contact(Position(x_dim_, ent->get_pos().y));
     event->angle_of_contact(ent->heading_angle()-180);
-  } else if (ent->pos().x- ent->radius() <= 0) {
+  } else if (ent->get_pos().x- ent->radius() <= 0 &&
+  ((heading > 0 && (heading > 90 && heading < 270))
+  || (heading < 0 && (heading < -90 && heading > -270)))) {
     event->collided(true);
-    event->point_of_contact(Position(0, ent->pos().y));
+    event->point_of_contact(Position(0, ent->get_pos().y));
     event->angle_of_contact(ent->heading_angle()+180);
-  } else if (ent->pos().y+ ent->radius() >= y_dim_) {
+  } else if (ent->get_pos().y+ ent->radius() >= y_dim_ &&
+  ((heading > 0 && heading < 180)
+  || (heading < -180 && heading > -360))) {
     // Bottom Wall
     event->collided(true);
-    event->point_of_contact(Position(ent->pos().x, y_dim_));
+    event->point_of_contact(Position(ent->get_pos().x, y_dim_));
     event->angle_of_contact(ent->heading_angle());
-  } else if (ent->pos().y - ent->radius() <= 0) {
+  } else if (ent->get_pos().y - ent->radius() <= 0 &&
+  ((heading > 180 && heading < 360)
+  || (heading < 0 && heading > -180))) {
     // Top Wall
     event->collided(true);
     event->point_of_contact(Position(0, y_dim_));
@@ -184,52 +217,50 @@ void Arena::CheckForEntityOutOfBounds(const ArenaMobileEntity * const ent,
   }
 } /* entity_out_of_bounds() */
 
-void Arena::CheckForEntityCollision(const ArenaEntity* const ent1,
+void Arena::CheckForEntityCollision(const ArenaMobileEntity* const ent1,
   const ArenaEntity* const ent2,
   EventCollision * event,
   double collision_delta) {
   /* Note: this assumes circular entities */
-  double ent1_x = ent1->pos().x;
-  double ent1_y = ent1->pos().y;
-  //hardcoding to fix ent1 bug
-  ent1_x=robot_->pos().x;
-  ent1_y=robot_->pos().y;
-
-  double ent2_x = ent2->pos().x;
-  double ent2_y = ent2->pos().y;
+  double ent1_x = ent1->get_pos().x;
+  double ent1_y = ent1->get_pos().y;
+  double ent2_x = ent2->get_pos().x;
+  double ent2_y = ent2->get_pos().y;
   double dist = std::sqrt(
     std::pow(ent2_x - ent1_x, 2) + std::pow(ent2_y - ent1_y, 2));
-  /*std::cout <<"For sure " << robot_->name() << "," << robot_->pos().x << "," << robot_->pos().y << std::endl;
-
-  //For some reason, ent1->pos()!=the_actual_entity->pos(). The 2 cout statements prove it. robot_->pos has been
-  //hardcoded in to fix the problem temporarily. Must fix tor this iteration.
-
-  std::cout << ent1->name() << "," << ent1->pos().x << "," << ent1->pos().y << std::endl;*/
   if (dist > ent1->radius() + ent2->radius() + collision_delta) {
     event->collided(false);
   } else {
     // Populate the collision event.
+    // R. Jacob Schonthaler populated this.
     // Collided is true
     event->collided(true);
 
     // Angle of contact is angle to that point of contact
-    //double a=(((atan2(ent2_y-ent1_y, ent2_x-ent1_x))*180)/3.14);
-    //event->angle_of_contact(a);
-    //std::cout <<"angle of contact" << a<<std::endl;
+    /**
+     * The mobile entity always bounces off the obstacle in the opposite
+     * direction from the heading to the center of the obstacle.
+     */
+    double heading_to_obstacle = atan2(ent2_y-ent1_y, ent2_x-ent1_x)*180/3.14;
+    double desired_heading = heading_to_obstacle-180;
+    event->angle_of_contact(-desired_heading);
 
     // Point of contact is point along perimeter of ent1
     double ratio = ent1->radius()/ent2->radius();
-    double collision_x=ent1_x+ratio*(ent1_x-ent2_x);
-    double collision_y=ent1_y+ratio*(ent1_y-ent2_y);
-    event->point_of_contact(Position(collision_x,collision_y));
+    double collision_x = ent1_x+ratio*(ent1_x-ent2_x);
+    double collision_y = ent1_y+ratio*(ent1_y-ent2_y);
+    event->point_of_contact(Position(collision_x, collision_y));
     /// >>>>>>> FILL THIS IN
   }
 } /* entities_have_collided() */
 
-//working
-void Arena::Accept(EventKeypress * e)
-{
+/**
+ * @brief Sends command robot to change heading_angle or speed.
+ */
+
+void Arena::Accept(EventKeypress * e) {
   robot_->EventCmd(e->get_command());
+  e->EmitMessage();
 }
 
 NAMESPACE_END(csci3081);

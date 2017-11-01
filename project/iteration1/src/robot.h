@@ -4,8 +4,8 @@
  * @copyright 2017 3081 Staff, All rights reserved.
  */
 
-#ifndef SRC_ROBOT_H_
-#define SRC_ROBOT_H_
+#ifndef PROJECT_ITERATION1_SRC_ROBOT_H_
+#define PROJECT_ITERATION1_SRC_ROBOT_H_
 
 /*******************************************************************************
  * Includes
@@ -47,13 +47,13 @@ class Robot : public ArenaMobileEntity {
   double speed(void) { return motion_handler_.speed(); }
   void speed(double sp) { motion_handler_.speed(sp); }
   int id(void) const { return id_; }
-  Position pos() const { return pos_; }
-  void pos(Position pos) { pos_ = pos; }
   std::string name(void) const {
     return "Robot" + std::to_string(id());
   }
 
-  std::string string_battery_level() const { return std::to_string(battery_.level()); }
+  // R. Jacob Schonthaler created this to show the battery level below robot
+  std::string string_battery_level() const {
+    return std::to_string(battery_.level()); }
 
  private:
   static unsigned int next_id_;
@@ -65,9 +65,8 @@ class Robot : public ArenaMobileEntity {
   RobotMotionHandler motion_handler_;
   RobotMotionBehavior motion_behavior_;
   SensorTouch sensor_touch_;
-  Position pos_;
 };
 
 NAMESPACE_END(csci3081);
 
-#endif /* SRC_ROBOT_H_ */
+#endif  // PROJECT_ITERATION1_SRC_ROBOT_H_

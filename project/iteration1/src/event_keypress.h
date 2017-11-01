@@ -4,8 +4,8 @@
  * @copyright 2017 3081 Staff, All rights reserved.
  */
 
-#ifndef SRC_EVENT_KEYPRESS_H_
-#define SRC_EVENT_KEYPRESS_H_
+#ifndef PROJECT_ITERATION1_SRC_EVENT_KEYPRESS_H_
+#define PROJECT_ITERATION1_SRC_EVENT_KEYPRESS_H_
 
 /*******************************************************************************
  * Includes
@@ -29,10 +29,11 @@ class EventKeypress : public EventBaseClass {
  public:
   explicit EventKeypress(int key) : key_(key) {}
 
-  //I added get_key
+  // R. Jacob Schonthaler added get_key
   int get_key(void) {return key_;}
 
-  //I added get_command
+  // R. Jacob Schonthaler added get_command which is called in Arena.cc
+  // Accept(EventKeyPress * e) to pass into robot's EventCmd.
   enum event_commands get_command() {return keypress_to_cmd(get_key());}
 
   void EmitMessage(void) { printf("Keypress command received\n"); }
@@ -47,4 +48,4 @@ class EventKeypress : public EventBaseClass {
 
 NAMESPACE_END(csci3081);
 
-#endif /* SRC_EVENT_KEYPRESS_H_ */
+#endif  // PROJECT_ITERATION1_SRC_EVENT_KEYPRESS_H_

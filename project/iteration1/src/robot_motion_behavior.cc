@@ -18,16 +18,19 @@ NAMESPACE_BEGIN(csci3081);
 /*******************************************************************************
  * Member Functions
  ******************************************************************************/
+ /**
+  * @brief Update the position of the robot
+  */
 void RobotMotionBehavior::UpdatePosition(ArenaMobileEntity * const ent,
                                        unsigned int dt) {
   // Save position for debugging purposes
-  Position new_pos = ent->pos();
-  Position old_pos = ent->pos();
+  Position new_pos = ent->get_pos();
+  Position old_pos = ent->get_pos();
 
   // Movement is always along the heading_angle (i.e. the hypotenuse)
   new_pos.x += cos(ent->heading_angle()*M_PI/180.0)*ent->speed()*dt;
   new_pos.y += sin(ent->heading_angle()*M_PI/180.0)*ent->speed()*dt;
-  ent->pos(new_pos);
+  ent->set_pos(new_pos);
 
   /*printf(
       "Updated %s kinematics: old_pos=(%d, %d), new_pos=(%d, %d)\n",
