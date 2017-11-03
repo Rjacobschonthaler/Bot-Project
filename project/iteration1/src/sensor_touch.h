@@ -15,6 +15,7 @@
 
 #include "src/sensor.h"
 #include "src/common.h"
+#include "src/position.h"
 #include "src/event_collision.h"
 
 /*******************************************************************************

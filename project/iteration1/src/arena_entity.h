@@ -13,6 +13,7 @@
 #include <string>
 #include "src/common.h"
 #include "src/color.h"
+#include "src/position.h"
 
 /*******************************************************************************
  * Namespaces

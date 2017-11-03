@@ -1,18 +1,16 @@
 /**
- * @file arena_entity_params.h
+ * @file position.h
  *
  * @copyright 2017 3081 Staff, All rights reserved.
  */
 
-#ifndef PROJECT_ITERATION1_SRC_ARENA_ENTITY_PARAMS_H_
-#define PROJECT_ITERATION1_SRC_ARENA_ENTITY_PARAMS_H_
+#ifndef PROJECT_ITERATION1_SRC_POSITION_H_
+#define PROJECT_ITERATION1_SRC_POSITION_H_
 
 /*******************************************************************************
  * Includes
  ******************************************************************************/
-#include "src/color.h"
 #include "src/common.h"
-#include "src/position.h"
 
 /*******************************************************************************
  * Namespaces
@@ -20,16 +18,18 @@
 NAMESPACE_BEGIN(csci3081);
 
 /*******************************************************************************
- * Structure Definitions
+ * Class Definitions
  ******************************************************************************/
-
-struct arena_entity_params {
-  arena_entity_params(void) : radius(), pos(), color() {}
-  double radius;
-  Position pos;
-  Color color;
+/**
+ * @brief A struct for the the position of entities in the arena
+ */
+struct Position {
+Position(void) : x(0), y(0) { }
+Position(int in_x, int in_y) : x(in_x), y(in_y) { }
+  int x;
+  int y;
 };
 
 NAMESPACE_END(csci3081);
 
-#endif  // PROJECT_ITERATION1_SRC_ARENA_ENTITY_PARAMS_H_
+#endif  // PROJECT_ITERATION1_SRC_POSITION_H_

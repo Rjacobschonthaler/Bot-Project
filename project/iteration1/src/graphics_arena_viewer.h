@@ -13,6 +13,7 @@
 #include <simple_graphics/graphics_app.h>
 #include "src/arena.h"
 #include "src/common.h"
+#include "src/position.h"
 
 /*******************************************************************************
  * Namespaces

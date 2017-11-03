@@ -20,11 +20,4 @@
 // satisfy the compiler - otherwise a warning is given.
 #define __unused __attribute__((unused))
 
-struct Position {
-Position(void) : x(0), y(0) { }
-Position(int in_x, int in_y) : x(in_x), y(in_y) { }
-  int x;
-  int y;
-};
-
 #endif  // PROJECT_ITERATION1_SRC_COMMON_H_
