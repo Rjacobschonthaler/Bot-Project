@@ -53,14 +53,14 @@ class ArenaEntity {
    */
   virtual void Reset(void) {}
 
-  virtual std::string name(void) const = 0;
+  virtual std::string get_name(void) const = 0;
 
   void set_pos(const Position& pos) { pos_ = pos; }
   const Position& get_pos(void) const { return pos_; }
-  const Color& color(void) const { return color_; }
-  void color(const Color& color) { color_ = color; }
+  const Color& get_color(void) const { return color_; }
+  void set_color(const Color& color) { color_ = color; }
   virtual bool is_mobile(void) = 0;
-  double radius(void) const { return radius_; }
+  double get_radius(void) const { return radius_; }
 
  private:
   double radius_;

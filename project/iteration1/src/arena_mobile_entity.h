@@ -34,11 +34,11 @@ class ArenaMobileEntity : public ArenaEntity {
       ArenaEntity(radius, pos, color),
       collision_delta_(collision_delta) {}
   bool is_mobile(void) { return true; }
-  virtual double heading_angle(void) const = 0;
-  virtual void heading_angle(double heading_angle) = 0;
-  virtual double speed(void) = 0;
-  virtual void speed(double sp) = 0;
-  double collision_delta(void) const { return collision_delta_; }
+  virtual double get_heading_angle(void) const = 0;
+  virtual void set_heading_angle(double heading_angle) = 0;
+  virtual double get_speed(void) = 0;
+  virtual void set_speed(double sp) = 0;
+  double get_collision_delta(void) const { return collision_delta_; }
   void TimestepUpdate(uint dt);
   virtual void Accept(EventCollision * e) = 0;
   virtual void Accept(EventRecharge * e) = 0;

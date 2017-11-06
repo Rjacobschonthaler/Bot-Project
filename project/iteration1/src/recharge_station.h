@@ -26,7 +26,7 @@ class RechargeStation: public Obstacle {
   RechargeStation(double radius, const Position& pos,
                   const Color& color) :
       Obstacle(radius, pos, color) {}
-  std::string name(void) const {
+  std::string get_name(void) const {
     return "Recharge Station";
   }
 };

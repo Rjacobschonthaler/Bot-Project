@@ -20,8 +20,8 @@ NAMESPACE_BEGIN(csci3081);
  * Constructors/Destructor
  ******************************************************************************/
 SensorTouch::SensorTouch() : point_of_contact_(0, 0) {
-  activated(false);
-  angle_of_contact(0);
+  set_activated(false);
+  set_angle_of_contact(0);
 }
 
 /*******************************************************************************
@@ -30,17 +30,17 @@ SensorTouch::SensorTouch() : point_of_contact_(0, 0) {
 
 void SensorTouch::Accept(EventCollision * e) {
   // Determine if the sensor should be activated or inactivated.
-  if (e->collided()) {
-    activated(true);
-    point_of_contact_ = e->point_of_contact();
-    angle_of_contact_ = e->angle_of_contact();
+  if (e->get_collided()) {
+    set_activated(true);
+    point_of_contact_ = e->get_point_of_contact();
+    angle_of_contact_ = e->get_angle_of_contact();
   } else {
-    activated(false);
+    set_activated(false);
   }
 }
 
 void SensorTouch::Reset(void) {
-  activated(false);
+  set_activated(false);
 } /* reset() */
 
 NAMESPACE_END(csci3081);

@@ -31,7 +31,7 @@ class EventCommand : public EventBaseClass {
   explicit EventCommand(enum event_commands cmd) : cmd_(cmd) {}
 
   void EmitMessage(void) { printf("Motion cmd %d received\n", cmd_); }
-  enum event_commands cmd(void) const { return cmd_; }
+  enum event_commands get_cmd(void) const { return cmd_; }
 
  private:
   enum event_commands cmd_;

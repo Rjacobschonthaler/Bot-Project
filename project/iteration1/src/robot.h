@@ -40,20 +40,20 @@ class Robot : public ArenaMobileEntity {
   void Accept(EventCollision * e);
   void EventCmd(enum event_commands cmd);
 
-  double battery_level(void) { return battery_.level(); }
+  double battery_level(void) { return battery_.get_level(); }
   void battery_loss() { }
-  double heading_angle(void) const { return motion_handler_.heading_angle(); }
-  void heading_angle(double ha) { motion_handler_.heading_angle(ha); }
-  double speed(void) { return motion_handler_.speed(); }
-  void speed(double sp) { motion_handler_.speed(sp); }
+  double get_heading_angle(void) const { return motion_handler_.get_heading_angle(); }
+  void set_heading_angle(double ha) { motion_handler_.set_heading_angle(ha); }
+  double get_speed(void) { return motion_handler_.get_speed(); }
+  void set_speed(double sp) { motion_handler_.set_speed(sp); }
   int id(void) const { return id_; }
-  std::string name(void) const {
+  std::string get_name(void) const {
     return "Robot" + std::to_string(id());
   }
 
   // R. Jacob Schonthaler created this to show the battery level below robot
   std::string string_battery_level() const {
-    return std::to_string(battery_.level()); }
+    return std::to_string(battery_.get_level()); }
 
  private:
   static unsigned int next_id_;

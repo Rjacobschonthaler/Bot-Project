@@ -40,7 +40,7 @@ Arena::Arena(const struct arena_params* const params) :
   home_base_(new HomeBase(&params->home_base)),
   entities_(),
   mobile_entities_() {
-  robot_->heading_angle(37);
+  robot_->set_heading_angle(37);
   entities_.push_back(robot_);
   mobile_entities_.push_back(robot_);
 
@@ -77,7 +77,7 @@ void Arena::Reset(void) {
   for (auto ent : entities_) {
     ent->Reset();
   } /* for(ent..) */
-  gameover(false);
+  set_gameover(false);
 } /* reset() */
 
 std::vector<Obstacle*> Arena::obstacles(void) {
@@ -117,7 +117,7 @@ void Arena::UpdateEntitiesTimestep(void) {
   if (robot_->battery_level() <= 0) {
     // R. Jacob Schonthaler added This for game completion
     std::cout << "You Lose!" << std::endl;
-    gameover(true);
+    set_gameover(true);
   }
 
   /*
@@ -128,11 +128,11 @@ void Arena::UpdateEntitiesTimestep(void) {
    */
 
   EventCollision ec;
-  CheckForEntityCollision(robot_, home_base_, &ec, robot_->collision_delta());
-  if (ec.collided()) {
+  CheckForEntityCollision(robot_, home_base_, &ec, robot_->get_collision_delta());
+  if (ec.get_collided()) {
     // R. Jacob Schonthaler added this for game completion
       std::cout << "You Win!" << std::endl;
-      gameover(true);
+      set_gameover(true);
   }
 
   /**
@@ -140,10 +140,10 @@ void Arena::UpdateEntitiesTimestep(void) {
    */
 
   CheckForEntityCollision(robot_, recharge_station_,
-    &ec, robot_->collision_delta());
-  if (ec.collided()) {
+    &ec, robot_->get_collision_delta());
+  if (ec.get_collided()) {
     EventRecharge er;
-    er.EmitMessage();
+    // er.EmitMessage();
     robot_->Accept(&er);
   }
 
@@ -160,13 +160,13 @@ void Arena::UpdateEntitiesTimestep(void) {
     CheckForEntityOutOfBounds(ent, &ec);
 
     // If not at wall, check if colliding with any other entities (not itself)
-    if (!ec.collided()) {
+    if (!ec.get_collided()) {
       for (size_t i = 0; i < entities_.size(); ++i) {
         if (entities_[i] == ent) {
           continue;
         }
-        CheckForEntityCollision(ent, entities_[i], &ec, ent->collision_delta());
-        if (ec.collided()) {
+        CheckForEntityCollision(ent, entities_[i], &ec, ent->get_collision_delta());
+        if (ec.get_collided()) {
           break;
         }
       } /* for(i..) */
@@ -184,36 +184,36 @@ void Arena::CheckForEntityOutOfBounds(const ArenaMobileEntity * const ent,
    * by cancelling the collision if the heading of the mobile_arena_entity
    * is directed away from the wall.
    */
-  double heading = ent->heading_angle();
-  if (ent->get_pos().x+ ent->radius() >= x_dim_ &&
+  double heading = ent->get_heading_angle();
+  if (ent->get_pos().x+ ent->get_radius() >= x_dim_ &&
   ((heading > 0 && (heading < 90 || heading > 270))
   || (heading < 0 && (heading > -90 || heading < -270)))) {
     // Right Wall
-    event->collided(true);
-    event->point_of_contact(Position(x_dim_, ent->get_pos().y));
-    event->angle_of_contact(ent->heading_angle()-180);
-  } else if (ent->get_pos().x- ent->radius() <= 0 &&
+    event->set_collided(true);
+    event->set_point_of_contact(Position(x_dim_, ent->get_pos().y));
+    event->set_angle_of_contact(ent->get_heading_angle()-180);
+  } else if (ent->get_pos().x- ent->get_radius() <= 0 &&
   ((heading > 0 && (heading > 90 && heading < 270))
   || (heading < 0 && (heading < -90 && heading > -270)))) {
-    event->collided(true);
-    event->point_of_contact(Position(0, ent->get_pos().y));
-    event->angle_of_contact(ent->heading_angle()+180);
-  } else if (ent->get_pos().y+ ent->radius() >= y_dim_ &&
+    event->set_collided(true);
+    event->set_point_of_contact(Position(0, ent->get_pos().y));
+    event->set_angle_of_contact(ent->get_heading_angle()+180);
+  } else if (ent->get_pos().y+ ent->get_radius() >= y_dim_ &&
   ((heading > 0 && heading < 180)
   || (heading < -180 && heading > -360))) {
     // Bottom Wall
-    event->collided(true);
-    event->point_of_contact(Position(ent->get_pos().x, y_dim_));
-    event->angle_of_contact(ent->heading_angle());
-  } else if (ent->get_pos().y - ent->radius() <= 0 &&
+    event->set_collided(true);
+    event->set_point_of_contact(Position(ent->get_pos().x, y_dim_));
+    event->set_angle_of_contact(ent->get_heading_angle());
+  } else if (ent->get_pos().y - ent->get_radius() <= 0 &&
   ((heading > 180 && heading < 360)
   || (heading < 0 && heading > -180))) {
     // Top Wall
-    event->collided(true);
-    event->point_of_contact(Position(0, y_dim_));
-    event->angle_of_contact(ent->heading_angle());
+    event->set_collided(true);
+    event->set_point_of_contact(Position(0, y_dim_));
+    event->set_angle_of_contact(ent->get_heading_angle());
   } else {
-    event->collided(false);
+    event->set_collided(false);
   }
 } /* entity_out_of_bounds() */
 
@@ -228,13 +228,13 @@ void Arena::CheckForEntityCollision(const ArenaMobileEntity* const ent1,
   double ent2_y = ent2->get_pos().y;
   double dist = std::sqrt(
     std::pow(ent2_x - ent1_x, 2) + std::pow(ent2_y - ent1_y, 2));
-  if (dist > ent1->radius() + ent2->radius() + collision_delta) {
-    event->collided(false);
+  if (dist > ent1->get_radius() + ent2->get_radius() + collision_delta) {
+    event->set_collided(false);
   } else {
     // Populate the collision event.
     // R. Jacob Schonthaler populated this.
     // Collided is true
-    event->collided(true);
+    event->set_collided(true);
 
     // Angle of contact is angle to that point of contact
     /**
@@ -243,13 +243,13 @@ void Arena::CheckForEntityCollision(const ArenaMobileEntity* const ent1,
      */
     double heading_to_obstacle = atan2(ent2_y-ent1_y, ent2_x-ent1_x)*180/3.14;
     double desired_heading = heading_to_obstacle-180;
-    event->angle_of_contact(-desired_heading);
+    event->set_angle_of_contact(-desired_heading);
 
     // Point of contact is point along perimeter of ent1
-    double ratio = ent1->radius()/ent2->radius();
+    double ratio = ent1->get_radius()/ent2->get_radius();
     double collision_x = ent1_x+ratio*(ent1_x-ent2_x);
     double collision_y = ent1_y+ratio*(ent1_y-ent2_y);
-    event->point_of_contact(Position(collision_x, collision_y));
+    event->set_point_of_contact(Position(collision_x, collision_y));
     /// >>>>>>> FILL THIS IN
   }
 } /* entities_have_collided() */
@@ -260,7 +260,7 @@ void Arena::CheckForEntityCollision(const ArenaMobileEntity* const ent1,
 
 void Arena::Accept(EventKeypress * e) {
   robot_->EventCmd(e->get_command());
-  e->EmitMessage();
+  // e->EmitMessage();
 }
 
 NAMESPACE_END(csci3081);

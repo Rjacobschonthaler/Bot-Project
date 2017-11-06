@@ -50,7 +50,7 @@ class RobotBattery {
   /**
    * @brief Get the current battery level.
    */
-  double level(void) const { return charge_; }
+  double get_level(void) const { return charge_; }
 
   /**
    * @brief Handle a recharge event by instantly restoring the robot's battery

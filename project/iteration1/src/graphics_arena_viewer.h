@@ -171,7 +171,7 @@ class GraphicsArenaViewer : public GraphicsApp {
    */
   void DrawUsingOpenGL(void) {}
 
-  Arena* arena(void) const { return arena_; }
+  Arena* get_arena(void) const { return arena_; }
 
  private:
   /**
