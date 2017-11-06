@@ -30,16 +30,14 @@ class HomeBase : public ArenaMobileEntity {
   void Accept(EventCollision * e) {sensor_touch_.Accept(e);}
   void Reset(void);
 
-  double heading_angle(void) const { return heading_angle_; }
-  void heading_angle(double ha) { heading_angle_ = ha; }
-  Position pos() const { return pos_; }
-  void pos(Position pos) { pos_ = pos; }
+  double get_heading_angle(void) const { return heading_angle_; }
+  void set_heading_angle(double ha) { heading_angle_ = ha; }
 
-  std::string name(void) const { return "Home Base"; }
+  std::string get_name(void) const { return "Home Base"; }
 
   // Not used, leftovers from inheriting from ArenaMobileEntity
-  double speed(void) { return speed_; }
-  void speed(double sp) { speed_ = sp; }
+  double get_speed(void) { return speed_; }
+  void set_speed(double sp) { speed_ = sp; }
   void Accept(EventRecharge * e) {}
 
  private:

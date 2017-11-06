@@ -28,13 +28,13 @@ void RobotMotionBehavior::UpdatePosition(ArenaMobileEntity * const ent,
   Position old_pos = ent->get_pos();
 
   // Movement is always along the heading_angle (i.e. the hypotenuse)
-  new_pos.x += cos(ent->heading_angle()*M_PI/180.0)*ent->speed()*dt;
-  new_pos.y += sin(ent->heading_angle()*M_PI/180.0)*ent->speed()*dt;
+  new_pos.x += cos(ent->get_heading_angle()*M_PI/180.0)*ent->get_speed()*dt;
+  new_pos.y += sin(ent->get_heading_angle()*M_PI/180.0)*ent->get_speed()*dt;
   ent->set_pos(new_pos);
 
   /*printf(
       "Updated %s kinematics: old_pos=(%d, %d), new_pos=(%d, %d)\n",
-      ent->name().c_str(), old_pos.x, old_pos.y, new_pos.x, new_pos.y);*/
+      ent->get_name().c_str(), old_pos.x, old_pos.y, new_pos.x, new_pos.y);*/
 } /* update_position()*/
 
 NAMESPACE_END(csci3081);

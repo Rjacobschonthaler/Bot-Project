@@ -26,7 +26,7 @@ class Obstacle: public ArenaImmobileEntity {
   Obstacle(double radius, const Position& pos,
                    const Color& color);
 
-  std::string name(void) const {
+  std::string get_name(void) const {
     return "Obstacle" + std::to_string(id_);
   }
 

@@ -61,15 +61,15 @@ class RobotMotionHandler {
   */
   void UpdateVelocity(SensorTouch st);
 
-  double speed() { return speed_; }
-  void speed(double sp) {
+  double get_speed() { return speed_; }
+  void set_speed(double sp) {
     speed_ = sp; }
 
-  double heading_angle() const { return heading_angle_;}
-  void heading_angle(double ha) { heading_angle_ = ha; }
+  double get_heading_angle() const { return heading_angle_;}
+  void set_heading_angle(double ha) { heading_angle_ = ha; }
 
-  double max_speed() { return max_speed_; }
-  void max_speed(double ms) { max_speed_ = ms; }
+  double get_max_speed() { return max_speed_; }
+  void set_max_speed(double ms) { max_speed_ = ms; }
 
  private:
   double heading_angle_;

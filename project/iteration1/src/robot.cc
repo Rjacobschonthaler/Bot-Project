@@ -33,8 +33,8 @@ Robot::Robot(const struct robot_params* const params) :
   motion_behavior_(),
   sensor_touch_(),
   id_(-1) {
-  motion_handler_.heading_angle(270);
-  motion_handler_.speed(5);
+  motion_handler_.set_heading_angle(270);
+  motion_handler_.set_speed(5);
   id_ = next_id_++;
 }
 
@@ -50,10 +50,10 @@ void Robot::TimestepUpdate(uint dt) {
   // Deplete battery as appropriate given distance and speed of movement
   battery_.Deplete(old_pos, get_pos(), dt);
 
-  if (sensor_touch_.activated()) {
+  if (sensor_touch_.get_activated()) {
     // This line causes the bug of a stopped robot if set to lower than 3 when
     // bouncing off obstacles ocassionally.
-    speed(3);
+    set_speed(3);
   }
 } /* TimestepUpdate() */
 
@@ -66,7 +66,7 @@ void Robot::Accept(__unused EventRecharge * e) {
 // types of information from different sources.
 void Robot::Accept(EventCollision * e) {
   sensor_touch_.Accept(e);
-  if (e->collided()) {
+  if (e->get_collided()) {
     battery_.Accept(e);
   }
 }

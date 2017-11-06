@@ -42,17 +42,17 @@ class SensorTouch : public Sensor {
   /**
    * @brief Get the current activation reading from the sensor.
    */
-  // bool activated(void) { return activated_; }
-  // void activated(bool value) { activated_ = value; }
+  // bool get_activated(void) { return activated_; }
+  // void set_activated(bool value) { activated_ = value; }
 
-  Position point_of_contact() { return point_of_contact_; }
-  void point_of_contact(Position p) {
+  Position get_point_of_contact() { return point_of_contact_; }
+  void set_point_of_contact(Position p) {
     point_of_contact_.x = p.x;
     point_of_contact_.y = p.y;
   }
 
-  double angle_of_contact(void) { return angle_of_contact_; }
-  void angle_of_contact(double aoc) { angle_of_contact_ = aoc; }
+  double get_angle_of_contact(void) { return angle_of_contact_; }
+  void set_angle_of_contact(double aoc) { angle_of_contact_ = aoc; }
 
   /**
    * @brief Compute a new reading based on the collision event.

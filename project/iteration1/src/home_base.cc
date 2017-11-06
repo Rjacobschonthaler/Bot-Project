@@ -38,20 +38,21 @@ HomeBase::HomeBase(const struct home_base_params* const params) :
   */
 void HomeBase::TimestepUpdate(uint dt) {
   // If sensor activated change heading.
-  if (sensor_touch_.activated()) {
-    if (sensor_touch_.angle_of_contact() < 0) {
-      sensor_touch_.angle_of_contact(sensor_touch_.angle_of_contact()+360);
+  if (sensor_touch_.get_activated()) {
+    if (sensor_touch_.get_angle_of_contact() < 0) {
+      sensor_touch_.set_angle_of_contact(sensor_touch_.get_angle_of_contact()+360);
     }
-    if (sensor_touch_.angle_of_contact() > 0) {
-      sensor_touch_.angle_of_contact(sensor_touch_.angle_of_contact()-360);
+    if (sensor_touch_.get_angle_of_contact() > 0) {
+      sensor_touch_.set_angle_of_contact(sensor_touch_.get_angle_of_contact()-360);
     }
-    heading_angle_ = -sensor_touch_.angle_of_contact();
+    heading_angle_ = -sensor_touch_.get_angle_of_contact();
   }
 
   // Update the position
   double x = get_pos().x+cos(heading_angle_*M_PI/180.0)*speed_*dt;
   double y = get_pos().y+sin(heading_angle_*M_PI/180.0)*speed_*dt;
   set_pos(Position(x, y));
+  std::cout << get_pos().x << "," << get_pos().y << std::endl;
 
   // Random change of direction
   unsigned int seed = time(NULL);

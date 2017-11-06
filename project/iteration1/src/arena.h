@@ -88,8 +88,8 @@ class Arena {
   HomeBase* home_base(void) const { return home_base_; }
   RechargeStation* recharge_station(void) const { return recharge_station_; }
 
-  void gameover(bool change) { gameover_ = change; }
-  bool gameover(void) { return gameover_; }
+  void set_gameover(bool change) { gameover_ = change; }
+  bool get_gameover(void) { return gameover_; }
 
 
  private:
