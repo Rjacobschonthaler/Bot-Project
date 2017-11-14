@@ -171,6 +171,7 @@ void GraphicsArenaViewer::DrawRobot(NVGcontext *ctx, const Robot* const robot) {
 
   // R. Jacob Schonthaler added this to show battery level below robot name
   nvgText(ctx, 0.0, 10.0, robot->string_battery_level().c_str(), NULL);
+  
   nvgRestore(ctx);
   nvgRestore(ctx);
 }

@@ -52,7 +52,6 @@ void HomeBase::TimestepUpdate(uint dt) {
   double x = get_pos().x+cos(heading_angle_*M_PI/180.0)*speed_*dt;
   double y = get_pos().y+sin(heading_angle_*M_PI/180.0)*speed_*dt;
   set_pos(Position(x, y));
-  std::cout << get_pos().x << "," << get_pos().y << std::endl;
 
   // Random change of direction
   unsigned int seed = time(NULL);

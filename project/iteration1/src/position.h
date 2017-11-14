@@ -25,9 +25,9 @@ NAMESPACE_BEGIN(csci3081);
  */
 struct Position {
 Position(void) : x(0), y(0) { }
-Position(int in_x, int in_y) : x(in_x), y(in_y) { }
-  int x;
-  int y;
+Position(double in_x, double in_y) : x(in_x), y(in_y) { }
+  double x;
+  double y;
 };
 
 NAMESPACE_END(csci3081);
