@@ -1,16 +1,17 @@
 /**
- * @file home_base_params.h
+ * @file event_proximity.h
  *
  * @copyright 2017 3081 Staff, All rights reserved.
  */
 
-#ifndef PROJECT_ITERATION1_SRC_HOME_BASE_PARAMS_H_
-#define PROJECT_ITERATION1_SRC_HOME_BASE_PARAMS_H_
+#ifndef PROJECT_ITERATION1_SRC_EVENT_PROXIMITY_H_
+#define PROJECT_ITERATION1_SRC_EVENT_PROXIMITY_H_
 
 /*******************************************************************************
  * Includes
  ******************************************************************************/
-#include "src/arena_entity_params.h"
+#include <stdlib.h>
+#include "src/event_base_class.h"
 
 /*******************************************************************************
  * Namespaces
@@ -18,15 +19,20 @@
 NAMESPACE_BEGIN(csci3081);
 
 /*******************************************************************************
- * Structure Definitions
+ * Class Definitions
  ******************************************************************************/
-struct home_base_params : public arena_entity_params {
-  home_base_params(void) : arena_entity_params(),
-                               collision_delta() {}
+class EventProximity : public EventBaseClass {
+ public:
+  EventProximity();
+  void EmitMessage(void);
 
-      double collision_delta;
+  Position get_pos() {return pos_;}
+  void set_pos(Position p) {pos_ = p;}
+
+ private:
+   Position pos_;
 };
 
 NAMESPACE_END(csci3081);
 
-#endif  // PROJECT_ITERATION1_SRC_HOME_BASE_PARAMS_H_
+#endif  // PROJECT_ITERATION1_SRC_EVENT_PROXIMITY_H_
