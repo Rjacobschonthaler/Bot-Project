@@ -10,6 +10,7 @@
 #include "src/graphics_arena_viewer.h"
 #include "src/arena_params.h"
 #include "src/color.h"
+#include "src/position.h"
 
 /*******************************************************************************
  * Non-Member Functions
@@ -25,7 +26,7 @@ int main(int, char **) {
   rparams.angle_delta = 10;
   rparams.collision_delta = 1;
   rparams.radius = 20.0;
-  rparams.pos = Position(500, 500);
+  rparams.pos = csci3081::Position(500, 500);
   rparams.color = csci3081::Color(0, 0, 255, 255); /* blue */
 
   csci3081::arena_params aparams;
