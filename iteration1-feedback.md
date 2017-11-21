@@ -33,8 +33,8 @@ This is your grade on the documentation of the code. In-code documentation inclu
 
 | **Category**          | **Score** | **Comments** |
 |-----------------------|-----------|--------------|
-| `cpplint` compliance  | 14/20      | Total errors found: 56             |
-| In-code Documentation | 50/50      |              |
+| `cpplint` compliance  | 20/20      |           |
+| In-code Documentation | 44/50      |  Inline comments are not sufficient, some function descriptions are missed also            |
 | Readme/Writeup        | 20/20      |              |
 | Bug Report            | 10/10      |              |
 | **Total**             | **94/100** |              |
