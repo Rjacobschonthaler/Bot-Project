@@ -33,7 +33,7 @@ class EventKeypress : public EventBaseClass {
   int get_key(void) {return key_;}
 
   // R. Jacob Schonthaler added get_command which is called in Arena.cc
-  // Accept(EventKeyPress * e) to pass into robot's EventCmd.
+  // Accept(EventKeyPress * e) to pass into player's EventCmd.
   enum event_commands get_command() {return keypress_to_cmd(get_key());}
 
   void EmitMessage(void) { printf("Keypress command received\n"); }

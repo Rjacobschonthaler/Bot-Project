@@ -4,14 +4,14 @@
  * @copyright 2017 3081 Staff, All rights reserved.
  */
 
-#ifndef PROJECT_ITERATION1_SRC_ROBOT_H_
-#define PROJECT_ITERATION1_SRC_ROBOT_H_
+#ifndef PROJECT_ITERATION1_SRC_PLAYER_H_
+#define PROJECT_ITERATION1_SRC_PLAYER_H_
 
 /*******************************************************************************
  * Includes
  ******************************************************************************/
 #include <string>
-#include "src/robot_motion_handler.h"
+#include "src/player_motion_handler.h"
 #include "src/robot_motion_behavior.h"
 #include "src/sensor_touch.h"
 #include "src/robot_battery.h"
@@ -27,9 +27,9 @@ NAMESPACE_BEGIN(csci3081);
 /*******************************************************************************
  * Class Definitions
  ******************************************************************************/
-class Robot : public ArenaMobileEntity {
+class Player : public ArenaMobileEntity {
  public:
-  explicit Robot(const struct robot_params* const params);
+  explicit Player(const struct player_params* const params);
 
   void ResetBattery(void);
   void Reset(void);
@@ -38,6 +38,7 @@ class Robot : public ArenaMobileEntity {
   void TimestepUpdate(unsigned int dt);
   void Accept(EventRecharge * e);
   void Accept(EventCollision * e);
+  void EventCmd(enum event_commands cmd);
 
   double battery_level(void) { return battery_.get_level(); }
   void battery_loss() { }
@@ -47,7 +48,7 @@ class Robot : public ArenaMobileEntity {
   void set_speed(double sp) { motion_handler_.set_speed(sp); }
   int id(void) const { return id_; }
   std::string get_name(void) const {
-    return "Robot" + std::to_string(id());
+    return "Player" + std::to_string(id());
   }
 
   // R. Jacob Schonthaler created this to show the battery level below robot
@@ -61,11 +62,11 @@ class Robot : public ArenaMobileEntity {
   double heading_angle_;
   double angle_delta_;
   RobotBattery battery_;
-  RobotMotionHandler motion_handler_;
+  PlayerMotionHandler motion_handler_;
   RobotMotionBehavior motion_behavior_;
   SensorTouch sensor_touch_;
 };
 
 NAMESPACE_END(csci3081);
 
-#endif  // PROJECT_ITERATION1_SRC_ROBOT_H_
+#endif  // PROJECT_ITERATION1_SRC_PLAYER_H_

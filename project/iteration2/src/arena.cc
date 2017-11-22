@@ -10,7 +10,7 @@
 #include <algorithm>
 
 #include "src/arena.h"
-#include "src/robot.h"
+#include "src/player.h"
 #include "src/obstacle.h"
 #include "src/event_collision.h"
 #include "src/arena_params.h"
@@ -31,7 +31,7 @@ NAMESPACE_BEGIN(csci3081);
   */
 Arena::Arena(const struct arena_params* const params) :
   x_dim_(params->x_dim), y_dim_(params->y_dim),
-  robot_(new Robot(&params->robot)),
+  player_(new Player(&params->player)),
   n_robots_(1),
   n_obstacles_(params->n_obstacles),
   recharge_station_(new RechargeStation(params->recharge_station.radius,
@@ -40,9 +40,9 @@ Arena::Arena(const struct arena_params* const params) :
   home_base_(new HomeBase(&params->home_base)),
   entities_(),
   mobile_entities_() {
-  robot_->set_heading_angle(37);
-  entities_.push_back(robot_);
-  mobile_entities_.push_back(robot_);
+  player_->set_heading_angle(37);
+  entities_.push_back(player_);
+  mobile_entities_.push_back(player_);
 
   // R. Jacob Schonthaler added this so that Home Base would bounce
   mobile_entities_.push_back(home_base_);
@@ -112,23 +112,23 @@ void Arena::UpdateEntitiesTimestep(void) {
   } /* for(ent..) */
 
   /*
-   * Next, check if the robot has run out of battery
+   * Next, check if the player has run out of battery
    */
-  if (robot_->battery_level() <= 0) {
+  if (player_->battery_level() <= 0) {
     // R. Jacob Schonthaler added This for game completion
     std::cout << "You Lose!" << std::endl;
     set_gameover(true);
   }
 
   /*
-   * Next, check if the robot has collided with the recharge station or the home
+   * Next, check if the player has collided with the recharge station or the home
    * base. These need to be before the general collisions, which can move the
-   * robot away from these "obstacles" before the "collisions" have been
+   * player away from these "obstacles" before the "collisions" have been
    * properly processed.
    */
 
   EventCollision ec;
-  CheckForEntityCollision(robot_, home_base_, &ec, robot_->get_collision_delta());
+  CheckForEntityCollision(player_, home_base_, &ec, player_->get_collision_delta());
   if (ec.get_collided()) {
     // R. Jacob Schonthaler added this for game completion
       std::cout << "You Win!" << std::endl;
@@ -136,15 +136,15 @@ void Arena::UpdateEntitiesTimestep(void) {
   }
 
   /**
-   * @brief Check if the robot has collided with recharge station.
+   * @brief Check if the player has collided with recharge station.
    */
 
-  CheckForEntityCollision(robot_, recharge_station_,
-    &ec, robot_->get_collision_delta());
+  CheckForEntityCollision(player_, recharge_station_,
+    &ec, player_->get_collision_delta());
   if (ec.get_collided()) {
     EventRecharge er;
     // er.EmitMessage();
-    robot_->Accept(&er);
+    player_->Accept(&er);
   }
 
   /*
@@ -255,11 +255,11 @@ void Arena::CheckForEntityCollision(const ArenaMobileEntity* const ent1,
 } /* entities_have_collided() */
 
 /**
- * @brief Sends command robot to change heading_angle or speed.
+ * @brief Sends command player to change heading_angle or speed.
  */
 
 void Arena::Accept(EventKeypress * e) {
-  robot_->EventCmd(e->get_command());
+  player_->EventCmd(e->get_command());
   // e->EmitMessage();
 }
 

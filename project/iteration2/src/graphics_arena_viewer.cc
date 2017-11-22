@@ -12,7 +12,7 @@
 #include <string>
 #include <vector>
 
-#include "src/robot.h"
+#include "src/player.h"
 #include "src/home_base.h"
 #include "src/obstacle.h"
 #include "src/arena_params.h"
@@ -145,7 +145,7 @@ void GraphicsArenaViewer::OnSpecialKeyUp(int key, int scancode, int modifiers) {
 /*******************************************************************************
  * Drawing of Entities in Arena
  ******************************************************************************/
-void GraphicsArenaViewer::DrawRobot(NVGcontext *ctx, const Robot* const robot) {
+void GraphicsArenaViewer::DrawRobot(NVGcontext *ctx, const Player* const robot) {
   // translate and rotate all graphics calls that follow so that they are
   // centered, at the position and heading for this robot
   nvgSave(ctx);
@@ -171,7 +171,7 @@ void GraphicsArenaViewer::DrawRobot(NVGcontext *ctx, const Robot* const robot) {
 
   // R. Jacob Schonthaler added this to show battery level below robot name
   nvgText(ctx, 0.0, 10.0, robot->string_battery_level().c_str(), NULL);
-  
+
   nvgRestore(ctx);
   nvgRestore(ctx);
 }
@@ -224,7 +224,7 @@ void GraphicsArenaViewer::DrawUsingNanoVG(NVGcontext *ctx) {
     DrawObstacle(ctx, obstacles[i]);
   } /* for(i..) */
 
-  DrawRobot(ctx, arena_->robot());
+  DrawRobot(ctx, arena_->player());
   DrawHomeBase(ctx, arena_->home_base());
 }
 

@@ -28,7 +28,7 @@ class EventRecharge : public EventBaseClass {
  public:
   EventRecharge(void) {}
 
-  void EmitMessage(void) { printf("Robot Battery recharged!\n"); }
+  void EmitMessage(void) { printf("Battery recharged!\n"); }
 };
 
 NAMESPACE_END(csci3081);

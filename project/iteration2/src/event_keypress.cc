@@ -9,7 +9,7 @@
  ******************************************************************************/
 #include "src/event_keypress.h"
 #include "src/graphics_arena_viewer.h"
-#include "src/robot.h"
+#include "src/player.h"
 
 /*******************************************************************************
  * Namespaces

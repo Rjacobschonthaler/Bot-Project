@@ -1,5 +1,5 @@
 /**
- * @file robot.cc
+ * @file player.cc
  *
  * @copyright 2017 3081 Staff, All rights reserved.
  */
@@ -7,7 +7,7 @@
 /*******************************************************************************
  * Includes
  ******************************************************************************/
-#include "src/robot.h"
+#include "src/player.h"
 #include "src/robot_motion_behavior.h"
 
 /*******************************************************************************
@@ -18,12 +18,12 @@ NAMESPACE_BEGIN(csci3081);
 /*******************************************************************************
  * Static Variables
  ******************************************************************************/
-uint Robot::next_id_ = 0;
+uint Player::next_id_ = 0;
 
 /*******************************************************************************
  * Constructors/Destructor
  ******************************************************************************/
-Robot::Robot(const struct robot_params* const params) :
+Player::Player(const struct player_params* const params) :
   ArenaMobileEntity(params->radius, params->collision_delta,
     params->pos, params->color),
   battery_(params->battery_max_charge),
@@ -41,7 +41,7 @@ Robot::Robot(const struct robot_params* const params) :
 /*******************************************************************************
  * Member Functions
  ******************************************************************************/
-void Robot::TimestepUpdate(uint dt) {
+void Player::TimestepUpdate(uint dt) {
   Position old_pos = get_pos();
   // Update heading and speed as indicated by touch sensor
   motion_handler_.UpdateVelocity(sensor_touch_);
@@ -57,21 +57,26 @@ void Robot::TimestepUpdate(uint dt) {
   }
 } /* TimestepUpdate() */
 
-void Robot::Accept(__unused EventRecharge * e) {
+void Player::Accept(__unused EventRecharge * e) {
   battery_.EventRecharge();
 }
 
 // Pass along a collision event (from arena) to the touch sensor.
 // This method provides a framework in which sensors can get different
 // types of information from different sources.
-void Robot::Accept(EventCollision * e) {
+void Player::Accept(EventCollision * e) {
   sensor_touch_.Accept(e);
   if (e->get_collided()) {
     battery_.Accept(e);
   }
 }
 
-void Robot::Reset(void) {
+// User input commands to change heading or speed
+void Player::EventCmd(enum event_commands cmd) {
+  motion_handler_.AcceptCommand(cmd);
+} /* event_cmd() */
+
+void Player::Reset(void) {
   battery_.Reset();
   motion_handler_.Reset();
   sensor_touch_.Reset();
@@ -79,7 +84,7 @@ void Robot::Reset(void) {
   set_pos(pos);
 } /* Reset() */
 
-void Robot::ResetBattery(void) {
+void Player::ResetBattery(void) {
   battery_.Reset();
 }
 
