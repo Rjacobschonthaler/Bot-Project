@@ -183,7 +183,7 @@ class GraphicsArenaViewer : public GraphicsApp {
    * @param[in] ctx The nanogui context.
    * @param[in] robot The robot handle.
    */
-  void DrawRobot(NVGcontext *ctx, const class Robot* const robot);
+  void DrawRobot(NVGcontext *ctx, const class Player* const robot);
 
   /**
    * @brief Draw an obstacle in the arena using nanogui.

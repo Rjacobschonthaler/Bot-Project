@@ -1,5 +1,5 @@
 /**
- * @file robot_arena.h
+ * @file arena.h
  *
  * @copyright 2017 3081 Staff, All rights reserved.
  */
@@ -15,7 +15,7 @@
 #include <vector>
 #include "src/event_keypress.h"
 #include "src/event_collision.h"
-#include "src/robot.h"
+#include "src/player.h"
 #include "src/home_base.h"
 #include "src/recharge_station.h"
 
@@ -84,7 +84,7 @@ class Arena {
   std::vector<class ArenaMobileEntity*> mobile_entities(void)
     { return mobile_entities_; }
 
-  Robot* robot(void) const { return robot_; }
+  Player* player(void) const { return player_; }
   HomeBase* home_base(void) const { return home_base_; }
   RechargeStation* recharge_station(void) const { return recharge_station_; }
 
@@ -138,7 +138,7 @@ class Arena {
   unsigned int n_obstacles_;
 
   // Entities populating the arena
-  Robot* robot_;
+  Player* player_;
   RechargeStation * recharge_station_;
   HomeBase * home_base_;
   std::vector<class ArenaEntity*> entities_;

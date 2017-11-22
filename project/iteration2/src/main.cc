@@ -23,7 +23,7 @@ int main(int argc, char * argv[]) {
   // Essential call to initiate the graphics window
   csci3081::InitGraphics();
 
-  csci3081::robot_params rparams;
+  csci3081::player_params pparams;
   csci3081::arena_params aparams;
   int obstacle_count = 0;
 
@@ -61,23 +61,23 @@ int main(int argc, char * argv[]) {
       aparams.obstacles[obstacle_count].color = csci3081::Color(r, g, b, a);
       obstacle_count++;
     }
-    else if (cmd == "robot") {
+    else if (cmd == "player") {
       // Read in variables
       float bat_max_charge, ang_delta, rad, x, y;
       int col_delta, r, g, b, a;
-      sscanf(line.c_str(), "robot %f %f %d %f %f %f %d %d %d %d",
+      sscanf(line.c_str(), "player %f %f %d %f %f %f %d %d %d %d",
         &bat_max_charge, &ang_delta, &col_delta, &rad, &x, &y, &r, &g, &b, &a);
 
       // Create robot in rparams
-      rparams.battery_max_charge = bat_max_charge;
-      rparams.angle_delta = ang_delta;
-      rparams.collision_delta = col_delta;
-      rparams.radius = rad;
-      rparams.pos = csci3081::Position(x, y);
-      rparams.color = csci3081::Color(r, g, b, a);
+      pparams.battery_max_charge = bat_max_charge;
+      pparams.angle_delta = ang_delta;
+      pparams.collision_delta = col_delta;
+      pparams.radius = rad;
+      pparams.pos = csci3081::Position(x, y);
+      pparams.color = csci3081::Color(r, g, b, a);
 
       // Add rparams to aparams
-      aparams.robot = rparams;
+      aparams.player = pparams;
     }
     else if (cmd == "recharge_station") {
       // Read in variables

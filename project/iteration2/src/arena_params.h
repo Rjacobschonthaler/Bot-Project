@@ -12,6 +12,7 @@
  * Includes
  ******************************************************************************/
 #include "src/robot_params.h"
+#include "src/player_params.h"
 #include "src/home_base_params.h"
 
 /*******************************************************************************
@@ -28,7 +29,7 @@ NAMESPACE_BEGIN(csci3081);
  * Structure Definitions
  ******************************************************************************/
 struct arena_params {
-  struct robot_params robot;
+  struct player_params player;
   struct arena_entity_params recharge_station;
   struct home_base_params home_base;
   struct arena_entity_params obstacles[MAX_OBSTACLES];
