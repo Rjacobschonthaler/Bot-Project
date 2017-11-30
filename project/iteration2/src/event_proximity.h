@@ -28,9 +28,12 @@ class EventProximity : public EventBaseClass {
 
   Position get_pos() {return pos_;}
   void set_pos(Position p) {pos_ = p;}
+  double get_radius() {return radius_;}
+  void set_radius(double r) {radius_ = r;}
 
- private:
-   Position pos_;
+private:
+  Position pos_;
+  double radius_;
 };
 
 NAMESPACE_END(csci3081);

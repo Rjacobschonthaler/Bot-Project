@@ -6,7 +6,10 @@
  ../src/sensor.h ../src/robot_params.h \
  ../src/arena_mobile_entity_params.h ../src/arena_entity_params.h \
  ../src/player_params.h ../src/event_commands.h \
- ../src/robot_motion_behavior.h ../src/robot_battery.h
+ ../src/robot_motion_behavior.h ../src/sensor_distress.h \
+ ../src/event_distress_call.h ../src/sensor_entity_type.h \
+ ../src/event_type_emit.h ../src/entity_type.h ../src/sensor_proximity.h \
+ ../src/event_proximity.h
 
 ../src/robot.h:
 
@@ -46,4 +49,16 @@
 
 ../src/robot_motion_behavior.h:
 
-../src/robot_battery.h:
+../src/sensor_distress.h:
+
+../src/event_distress_call.h:
+
+../src/sensor_entity_type.h:
+
+../src/event_type_emit.h:
+
+../src/entity_type.h:
+
+../src/sensor_proximity.h:
+
+../src/event_proximity.h:

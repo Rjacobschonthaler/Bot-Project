@@ -41,7 +41,6 @@ class ArenaMobileEntity : public ArenaEntity {
   double get_collision_delta(void) const { return collision_delta_; }
   void TimestepUpdate(uint dt);
   virtual void Accept(EventCollision * e) = 0;
-  virtual void Accept(EventRecharge * e) = 0;
 
  private:
   double collision_delta_;

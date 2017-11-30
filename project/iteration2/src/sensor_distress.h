@@ -16,7 +16,6 @@
 #include "src/sensor.h"
 #include "src/common.h"
 #include "src/position.h"
-#include "src/robot.h"
 #include "src/event_distress_call.h"
 
 /*******************************************************************************
@@ -35,14 +34,14 @@ class ArenaEntity;
  */
 class SensorDistress : public Sensor {
  public:
-  SensorDistress();
+  SensorDistress() {range_ = 100;}
 
   /**
    * @brief
    *
    */
 
-  int Accept(EventDistressCall * e);
+  int Accept(EventDistressCall * e, Position pos, double radius) {return 1;}
 
   /**
    * @brief Reset the distress sensor to its newly constructed state.
@@ -51,13 +50,10 @@ class SensorDistress : public Sensor {
 
   double get_range() {return range_;}
   void set_range(double r) {range_ = r;}
-  Robot get_robot() {return *robot_;}
-  void set_robot(Robot * r) {robot_ = r;}
 
  private:
   // bool activated_;
   double range_;
-  Robot * robot_;
 };
 
 NAMESPACE_END(csci3081);

@@ -16,7 +16,6 @@
 #include "src/sensor.h"
 #include "src/common.h"
 #include "src/position.h"
-#include "src/robot.h"
 #include "src/event_type_emit.h"
 #include "src/entity_type.h"
 
@@ -36,14 +35,14 @@ class ArenaEntity;
  */
 class SensorEntityType : public Sensor {
  public:
-  SensorEntityType();
+  SensorEntityType() {range_ = 100;}
 
   /**
    * @brief
    *
    */
 
-  enum entity_types Accept(EventTypeEmit * e);
+  enum entity_types Accept(EventTypeEmit * e, Position pos, double radius);
 
   /**
    * @brief Reset the distress sensor to its newly constructed state.
@@ -52,13 +51,10 @@ class SensorEntityType : public Sensor {
 
   double get_range() {return range_;}
   void set_range(double r) {range_ = r;}
-  Robot get_robot() {return *robot_;}
-  void set_robot(Robot * r) {robot_ = r;}
 
  private:
   // bool activated_;
   double range_;
-  Robot * robot_;
 };
 
 NAMESPACE_END(csci3081);

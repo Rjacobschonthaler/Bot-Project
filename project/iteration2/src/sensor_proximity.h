@@ -16,7 +16,6 @@
 #include "src/sensor.h"
 #include "src/common.h"
 #include "src/position.h"
-#include "src/robot.h"
 #include "src/event_proximity.h"
 
 /*******************************************************************************
@@ -35,14 +34,14 @@ class ArenaEntity;
  */
 class SensorProximity : public Sensor {
  public:
-  SensorProximity();
+  SensorProximity() {range_ = 100; field_of_view_ = 90;}
 
   /**
    * @brief
    *
    */
 
-  void Accept(EventProximity * e);
+  double Accept(EventProximity * e, Position pos, double radius) {return 0;}
 
   /**
    * @brief Reset the proximity sensor to its newly constructed state.
@@ -51,17 +50,14 @@ class SensorProximity : public Sensor {
 
   double get_range() {return range_;}
   double get_field_of_view() {return field_of_view_;}
-  Robot get_robot() {return *robot_;}
   void set_range(double r) {range_ = r;}
   void set_field_of_view(double a) {field_of_view_ = a;}
-  void set_robot(Robot * r) {robot_ = r;}
 
 
  private:
   // bool activated_;
   double range_;
   double field_of_view_;
-  Robot * robot_;
 };
 
 NAMESPACE_END(csci3081);

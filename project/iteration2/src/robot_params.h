@@ -23,10 +23,8 @@ NAMESPACE_BEGIN(csci3081);
 struct robot_params : public arena_mobile_entity_params {
   robot_params(void) :
       arena_mobile_entity_params(),
-      battery_max_charge(),
       angle_delta() {}
 
-  double battery_max_charge;
   unsigned int angle_delta;
 };
 
