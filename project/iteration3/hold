@@ -1,0 +1,9 @@
+make -C src all
+make[1]: Entering directory '/home/schon099/3081_F17/repo-schon099/project/iteration2/src'
+==== Auto-Generating Dependencies for main.cc. ====
+g++ -MM -MF ../build/obj/src/main.d -MP -MT ../build/obj/src/main.o -g -W -Wall -Weffc++ -Wshadow -std=c++14 -c -I.. -I. -isystem/project/f17c3081/include main.cc
+==== Compiling main.cc into ../build/obj/src/main.o. ====
+g++ -g -W -Wall -Weffc++ -Wshadow -std=c++14 -c -I.. -I. -isystem/project/f17c3081/include  -c -o  ../build/obj/src/main.o main.cc
+Makefile:101: recipe for target '../build/obj/src/main.o' failed
+make[1]: Leaving directory '/home/schon099/3081_F17/repo-schon099/project/iteration2/src'
+Makefile:14: recipe for target 'proj01' failed
