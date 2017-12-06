@@ -65,20 +65,9 @@ void Superbot::Accept(EventCollision * e) {
 }
 
 void Superbot::Accept(EventDistressCall * ed, EventTypeEmit * et, EventProximity * ep) {
-  int help = sensor_distress_.Accept(ed, get_pos(), get_radius());
+  int help_needed = sensor_distress_.Accept(ed, get_pos(), get_radius());
   enum entity_types type = sensor_type_.Accept(et);
   double distance = sensor_proximity_.Accept(ep, get_pos(), get_radius());
-
-  // Code to determine if player collided with robot
-  double px = ep->get_pos().x;
-  double py = ep->get_pos().y;
-  double rx = get_pos().x;
-  double ry = get_pos().y;
-  double dist = std::sqrt(std::pow(rx - px, 2) + std::pow(ry - py, 2));
-  if (type == kPlayer && sensor_touch_.get_activated() &&
-    dist <= get_radius()+ep->get_radius()) {
-    set_speed(0);
-  }
 }
 
 void Superbot::Reset(void) {

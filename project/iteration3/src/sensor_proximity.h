@@ -41,7 +41,7 @@ class SensorProximity : public Sensor {
    *
    */
 
-  double Accept(EventProximity * e, Position pos, double radius) {return 0;}
+  double Accept(EventProximity * e, Position pos, double radius)
 
   /**
    * @brief Reset the proximity sensor to its newly constructed state.
