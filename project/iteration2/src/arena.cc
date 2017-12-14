@@ -226,9 +226,7 @@ void Arena::CheckForEntityCollision(const ArenaMobileEntity* const ent1,
   double ent1_y = ent1->get_pos().y;
   double ent2_x = ent2->get_pos().x;
   double ent2_y = ent2->get_pos().y;
-  double dist = std::sqrt(
-    std::pow(ent2_x - ent1_x, 2) + std::pow(ent2_y - ent1_y, 2));
-  if (dist > ent1->get_radius() + ent2->get_radius() + collision_delta) {
+  if (distance(ent1->get_pos(), ent2->get_pos()) > ent1->get_radius() + ent2->get_radius() + collision_delta) {
     event->set_collided(false);
   } else {
     // Populate the collision event.
@@ -261,6 +259,10 @@ void Arena::CheckForEntityCollision(const ArenaMobileEntity* const ent1,
 void Arena::Accept(EventKeypress * e) {
   player_->EventCmd(e->get_command());
   // e->EmitMessage();
+}
+
+double Arena::distance(Position pos1, Position pos2) {
+  return std::sqrt(std::pow(pos1.x-pos2.x, 2) + std::pow(pos1.y-pos2.y, 2));
 }
 
 NAMESPACE_END(csci3081);
