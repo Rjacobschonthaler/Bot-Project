@@ -112,33 +112,13 @@ void Arena::UpdateEntitiesTimestep(void) {
   } /* for(ent..) */
 
   /*
-   * Next, check if the player has run out of battery
+   * Next, check if the game has ended
    */
-  if (player_->battery_level() <= 0) {
-    // R. Jacob Schonthaler added This for game completion
-    std::cout << "You Lose!" << std::endl;
-    set_gameover(true);
-  }
-
-  /*
-   * Next, check if the player has collided with the recharge station or the home
-   * base. These need to be before the general collisions, which can move the
-   * player away from these "obstacles" before the "collisions" have been
-   * properly processed.
-   */
-
-  EventCollision ec;
-  CheckForEntityCollision(player_, home_base_, &ec, player_->get_collision_delta());
-  if (ec.get_collided()) {
-    // R. Jacob Schonthaler added this for game completion
-      std::cout << "You Win!" << std::endl;
-      set_gameover(true);
-  }
-
+   check_gameover();
   /**
    * @brief Check if the player has collided with recharge station.
    */
-
+  EventCollision ec;
   CheckForEntityCollision(player_, recharge_station_,
     &ec, player_->get_collision_delta());
   if (ec.get_collided()) {
@@ -174,6 +154,32 @@ void Arena::UpdateEntitiesTimestep(void) {
     ent->Accept(&ec);
   } /* for(ent..) */
 } /* UpdateEntities() */
+
+void Arena::check_gameover() {
+  /*
+   * Next, check if the player has run out of battery
+   */
+  if (player_->battery_level() <= 0) {
+    // R. Jacob Schonthaler added This for game completion
+    std::cout << "You Lose!" << std::endl;
+    set_gameover(true);
+  }
+
+  /*
+   * Next, check if the player has collided with the recharge station or the home
+   * base. These need to be before the general collisions, which can move the
+   * player away from these "obstacles" before the "collisions" have been
+   * properly processed.
+   */
+
+  EventCollision ec;
+  CheckForEntityCollision(player_, home_base_, &ec, player_->get_collision_delta());
+  if (ec.get_collided()) {
+    // R. Jacob Schonthaler added this for game completion
+      std::cout << "You Win!" << std::endl;
+      set_gameover(true);
+  }
+}
 
 // fixed jittering at walls
 void Arena::CheckForEntityOutOfBounds(const ArenaMobileEntity * const ent,

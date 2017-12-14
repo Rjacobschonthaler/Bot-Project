@@ -126,6 +126,8 @@ class Arena {
    */
   void UpdateEntitiesTimestep(void);
 
+  void check_gameover();
+
   // Under certain circumstance, the compiler requires that the copy
   // constructor is not defined. This is deleting the default copy const.
   Arena& operator=(const Arena& other) = delete;

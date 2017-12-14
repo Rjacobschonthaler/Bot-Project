@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE abiword PUBLIC "-//ABISOURCE//DTD AWML 1.0 Strict//EN" "http://www.abisource.com/awml.dtd">
+<abiword template="false" xmlns:ct="http://www.abisource.com/changetracking.dtd" xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:math="http://www.w3.org/1998/Math/MathML" xid-max="32" xmlns:dc="http://purl.org/dc/elements/1.1/" styles="unlocked" fileformat="1.0" xmlns:svg="http://www.w3.org/2000/svg" xmlns:awml="http://www.abisource.com/awml.dtd" xmlns="http://www.abisource.com/awml.dtd" xmlns:xlink="http://www.w3.org/1999/xlink" version="0.99.2" xml:space="preserve" props="dom-dir:ltr; document-footnote-restart-section:0; document-endnote-type:numeric; document-endnote-place-enddoc:1; document-endnote-initial:1; lang:en-US; document-endnote-restart-section:0; document-footnote-restart-page:0; document-footnote-type:numeric; document-footnote-initial:1; document-endnote-place-endsection:0">
+<!-- ======================================================================== -->
+<!-- This file is an AbiWord document.                                        -->
+<!-- AbiWord is a free, Open Source word processor.                           -->
+<!-- More information about AbiWord is available at http://www.abisource.com/ -->
+<!-- You should not edit this file by hand.                                   -->
+<!-- ======================================================================== -->
+
+<metadata>
+<m key="abiword.date_last_changed">Thu Dec 14 01:56:54 2017
+</m>
+<m key="abiword.generator">AbiWord</m>
+<m key="dc.creator">schon099</m>
+<m key="dc.date">Thu Dec 14 01:56:54 2017
+</m>
+<m key="dc.format">application/x-abiword</m>
+</metadata>
+<rdf>
+</rdf>
+<history version="1" edit-time="496" last-saved="1513238214" uid="3239ca98-e0a3-11e7-8548-b99ab6d82ee3">
+<version id="1" started="1513238214" uid="599f7bea-e0a4-11e7-8548-b99ab6d82ee3" auto="0" top-xid="32"/>
+</history>
+<styles>
+<s type="P" name="Normal" followedby="Current Settings" props="font-family:Times New Roman; margin-top:0pt; color:000000; margin-left:0pt; text-position:normal; widows:2; font-style:normal; text-indent:0in; font-variant:normal; font-weight:normal; margin-right:0pt; font-size:12pt; text-decoration:none; margin-bottom:0pt; line-height:1.0; bgcolor:transparent; text-align:left; font-stretch:normal"/>
+</styles>
+<pagesize pagetype="Letter" orientation="portrait" width="8.500000" height="11.000000" units="in" page-scale="1.000000"/>
+<section xid="8" props="page-margin-footer:0.5in; page-margin-header:0.5in">
+<p style="Normal" xid="9"><c>	The files that were changed were arena.h and arena.cc. They were changed by adding the function check_gameover in both and replacing some code in UpdateEntitiesTimestep with check_gameover. The functionality of check_gameover is to run through all the gameover possibilities to determine if any of them are true and set gameover_ accordingly. This cuts the size of UpdateEntitiesTimestep in about half and makes it much easier to read. The changes in UpdateEntitiesTimestep and content of check_gameover are as follows:</c></p>
+<p style="Normal" xid="1"><c>Before:</c></p>
+<p style="Normal" xid="2"><c>/*</c></p>
+<p style="Normal" xid="10" props="text-align:left; dom-dir:ltr"><c>   * Next, check if the player has run out of battery</c></p>
+<p style="Normal" xid="11" props="text-align:left; dom-dir:ltr"><c>   */</c></p>
+<p style="Normal" xid="12" props="text-align:left; dom-dir:ltr"><c>  if (player_-&gt;battery_level() &lt;= 0) {</c></p>
+<p style="Normal" xid="13" props="text-align:left; dom-dir:ltr"><c>    // R. Jacob Schonthaler added This for game completion</c></p>
+<p style="Normal" xid="14" props="text-align:left; dom-dir:ltr"><c>    std::cout &lt;&lt; "You Lose!" &lt;&lt; std::endl;</c></p>
+<p style="Normal" xid="15" props="text-align:left; dom-dir:ltr"><c>    set_gameover(true);</c></p>
+<p style="Normal" xid="16" props="text-align:left; dom-dir:ltr"><c>  }</c></p>
+<p style="Normal" xid="17" props="text-align:left; dom-dir:ltr"><c>/*</c></p>
+<p style="Normal" xid="18" props="text-align:left; dom-dir:ltr"><c>   * Next, check if the player has collided with the recharge station or the home</c></p>
+<p style="Normal" xid="19" props="text-align:left; dom-dir:ltr"><c>   * base. These need to be before the general collisions, which can move the</c></p>
+<p style="Normal" xid="20" props="text-align:left; dom-dir:ltr"><c>   * robot away from these "obstacles" before the "collisions" have been</c></p>
+<p style="Normal" xid="21" props="text-align:left; dom-dir:ltr"><c>   * properly processed.</c></p>
+<p style="Normal" xid="22" props="text-align:left; dom-dir:ltr"><c>   */</c></p>
+<p style="Normal" xid="23" props="text-align:left; dom-dir:ltr"><c></c></p>
+<p style="Normal" xid="24" props="text-align:left; dom-dir:ltr"><c>  EventCollision ec;</c></p>
+<p style="Normal" xid="25" props="text-align:left; dom-dir:ltr"><c>  CheckForEntityCollision(player_, home_base_, &amp;ec, player_-&gt;get_collision_delta());</c></p>
+<p style="Normal" xid="26" props="text-align:left; dom-dir:ltr"><c>  if (ec.get_collided()) {</c></p>
+<p style="Normal" xid="27" props="text-align:left; dom-dir:ltr"><c>    // R. Jacob Schonthaler added this for game completion</c></p>
+<p style="Normal" xid="28" props="text-align:left; dom-dir:ltr"><c>      std::cout &lt;&lt; "You Win!" &lt;&lt; std::endl;</c></p>
+<p style="Normal" xid="29" props="text-align:left; dom-dir:ltr"><c>      set_gameover(true);</c></p>
+<p style="Normal" xid="30" props="text-align:left; dom-dir:ltr"><c>  }</c></p>
+<p style="Normal" xid="3"><c>After:</c></p>
+<p style="Normal" xid="4"><c>/*</c></p>
+<p style="Normal" xid="5" props="text-align:left; dom-dir:ltr"><c>   * Next, check if the game has ended</c></p>
+<p style="Normal" xid="6" props="text-align:left; dom-dir:ltr"><c>   */</c></p>
+<p style="Normal" xid="7" props="text-align:left; dom-dir:ltr"><c>   check_gameover();</c></p>
+</section>
+</abiword>
