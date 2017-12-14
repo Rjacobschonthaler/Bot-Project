@@ -1,5 +1,21 @@
 var searchData=
 [
-  ['point_5fof_5fcontact',['point_of_contact',['../class_sensor_touch.html#a383bc1311cc683aba1f65408b2857cd9',1,'SensorTouch']]],
-  ['position',['Position',['../struct_position.html',1,'']]]
+  ['recharge_5fstation_2eh',['recharge_station.h',['../recharge__station_8h.html',1,'']]],
+  ['rechargestation',['RechargeStation',['../class_recharge_station.html',1,'']]],
+  ['reset',['Reset',['../class_arena.html#a6ac584696fcbfebe3c1073585489da27',1,'Arena::Reset()'],['../class_arena_entity.html#a1cb260385454b645bc78cb946bd1121a',1,'ArenaEntity::Reset()'],['../class_home_base.html#aa83361d73959934354be045518700b4f',1,'HomeBase::Reset()'],['../class_motion_handler.html#acfd072d86c4f3113fbea0b630bdc5cc5',1,'MotionHandler::Reset()'],['../class_player.html#a159669caa4993e2cc4d56e895b6550e8',1,'Player::Reset()'],['../class_player_motion_handler.html#a070185f598df58d8709c0c9b254a65af',1,'PlayerMotionHandler::Reset()'],['../class_robot.html#a8a7ab36cb921f5cb9b17fc40e78610e0',1,'Robot::Reset()'],['../class_robot_battery.html#af9c73841506973f779a36a91d7ae7aed',1,'RobotBattery::Reset()'],['../class_robot_motion_handler.html#af4c7df1c5437c239859d05f851ef88ce',1,'RobotMotionHandler::Reset()'],['../class_sensor_distress.html#a432e87b785d6dfd0360ed3175a9ad4e0',1,'SensorDistress::Reset()'],['../class_sensor_entity_type.html#ac64fe9b6d04a073946d58272cb027750',1,'SensorEntityType::Reset()'],['../class_sensor_proximity.html#ac4ae2f6eefd9571416eba610a367b74f',1,'SensorProximity::Reset()'],['../class_sensor_touch.html#a5537f62b93bdc021b29f8e1baf5f0a34',1,'SensorTouch::Reset()'],['../class_superbot.html#a292b1989c2fb5961a3dd6870190ea180',1,'Superbot::Reset()']]],
+  ['robot',['Robot',['../class_robot.html',1,'']]],
+  ['robot_2ecc',['robot.cc',['../robot_8cc.html',1,'']]],
+  ['robot_2eh',['robot.h',['../robot_8h.html',1,'']]],
+  ['robot_5fbattery_2ecc',['robot_battery.cc',['../robot__battery_8cc.html',1,'']]],
+  ['robot_5fbattery_2eh',['robot_battery.h',['../robot__battery_8h.html',1,'']]],
+  ['robot_5fmotion_5fbehavior_2ecc',['robot_motion_behavior.cc',['../robot__motion__behavior_8cc.html',1,'']]],
+  ['robot_5fmotion_5fbehavior_2eh',['robot_motion_behavior.h',['../robot__motion__behavior_8h.html',1,'']]],
+  ['robot_5fmotion_5fhandler_2ecc',['robot_motion_handler.cc',['../robot__motion__handler_8cc.html',1,'']]],
+  ['robot_5fmotion_5fhandler_2eh',['robot_motion_handler.h',['../robot__motion__handler_8h.html',1,'']]],
+  ['robot_5fparams',['robot_params',['../structrobot__params.html',1,'']]],
+  ['robot_5fparams_2eh',['robot_params.h',['../robot__params_8h.html',1,'']]],
+  ['robotbattery',['RobotBattery',['../class_robot_battery.html',1,'']]],
+  ['robotmotionbehavior',['RobotMotionBehavior',['../class_robot_motion_behavior.html',1,'']]],
+  ['robotmotionhandler',['RobotMotionHandler',['../class_robot_motion_handler.html',1,'']]],
+  ['robots',['robots',['../class_arena.html#a5b6dc9dac0518afe2541802ee77d4f6c',1,'Arena']]]
 ];

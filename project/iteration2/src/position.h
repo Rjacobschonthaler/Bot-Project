@@ -10,6 +10,8 @@
 /*******************************************************************************
  * Includes
  ******************************************************************************/
+#include <algorithm>
+
 #include "src/common.h"
 
 /*******************************************************************************
@@ -26,8 +28,9 @@ NAMESPACE_BEGIN(csci3081);
 struct Position {
 Position(void) : x(0), y(0) { }
 Position(double in_x, double in_y) : x(in_x), y(in_y) { }
-  double x;
-  double y;
+
+double x;
+double y;
 };
 
 NAMESPACE_END(csci3081);

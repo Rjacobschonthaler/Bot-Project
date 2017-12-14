@@ -39,7 +39,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -92,7 +91,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
-<p>Base class for <a class="el" href="class_robot.html">Robot</a> and <a class="el" href="class_home_base.html">HomeBase</a>.  
+<p>Base class for Homebase, <a class="el" href="class_player.html">Player</a>, <a class="el" href="class_robot.html">Robot</a>, and <a class="el" href="class_superbot.html" title="A mobile entity that operates just like a robot except that it avoids the homebase and ignores the pl...">Superbot</a>.  
  <a href="class_arena_mobile_entity.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="arena__mobile__entity_8h_source.html">arena_mobile_entity.h</a>&gt;</code></p>
@@ -102,9 +101,11 @@ Inheritance diagram for ArenaMobileEntity:</div>
  <div class="center">
   <img src="class_arena_mobile_entity.png" usemap="#ArenaMobileEntity_map" alt=""/>
   <map id="ArenaMobileEntity_map" name="ArenaMobileEntity_map">
-<area href="class_arena_entity.html" title="A base class representing an entity within the arena. All entities within the arena know how to : ..." alt="ArenaEntity" shape="rect" coords="63,0,179,24"/>
-<area href="class_home_base.html" alt="HomeBase" shape="rect" coords="0,112,116,136"/>
-<area href="class_robot.html" alt="Robot" shape="rect" coords="126,112,242,136"/>
+<area href="class_arena_entity.html" title="A base class representing an entity within the arena. All entities within the arena know how to : ..." alt="ArenaEntity" shape="rect" coords="189,0,305,24"/>
+<area href="class_home_base.html" title="A mobile entity that bounces around the arena without AI that causes a robot to become a superbot upo..." alt="HomeBase" shape="rect" coords="0,112,116,136"/>
+<area href="class_player.html" alt="Player" shape="rect" coords="126,112,242,136"/>
+<area href="class_robot.html" alt="Robot" shape="rect" coords="252,112,368,136"/>
+<area href="class_superbot.html" title="A mobile entity that operates just like a robot except that it avoids the homebase and ignores the pl..." alt="Superbot" shape="rect" coords="378,112,494,136"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -116,30 +117,27 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a8c8700188eb9e0404b3b7153a384c71b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8c8700188eb9e0404b3b7153a384c71b"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_mobile</b> (void)</td></tr>
 <tr class="separator:a8c8700188eb9e0404b3b7153a384c71b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa7eaa9b4a5221796059b0dd60e3ef9a6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa7eaa9b4a5221796059b0dd60e3ef9a6"></a>
-virtual double&#160;</td><td class="memItemRight" valign="bottom"><b>heading_angle</b> (void) const =0</td></tr>
-<tr class="separator:aa7eaa9b4a5221796059b0dd60e3ef9a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aae2ffc3bf4e2e7b47082c2823f2796fc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aae2ffc3bf4e2e7b47082c2823f2796fc"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>heading_angle</b> (double heading_angle)=0</td></tr>
-<tr class="separator:aae2ffc3bf4e2e7b47082c2823f2796fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8f59269feae52672ed954f8e17fba12b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8f59269feae52672ed954f8e17fba12b"></a>
-virtual double&#160;</td><td class="memItemRight" valign="bottom"><b>speed</b> (void)=0</td></tr>
-<tr class="separator:a8f59269feae52672ed954f8e17fba12b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0f587bb302e5180cc06ad594c43d1b09"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0f587bb302e5180cc06ad594c43d1b09"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>speed</b> (double sp)=0</td></tr>
-<tr class="separator:a0f587bb302e5180cc06ad594c43d1b09"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a77ff1ad83eff2d5c0fea991db0ddf879"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a77ff1ad83eff2d5c0fea991db0ddf879"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>collision_delta</b> (void) const </td></tr>
-<tr class="separator:a77ff1ad83eff2d5c0fea991db0ddf879"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3dbf4d26afe152a6b8a8ba276c48eec"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab3dbf4d26afe152a6b8a8ba276c48eec"></a>
+virtual double&#160;</td><td class="memItemRight" valign="bottom"><b>get_heading_angle</b> (void) const =0</td></tr>
+<tr class="separator:ab3dbf4d26afe152a6b8a8ba276c48eec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea9cbf55627ae675e0d7529315980ca5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aea9cbf55627ae675e0d7529315980ca5"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>set_heading_angle</b> (double heading_angle)=0</td></tr>
+<tr class="separator:aea9cbf55627ae675e0d7529315980ca5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a229e73806e971801861ab1e441def946"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a229e73806e971801861ab1e441def946"></a>
+virtual double&#160;</td><td class="memItemRight" valign="bottom"><b>get_speed</b> (void)=0</td></tr>
+<tr class="separator:a229e73806e971801861ab1e441def946"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9c207c5130109318182dba0da558f11"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af9c207c5130109318182dba0da558f11"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>set_speed</b> (double sp)=0</td></tr>
+<tr class="separator:af9c207c5130109318182dba0da558f11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaeb18b1248d913820d3ae199a43cfd39"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aaeb18b1248d913820d3ae199a43cfd39"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>get_collision_delta</b> (void) const </td></tr>
+<tr class="separator:aaeb18b1248d913820d3ae199a43cfd39"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a93c05d5ae19faabe3c2cdf927cdaf537"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a93c05d5ae19faabe3c2cdf927cdaf537"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>TimestepUpdate</b> (uint dt)</td></tr>
 <tr class="separator:a93c05d5ae19faabe3c2cdf927cdaf537"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0ad66f7e5e5cc382ad02e8532f7c564d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0ad66f7e5e5cc382ad02e8532f7c564d"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>Accept</b> (<a class="el" href="class_event_collision.html">EventCollision</a> *e)=0</td></tr>
 <tr class="separator:a0ad66f7e5e5cc382ad02e8532f7c564d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a254e91bf3a6a34c9c08ed74c122172ea"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a254e91bf3a6a34c9c08ed74c122172ea"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>Accept</b> (<a class="el" href="class_event_recharge.html">EventRecharge</a> *e)=0</td></tr>
-<tr class="separator:a254e91bf3a6a34c9c08ed74c122172ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_arena_entity"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_arena_entity')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_arena_entity.html">ArenaEntity</a></td></tr>
 <tr class="memitem:a8844ffd57124cc2ae3a50b99997cc005 inherit pub_methods_class_arena_entity"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8844ffd57124cc2ae3a50b99997cc005"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>ArenaEntity</b> (double radius, const <a class="el" href="struct_position.html">Position</a> &amp;pos, const <a class="el" href="struct_color.html">Color</a> &amp;color)</td></tr>
@@ -152,27 +150,27 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_arena_entity.html#a1cb260385454b645bc78cb946bd1121a">Reset</a> (void)</td></tr>
 <tr class="memdesc:a1cb260385454b645bc78cb946bd1121a inherit pub_methods_class_arena_entity"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset the entity to its newly constructed state. <br /></td></tr>
 <tr class="separator:a1cb260385454b645bc78cb946bd1121a inherit pub_methods_class_arena_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ace15925b4c49c2c27927491b0d3344d7 inherit pub_methods_class_arena_entity"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ace15925b4c49c2c27927491b0d3344d7"></a>
-virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><b>name</b> (void) const =0</td></tr>
-<tr class="separator:ace15925b4c49c2c27927491b0d3344d7 inherit pub_methods_class_arena_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab755cbf87009d280b93f2388409ec3e4 inherit pub_methods_class_arena_entity"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab755cbf87009d280b93f2388409ec3e4"></a>
+virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><b>get_name</b> (void) const =0</td></tr>
+<tr class="separator:ab755cbf87009d280b93f2388409ec3e4 inherit pub_methods_class_arena_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a772ce323b8e331450b1b49e9e8011212 inherit pub_methods_class_arena_entity"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a772ce323b8e331450b1b49e9e8011212"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>set_pos</b> (const <a class="el" href="struct_position.html">Position</a> &amp;pos)</td></tr>
 <tr class="separator:a772ce323b8e331450b1b49e9e8011212 inherit pub_methods_class_arena_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a23b3d6debe2affb988b52f45edec7f4c inherit pub_methods_class_arena_entity"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a23b3d6debe2affb988b52f45edec7f4c"></a>
 const <a class="el" href="struct_position.html">Position</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>get_pos</b> (void) const </td></tr>
 <tr class="separator:a23b3d6debe2affb988b52f45edec7f4c inherit pub_methods_class_arena_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac8cfc44aad8a21ba8227b54476748948 inherit pub_methods_class_arena_entity"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac8cfc44aad8a21ba8227b54476748948"></a>
-const <a class="el" href="struct_color.html">Color</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>color</b> (void) const </td></tr>
-<tr class="separator:ac8cfc44aad8a21ba8227b54476748948 inherit pub_methods_class_arena_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8df50817e9da014ccd194c2f771704d0 inherit pub_methods_class_arena_entity"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8df50817e9da014ccd194c2f771704d0"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>color</b> (const <a class="el" href="struct_color.html">Color</a> &amp;color)</td></tr>
-<tr class="separator:a8df50817e9da014ccd194c2f771704d0 inherit pub_methods_class_arena_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0a83b1dda5fd1ddeb112776685929318 inherit pub_methods_class_arena_entity"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0a83b1dda5fd1ddeb112776685929318"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>radius</b> (void) const </td></tr>
-<tr class="separator:a0a83b1dda5fd1ddeb112776685929318 inherit pub_methods_class_arena_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4efd728193ad51b9ca811a2f05cac7c inherit pub_methods_class_arena_entity"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa4efd728193ad51b9ca811a2f05cac7c"></a>
+const <a class="el" href="struct_color.html">Color</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>get_color</b> (void) const </td></tr>
+<tr class="separator:aa4efd728193ad51b9ca811a2f05cac7c inherit pub_methods_class_arena_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d961e420561d757076a72f6927bbeec inherit pub_methods_class_arena_entity"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0d961e420561d757076a72f6927bbeec"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>set_color</b> (const <a class="el" href="struct_color.html">Color</a> &amp;color)</td></tr>
+<tr class="separator:a0d961e420561d757076a72f6927bbeec inherit pub_methods_class_arena_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12f0a75f330adb119bcfd53eb96739d5 inherit pub_methods_class_arena_entity"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a12f0a75f330adb119bcfd53eb96739d5"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>get_radius</b> (void) const </td></tr>
+<tr class="separator:a12f0a75f330adb119bcfd53eb96739d5 inherit pub_methods_class_arena_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Base class for <a class="el" href="class_robot.html">Robot</a> and <a class="el" href="class_home_base.html">HomeBase</a>. </p>
+<div class="textblock"><p>Base class for Homebase, <a class="el" href="class_player.html">Player</a>, <a class="el" href="class_robot.html">Robot</a>, and <a class="el" href="class_superbot.html" title="A mobile entity that operates just like a robot except that it avoids the homebase and ignores the pl...">Superbot</a>. </p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/<a class="el" href="arena__mobile__entity_8h_source.html">arena_mobile_entity.h</a></li>
 <li>src/<a class="el" href="arena__mobile__entity_8cc.html">arena_mobile_entity.cc</a></li>

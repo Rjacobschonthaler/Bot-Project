@@ -4,8 +4,8 @@
  * @copyright 2017 3081 Staff, All rights reserved.
  */
 
-#ifndef PROJECT_ITERATION1_SRC_PLAYER_PARAMS_H_
-#define PROJECT_ITERATION1_SRC_PLAYER_PARAMS_H_
+#ifndef PROJECT_ITERATION3_SRC_PLAYER_PARAMS_H_
+#define PROJECT_ITERATION3_SRC_PLAYER_PARAMS_H_
 
 /*******************************************************************************
  * Includes
@@ -32,4 +32,4 @@ struct player_params : public arena_mobile_entity_params {
 
 NAMESPACE_END(csci3081);
 
-#endif  // PROJECT_ITERATION1_SRC_PLAYER_PARAMS_H_
+#endif  // PROJECT_ITERATION3_SRC_PLAYER_PARAMS_H_

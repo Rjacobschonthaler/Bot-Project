@@ -4,8 +4,8 @@
  * @copyright 2017 3081 Staff, All rights reserved.
  */
 
-#ifndef PROJECT_ITERATION1_SRC_POSITION_H_
-#define PROJECT_ITERATION1_SRC_POSITION_H_
+#ifndef PROJECT_ITERATION3_SRC_POSITION_H_
+#define PROJECT_ITERATION3_SRC_POSITION_H_
 
 /*******************************************************************************
  * Includes
@@ -32,4 +32,4 @@ Position(double in_x, double in_y) : x(in_x), y(in_y) { }
 
 NAMESPACE_END(csci3081);
 
-#endif  // PROJECT_ITERATION1_SRC_POSITION_H_
+#endif  // PROJECT_ITERATION3_SRC_POSITION_H_

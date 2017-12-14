@@ -4,8 +4,8 @@
  * @copyright 2017 3081 Staff, All rights reserved.
  */
 
-#ifndef PROJECT_ITERATION1_SRC_PLAYER_H_
-#define PROJECT_ITERATION1_SRC_PLAYER_H_
+#ifndef PROJECT_ITERATION3_SRC_PLAYER_H_
+#define PROJECT_ITERATION3_SRC_PLAYER_H_
 
 /*******************************************************************************
  * Includes
@@ -27,6 +27,12 @@ NAMESPACE_BEGIN(csci3081);
 /*******************************************************************************
  * Class Definitions
  ******************************************************************************/
+/*
+ * @brief A mobile entity controlled by the user. Upon colliding with any
+ * entity or wall, the battery loses 20 units of charge, it bounces off the
+ * entity. Upon colliding with a robot, the player freezes the robot; while upon
+ * colliding with a superbot, the player freezes for about 5 seconds.
+ */
 class Player : public ArenaMobileEntity {
  public:
   explicit Player(const struct player_params* const params);
@@ -42,7 +48,8 @@ class Player : public ArenaMobileEntity {
 
   void set_freeze_time(void) {freeze_time_ = freeze_time_max_;}
   double battery_level(void) { return battery_.get_level(); }
-  double get_heading_angle(void) const { return motion_handler_.get_heading_angle(); }
+  double get_heading_angle(void) const {
+    return motion_handler_.get_heading_angle(); }
   void set_heading_angle(double ha) { motion_handler_.set_heading_angle(ha); }
   double get_speed(void) { return motion_handler_.get_speed(); }
   void set_speed(double sp) { motion_handler_.set_speed(sp); }
@@ -71,4 +78,4 @@ class Player : public ArenaMobileEntity {
 
 NAMESPACE_END(csci3081);
 
-#endif  // PROJECT_ITERATION1_SRC_PLAYER_H_
+#endif  // PROJECT_ITERATION3_SRC_PLAYER_H_

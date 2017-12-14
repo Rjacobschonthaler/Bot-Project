@@ -39,7 +39,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -93,7 +92,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
-<p>The battery for a robot.  
+<p>The battery for a player.  
  <a href="class_robot_battery.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="robot__battery_8h_source.html">robot_battery.h</a>&gt;</code></p>
@@ -103,10 +102,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a28d2c6e5e0637a1e6947fc27f275f2fb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a28d2c6e5e0637a1e6947fc27f275f2fb"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>RobotBattery</b> (double max_charge)</td></tr>
 <tr class="separator:a28d2c6e5e0637a1e6947fc27f275f2fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5b96f703d13ae3877ec5f3d868144d48"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5b96f703d13ae3877ec5f3d868144d48"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_robot_battery.html#a5b96f703d13ae3877ec5f3d868144d48">level</a> (void) const </td></tr>
-<tr class="memdesc:a5b96f703d13ae3877ec5f3d868144d48"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current battery level. <br /></td></tr>
-<tr class="separator:a5b96f703d13ae3877ec5f3d868144d48"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab84e56873bf0db7743e267d2aca832a1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab84e56873bf0db7743e267d2aca832a1"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_robot_battery.html#ab84e56873bf0db7743e267d2aca832a1">get_level</a> (void) const </td></tr>
+<tr class="memdesc:ab84e56873bf0db7743e267d2aca832a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current battery level. <br /></td></tr>
+<tr class="separator:ab84e56873bf0db7743e267d2aca832a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abb51446ee0332d950a6fa177fa1a0a6c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abb51446ee0332d950a6fa177fa1a0a6c"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_robot_battery.html#abb51446ee0332d950a6fa177fa1a0a6c">EventRecharge</a> (void)</td></tr>
 <tr class="memdesc:abb51446ee0332d950a6fa177fa1a0a6c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle a recharge event by instantly restoring the robot's battery to its maximum value. <br /></td></tr>
@@ -120,7 +119,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="separator:a6cde16ae45f11a1f8424ae7899525018"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8836b4c7536ebaeb3e4ae0696688ce4e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8836b4c7536ebaeb3e4ae0696688ce4e"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_robot_battery.html#a8836b4c7536ebaeb3e4ae0696688ce4e">Accept</a> (<a class="el" href="class_event_collision.html">EventCollision</a> *e)</td></tr>
-<tr class="memdesc:a8836b4c7536ebaeb3e4ae0696688ce4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lose 20 charge for running into wall or obstacle. <br /></td></tr>
+<tr class="memdesc:a8836b4c7536ebaeb3e4ae0696688ce4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lose 20 units charge for running into wall or obstacle. <br /></td></tr>
 <tr class="separator:a8836b4c7536ebaeb3e4ae0696688ce4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
@@ -139,7 +138,7 @@ double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cl
 <tr class="separator:a72497d481963a717453c886ff2a453a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>The battery for a robot. </p>
+<div class="textblock"><p>The battery for a player. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="a6cde16ae45f11a1f8424ae7899525018"></a>
 <div class="memitem">

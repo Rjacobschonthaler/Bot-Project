@@ -4,8 +4,8 @@
  * @copyright 2017 3081 Staff, All rights reserved.
  */
 
-#ifndef PROJECT_ITERATION1_SRC_HOME_BASE_PARAMS_H_
-#define PROJECT_ITERATION1_SRC_HOME_BASE_PARAMS_H_
+#ifndef PROJECT_ITERATION3_SRC_HOME_BASE_PARAMS_H_
+#define PROJECT_ITERATION3_SRC_HOME_BASE_PARAMS_H_
 
 /*******************************************************************************
  * Includes
@@ -29,4 +29,4 @@ struct home_base_params : public arena_entity_params {
 
 NAMESPACE_END(csci3081);
 
-#endif  // PROJECT_ITERATION1_SRC_HOME_BASE_PARAMS_H_
+#endif  // PROJECT_ITERATION3_SRC_HOME_BASE_PARAMS_H_

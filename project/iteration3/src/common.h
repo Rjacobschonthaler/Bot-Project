@@ -4,8 +4,8 @@
  * @copyright 2017 3081 Staff, All rights reserved.
  */
 
-#ifndef PROJECT_ITERATION1_SRC_COMMON_H_
-#define PROJECT_ITERATION1_SRC_COMMON_H_
+#ifndef PROJECT_ITERATION3_SRC_COMMON_H_
+#define PROJECT_ITERATION3_SRC_COMMON_H_
 
 #include <assert.h>
 #include <iostream>
@@ -20,4 +20,4 @@
 // satisfy the compiler - otherwise a warning is given.
 #define __unused __attribute__((unused))
 
-#endif  // PROJECT_ITERATION1_SRC_COMMON_H_
+#endif  // PROJECT_ITERATION3_SRC_COMMON_H_

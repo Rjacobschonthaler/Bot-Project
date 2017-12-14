@@ -39,7 +39,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -91,6 +90,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">EventCollision Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Holds the information for the collisions.  
+ <a href="class_event_collision.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="event__collision_8h_source.html">event_collision.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for EventCollision:</div>
 <div class="dyncontent">
@@ -107,26 +111,28 @@ Public Member Functions</h2></td></tr>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event_collision.html#ac970a9a08d0ea2e456e183af68325658">EmitMessage</a> (void)</td></tr>
 <tr class="memdesc:ac970a9a08d0ea2e456e183af68325658"><td class="mdescLeft">&#160;</td><td class="mdescRight">Each event, upon its firing, should emit a message to the user on stdout saying what happened, in order to aid debugging. <br /></td></tr>
 <tr class="separator:ac970a9a08d0ea2e456e183af68325658"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0c0e7e6a96283169c594bf4a64a98fed"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0c0e7e6a96283169c594bf4a64a98fed"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>collided</b> ()</td></tr>
-<tr class="separator:a0c0e7e6a96283169c594bf4a64a98fed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0de8b10160bd265ed1f8871253e5758e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0de8b10160bd265ed1f8871253e5758e"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>collided</b> (bool c)</td></tr>
-<tr class="separator:a0de8b10160bd265ed1f8871253e5758e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afbbcb737d5a8826e6c077162d9fdfc9e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afbbcb737d5a8826e6c077162d9fdfc9e"></a>
-<a class="el" href="struct_position.html">Position</a>&#160;</td><td class="memItemRight" valign="bottom"><b>point_of_contact</b> ()</td></tr>
-<tr class="separator:afbbcb737d5a8826e6c077162d9fdfc9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a508838b6a696f3f736edee2a746026dc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a508838b6a696f3f736edee2a746026dc"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>point_of_contact</b> (<a class="el" href="struct_position.html">Position</a> p)</td></tr>
-<tr class="separator:a508838b6a696f3f736edee2a746026dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acd0dddceb798ddbec56a5b04a877f20e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acd0dddceb798ddbec56a5b04a877f20e"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>angle_of_contact</b> ()</td></tr>
-<tr class="separator:acd0dddceb798ddbec56a5b04a877f20e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aded2f222022494ddc3eab6966d26ec87"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aded2f222022494ddc3eab6966d26ec87"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>angle_of_contact</b> (double aoc)</td></tr>
-<tr class="separator:aded2f222022494ddc3eab6966d26ec87"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a949c18f88e6278358a69634942475ed6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a949c18f88e6278358a69634942475ed6"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>get_collided</b> ()</td></tr>
+<tr class="separator:a949c18f88e6278358a69634942475ed6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a202ca535a88516271b72feafde0b8c0e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a202ca535a88516271b72feafde0b8c0e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>set_collided</b> (bool c)</td></tr>
+<tr class="separator:a202ca535a88516271b72feafde0b8c0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af0b0792d4d0c764bf9e6faf728618a31"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af0b0792d4d0c764bf9e6faf728618a31"></a>
+<a class="el" href="struct_position.html">Position</a>&#160;</td><td class="memItemRight" valign="bottom"><b>get_point_of_contact</b> ()</td></tr>
+<tr class="separator:af0b0792d4d0c764bf9e6faf728618a31"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa28a3bee0b1755e2fee7f60a8226bb4c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa28a3bee0b1755e2fee7f60a8226bb4c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>set_point_of_contact</b> (<a class="el" href="struct_position.html">Position</a> p)</td></tr>
+<tr class="separator:aa28a3bee0b1755e2fee7f60a8226bb4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba253dd89950452ba1e7e52ac68233db"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aba253dd89950452ba1e7e52ac68233db"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>get_angle_of_contact</b> ()</td></tr>
+<tr class="separator:aba253dd89950452ba1e7e52ac68233db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48c4f8ea293f9af460c55e81bd7e287a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a48c4f8ea293f9af460c55e81bd7e287a"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>set_angle_of_contact</b> (double aoc)</td></tr>
+<tr class="separator:a48c4f8ea293f9af460c55e81bd7e287a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>The documentation for this class was generated from the following files:<ul>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Holds the information for the collisions. </p>
+</div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/<a class="el" href="event__collision_8h_source.html">event_collision.h</a></li>
 <li>src/<a class="el" href="event__collision_8cc.html">event_collision.cc</a></li>
 </ul>

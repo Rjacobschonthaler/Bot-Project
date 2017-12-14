@@ -4,8 +4,8 @@
  * @copyright 2017 3081 Staff, All rights reserved.
  */
 
-#ifndef PROJECT_ITERATION1_SRC_SUPERBOT_H_
-#define PROJECT_ITERATION1_SRC_SUPERBOT_H_
+#ifndef PROJECT_ITERATION3_SRC_SUPERBOT_H_
+#define PROJECT_ITERATION3_SRC_SUPERBOT_H_
 
 /*******************************************************************************
  * Includes
@@ -31,18 +31,21 @@ NAMESPACE_BEGIN(csci3081);
 /*******************************************************************************
  * Class Definitions
  ******************************************************************************/
+ /**
+  * @brief A mobile entity that operates just like a robot except that it
+  * avoids the homebase and ignores the player.
+  */
 class Superbot : public ArenaMobileEntity {
  public:
   explicit Superbot(const struct superbot_params* const params);
 
   void Reset(void);
-  void HeadingAngleInc(void) { heading_angle_ += angle_delta_; }
-  void HeadingAngleDec(void) { heading_angle_ -= angle_delta_; }
   void TimestepUpdate(unsigned int dt);
   void Accept(EventCollision * e);
   void Accept(EventDistressCall * ed, EventTypeEmit * et, EventProximity * ep);
 
-  double get_heading_angle(void) const { return motion_handler_.get_heading_angle(); }
+  double get_heading_angle(void) const {
+    return motion_handler_.get_heading_angle(); }
   void set_heading_angle(double ha) { motion_handler_.set_heading_angle(ha); }
   double get_speed(void) { return motion_handler_.get_speed(); }
   void set_speed(double sp) { motion_handler_.set_speed(sp); }
@@ -68,4 +71,4 @@ class Superbot : public ArenaMobileEntity {
 
 NAMESPACE_END(csci3081);
 
-#endif  // PROJECT_ITERATION1_SRC_SUPERBOT_H_
+#endif  // PROJECT_ITERATION3_SRC_SUPERBOT_H_

@@ -39,7 +39,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -92,7 +91,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
-<p>A base class for snesors to inherit from. Currently, the only sensor is <a class="el" href="class_sensor_touch.html" title="A representation of a touch sensor. Touch or &quot;bump&quot; sensors are &quot;active&quot; when pressed. For our purposes, imagine a series of bump sensors around the perimeter of the robot. A collision will activate the sensor at a particular point of contact, which translates to an angle of contact. ">SensorTouch</a>.  
+<p>A base class for sensors to inherit from.  
  <a href="class_sensor.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="sensor_8h_source.html">sensor.h</a>&gt;</code></p>
@@ -102,21 +101,24 @@ Inheritance diagram for Sensor:</div>
  <div class="center">
   <img src="class_sensor.png" usemap="#Sensor_map" alt=""/>
   <map id="Sensor_map" name="Sensor_map">
-<area href="class_sensor_touch.html" title="A representation of a touch sensor. Touch or &quot;bump&quot; sensors are &quot;active&quot; when pressed. For our purposes, imagine a series of bump sensors around the perimeter of the robot. A collision will activate the sensor at a particular point of contact, which translates to an angle of contact. " alt="SensorTouch" shape="rect" coords="0,56,87,80"/>
+<area href="class_sensor_distress.html" title="A sensor that determines if there is a distressed robot near the owner entity. " alt="SensorDistress" shape="rect" coords="0,56,111,80"/>
+<area href="class_sensor_entity_type.html" title="Determines the type of an entity in question. " alt="SensorEntityType" shape="rect" coords="121,56,232,80"/>
+<area href="class_sensor_proximity.html" title="Determines the distance to an entity in question from the owner entity. " alt="SensorProximity" shape="rect" coords="242,56,353,80"/>
+<area href="class_sensor_touch.html" title="A representation of a touch sensor. Touch or &quot;bump&quot; sensors are &quot;active&quot; when pressed. For our purposes, imagine a series of bump sensors around the perimeter of the robot. A collision will activate the sensor at a particular point of contact, which translates to an angle of contact. " alt="SensorTouch" shape="rect" coords="363,56,474,80"/>
 </map>
  </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a0f77f3d1fc9bef99c9e54fd1c7875aba"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0f77f3d1fc9bef99c9e54fd1c7875aba"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>activated</b> (void)</td></tr>
-<tr class="separator:a0f77f3d1fc9bef99c9e54fd1c7875aba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5961ffd5912c5ad7da0e548844d5a697"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5961ffd5912c5ad7da0e548844d5a697"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>activated</b> (bool value)</td></tr>
-<tr class="separator:a5961ffd5912c5ad7da0e548844d5a697"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5aeb228d25ad11e5857171b7d929e77e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5aeb228d25ad11e5857171b7d929e77e"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>get_activated</b> (void)</td></tr>
+<tr class="separator:a5aeb228d25ad11e5857171b7d929e77e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23202827ec8b82dadf62504d1ae27e47"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a23202827ec8b82dadf62504d1ae27e47"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>set_activated</b> (bool value)</td></tr>
+<tr class="separator:a23202827ec8b82dadf62504d1ae27e47"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A base class for snesors to inherit from. Currently, the only sensor is <a class="el" href="class_sensor_touch.html" title="A representation of a touch sensor. Touch or &quot;bump&quot; sensors are &quot;active&quot; when pressed. For our purposes, imagine a series of bump sensors around the perimeter of the robot. A collision will activate the sensor at a particular point of contact, which translates to an angle of contact. ">SensorTouch</a>. </p>
+<div class="textblock"><p>A base class for sensors to inherit from. </p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>src/<a class="el" href="sensor_8h_source.html">sensor.h</a></li>
 </ul>

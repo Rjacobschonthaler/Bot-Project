@@ -4,8 +4,8 @@
  * @copyright 2017 3081 Staff, All rights reserved.
  */
 
-#ifndef PROJECT_ITERATION1_SRC_SENSOR_PROXIMITY_H_
-#define PROJECT_ITERATION1_SRC_SENSOR_PROXIMITY_H_
+#ifndef PROJECT_ITERATION3_SRC_SENSOR_PROXIMITY_H_
+#define PROJECT_ITERATION3_SRC_SENSOR_PROXIMITY_H_
 
 /*******************************************************************************
  * Includes
@@ -26,22 +26,25 @@ NAMESPACE_BEGIN(csci3081);
 /*******************************************************************************
  * Classes
  ******************************************************************************/
+
 class ArenaEntity;
 
 /**
- * @brief
- *
+ * @brief Determines the distance to an entity in question from the owner
+ * entity.
  */
 class SensorProximity : public Sensor {
  public:
-  SensorProximity() {range_ = 100; field_of_view_ = 90;}
+  SensorProximity() {
+    range_ = 50; field_of_view_ = 90; x_dim_ = 1024; y_dim_ = 768;}
 
   /**
-   * @brief
-   *
+   * @brief Finds the distance to an entity in question within the sensor's
+   * range. Else it returns -1.
    */
 
-  double Accept(EventProximity * e, Position pos, double radius)
+  double Accept(EventProximity * e, Position pos, double radius,
+                double heading);
 
   /**
    * @brief Reset the proximity sensor to its newly constructed state.
@@ -58,8 +61,11 @@ class SensorProximity : public Sensor {
   // bool activated_;
   double range_;
   double field_of_view_;
+  int x_dim_;
+  int y_dim_;
+  Position get_point(double heading, double dist, Position pos);
 };
 
 NAMESPACE_END(csci3081);
 
-#endif   // PROJECT_ITERATION1_SRC_SENSOR_PROXIMITY_H_
+#endif   // PROJECT_ITERATION3_SRC_SENSOR_PROXIMITY_H_

@@ -5,8 +5,8 @@
  *
  */
 
-#ifndef PROJECT_ITERATION1_SRC_ENTITY_TYPE_H_
-#define PROJECT_ITERATION1_SRC_ENTITY_TYPE_H_
+#ifndef PROJECT_ITERATION3_SRC_ENTITY_TYPE_H_
+#define PROJECT_ITERATION3_SRC_ENTITY_TYPE_H_
 
 /*******************************************************************************
  * Includes
@@ -22,15 +22,16 @@ NAMESPACE_BEGIN(csci3081);
 /*******************************************************************************
  * Type Definitions
  ******************************************************************************/
-// R. Jacob Schonthaler added COM_SLOW
 enum entity_types {
   kRobot,
   kSuperBot,
   kPlayer,
   kHomeBase,
   kRechargeStation,
-  kWall
+  kObstacle,
+  kWall,
+  kNothing
 };
 NAMESPACE_END(csci3081);
 
-#endif  // PROJECT_ITERATION1_SRC_ENTITY_TYPE_H_
+#endif  // PROJECT_ITERATION3_SRC_ENTITY_TYPE_H_

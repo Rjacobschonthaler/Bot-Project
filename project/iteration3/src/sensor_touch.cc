@@ -27,7 +27,10 @@ SensorTouch::SensorTouch() : point_of_contact_(0, 0) {
 /*******************************************************************************
  * Member Functions
  ******************************************************************************/
-
+ /*
+  * @brief Determines if a collsion has occured and sets the
+  * sensor's variables accordingly.
+  */
 void SensorTouch::Accept(EventCollision * e) {
   // Determine if the sensor should be activated or inactivated.
   if (e->get_collided()) {

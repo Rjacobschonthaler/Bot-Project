@@ -4,8 +4,8 @@
  * @copyright 2017 3081 Staff, All rights reserved.
  */
 
-#ifndef PROJECT_ITERATION1_SRC_SENSOR_DISTRESS_H_
-#define PROJECT_ITERATION1_SRC_SENSOR_DISTRESS_H_
+#ifndef PROJECT_ITERATION3_SRC_SENSOR_DISTRESS_H_
+#define PROJECT_ITERATION3_SRC_SENSOR_DISTRESS_H_
 
 /*******************************************************************************
  * Includes
@@ -29,19 +29,19 @@ NAMESPACE_BEGIN(csci3081);
 class ArenaEntity;
 
 /**
- * @brief
- *
+ * @brief A sensor that determines if there is a distressed robot near the
+ * owner entity.
  */
 class SensorDistress : public Sensor {
  public:
-  SensorDistress() {range_ = 100;}
+  SensorDistress() {range_ = 50;}
 
   /**
-   * @brief
+   * @brief Detemines if there is a nearby distressed robot.
    *
    */
 
-  int Accept(EventDistressCall * e, Position pos, double radius) {return 1;}
+  int Accept(EventDistressCall * e, Position pos, double radius);
 
   /**
    * @brief Reset the distress sensor to its newly constructed state.
@@ -58,4 +58,4 @@ class SensorDistress : public Sensor {
 
 NAMESPACE_END(csci3081);
 
-#endif   // PROJECT_ITERATION1_SRC_SENSOR_DISTRESS_H_
+#endif   // PROJECT_ITERATION3_SRC_SENSOR_DISTRESS_H_

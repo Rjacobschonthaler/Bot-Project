@@ -41,6 +41,9 @@ Player::Player(const struct player_params* const params) :
 /*******************************************************************************
  * Member Functions
  ******************************************************************************/
+ /**
+  * @brief Updates the player.
+  */
 void Player::TimestepUpdate(uint dt) {
   Position old_pos = get_pos();
 
@@ -51,8 +54,7 @@ void Player::TimestepUpdate(uint dt) {
     motion_handler_.UpdateVelocity(sensor_touch_);
     // Use velocity and position to update position
     motion_behavior_.UpdatePosition(this, dt);
-  }
-  else {
+  } else {
     freeze_time_--;
   }
 
@@ -66,13 +68,18 @@ void Player::TimestepUpdate(uint dt) {
   }
 } /* TimestepUpdate() */
 
+/**
+ * @brief Sends a recharge event to the battery.
+ */
 void Player::Accept(__unused EventRecharge * e) {
   battery_.EventRecharge();
 }
 
-// Pass along a collision event (from arena) to the touch sensor.
-// This method provides a framework in which sensors can get different
-// types of information from different sources.
+/**
+ * @brief Pass along a collision event (from arena) to the touch sensor.
+ * This method provides a framework in which sensors can get different
+ * types of information from different sources.
+ */
 void Player::Accept(EventCollision * e) {
   sensor_touch_.Accept(e);
   if (e->get_collided()) {
@@ -80,7 +87,9 @@ void Player::Accept(EventCollision * e) {
   }
 }
 
-// User input commands to change heading or speed
+/**
+ * @brief User input commands to change heading or speed.
+ */
 void Player::EventCmd(enum event_commands cmd) {
   motion_handler_.AcceptCommand(cmd);
 } /* event_cmd() */

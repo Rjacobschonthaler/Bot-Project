@@ -4,8 +4,8 @@
  * @copyright 2017 3081 Staff, All rights reserved.
  */
 
-#ifndef PROJECT_ITERATION1_SRC_RECHARGE_STATION_H_
-#define PROJECT_ITERATION1_SRC_RECHARGE_STATION_H_
+#ifndef PROJECT_ITERATION3_SRC_RECHARGE_STATION_H_
+#define PROJECT_ITERATION3_SRC_RECHARGE_STATION_H_
 
 /*******************************************************************************
  * Includes
@@ -21,6 +21,10 @@ NAMESPACE_BEGIN(csci3081);
 /*******************************************************************************
  * Class Definitions
  ******************************************************************************/
+ /*
+  * @brief A special obstacled that recharges te player upon the player
+  * colliding with it.
+  */ 
 class RechargeStation: public Obstacle {
  public:
   RechargeStation(double radius, const Position& pos,
@@ -33,4 +37,4 @@ class RechargeStation: public Obstacle {
 
 NAMESPACE_END(csci3081);
 
-#endif  // PROJECT_ITERATION1_SRC_RECHARGE_STATION_H_
+#endif  // PROJECT_ITERATION3_SRC_RECHARGE_STATION_H_

@@ -39,7 +39,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -92,7 +91,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
-<p>The base event class from which all visitor-enabled events should derived from.  
+<p>The class that holds the info for which command path should be executed.  
  <a href="class_event_command.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="event__command_8h_source.html">event_command.h</a>&gt;</code></p>
@@ -115,12 +114,12 @@ Public Member Functions</h2></td></tr>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event_command.html#a83af4c67732e65257b3b08a68a068253">EmitMessage</a> (void)</td></tr>
 <tr class="memdesc:a83af4c67732e65257b3b08a68a068253"><td class="mdescLeft">&#160;</td><td class="mdescRight">Each event, upon its firing, should emit a message to the user on stdout saying what happened, in order to aid debugging. <br /></td></tr>
 <tr class="separator:a83af4c67732e65257b3b08a68a068253"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a54934eda8a96b7e9b90f657ac687564e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a54934eda8a96b7e9b90f657ac687564e"></a>
-enum event_commands&#160;</td><td class="memItemRight" valign="bottom"><b>cmd</b> (void) const </td></tr>
-<tr class="separator:a54934eda8a96b7e9b90f657ac687564e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ec90f5f2f55c26f6e13565aea50a0c2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5ec90f5f2f55c26f6e13565aea50a0c2"></a>
+enum event_commands&#160;</td><td class="memItemRight" valign="bottom"><b>get_cmd</b> (void) const </td></tr>
+<tr class="separator:a5ec90f5f2f55c26f6e13565aea50a0c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>The base event class from which all visitor-enabled events should derived from. </p>
+<div class="textblock"><p>The class that holds the info for which command path should be executed. </p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>src/<a class="el" href="event__command_8h_source.html">event_command.h</a></li>
 </ul>

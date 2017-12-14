@@ -4,8 +4,8 @@
  * @copyright 2017 3081 Staff, All rights reserved.
  */
 
-#ifndef PROJECT_ITERATION1_SRC_COLOR_H_
-#define PROJECT_ITERATION1_SRC_COLOR_H_
+#ifndef PROJECT_ITERATION3_SRC_COLOR_H_
+#define PROJECT_ITERATION3_SRC_COLOR_H_
 
 /*******************************************************************************
  * Includes
@@ -40,4 +40,4 @@ struct Color {
 
 NAMESPACE_END(csci3081);
 
-#endif  // PROJECT_ITERATION1_SRC_COLOR_H_
+#endif  // PROJECT_ITERATION3_SRC_COLOR_H_

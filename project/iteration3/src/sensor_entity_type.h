@@ -4,8 +4,8 @@
  * @copyright 2017 3081 Staff, All rights reserved.
  */
 
-#ifndef PROJECT_ITERATION1_SRC_SENSOR_ENTITY_TYPE_H_
-#define PROJECT_ITERATION1_SRC_SENSOR_ENTITY_TYPE_H_
+#ifndef PROJECT_ITERATION3_SRC_SENSOR_ENTITY_TYPE_H_
+#define PROJECT_ITERATION3_SRC_SENSOR_ENTITY_TYPE_H_
 
 /*******************************************************************************
  * Includes
@@ -30,22 +30,21 @@ NAMESPACE_BEGIN(csci3081);
 class ArenaEntity;
 
 /**
- * @brief
- *
+ * @brief Determines the type of an entity in question.
  */
 class SensorEntityType : public Sensor {
  public:
   SensorEntityType();
 
   /**
-   * @brief
-   *
+   * @brief Determines if the entity is close enough to determine its type;
+   * and if so, what type it is.
    */
 
   enum entity_types Accept(EventTypeEmit * e);
 
   /**
-   * @brief Reset the distress sensor to its newly constructed state.
+   * @brief Reset the entity type sensor to its newly constructed state.
    */
   void Reset(void);
 
@@ -59,4 +58,4 @@ class SensorEntityType : public Sensor {
 
 NAMESPACE_END(csci3081);
 
-#endif   // PROJECT_ITERATION1_SRC_SENSOR_ENTITY_TYPE_H_
+#endif   // PROJECT_ITERATION3_SRC_SENSOR_ENTITY_TYPE_H_

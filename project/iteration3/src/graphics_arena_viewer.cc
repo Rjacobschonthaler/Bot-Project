@@ -146,7 +146,8 @@ void GraphicsArenaViewer::OnSpecialKeyUp(int key, int scancode, int modifiers) {
 /*******************************************************************************
  * Drawing of Entities in Arena
  ******************************************************************************/
-void GraphicsArenaViewer::DrawPlayer(NVGcontext *ctx, const Player* const player) {
+void GraphicsArenaViewer::DrawPlayer(
+  NVGcontext *ctx, const Player* const player) {
   // translate and rotate all graphics calls that follow so that they are
   // centered, at the position and heading for this robot
   nvgSave(ctx);
@@ -205,7 +206,8 @@ void GraphicsArenaViewer::DrawRobot(NVGcontext *ctx, const Robot* const robot) {
   nvgRestore(ctx);
 }
 
-void GraphicsArenaViewer::DrawSuperbot(NVGcontext *ctx, const Superbot* const superbot) {
+void GraphicsArenaViewer::DrawSuperbot(
+  NVGcontext *ctx, const Superbot* const superbot) {
   // translate and rotate all graphics calls that follow so that they are
   // centered, at the position and heading for this robot
   nvgSave(ctx);

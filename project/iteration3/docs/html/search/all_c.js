@@ -1,8 +1,4 @@
 var searchData=
 [
-  ['sensor',['Sensor',['../class_sensor.html',1,'']]],
-  ['sensor_2eh',['sensor.h',['../sensor_8h.html',1,'']]],
-  ['sensor_5ftouch_2ecc',['sensor_touch.cc',['../sensor__touch_8cc.html',1,'']]],
-  ['sensor_5ftouch_2eh',['sensor_touch.h',['../sensor__touch_8h.html',1,'']]],
-  ['sensortouch',['SensorTouch',['../class_sensor_touch.html',1,'']]]
+  ['timestepupdate',['TimestepUpdate',['../class_arena_entity.html#af01b8889f46572c25bae0b23358e03a5',1,'ArenaEntity::TimestepUpdate()'],['../class_home_base.html#a02d49d102b61ba9ad543155263b95de8',1,'HomeBase::TimestepUpdate()'],['../class_player.html#a46201d85916aa19e8fba53d2878d5ded',1,'Player::TimestepUpdate()'],['../class_superbot.html#a3da22ed679851102f23ce8e418985fc3',1,'Superbot::TimestepUpdate()']]]
 ];

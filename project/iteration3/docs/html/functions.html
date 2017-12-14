@@ -39,7 +39,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -80,12 +79,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="#index_a"><span>a</span></a></li>
       <li><a href="#index_d"><span>d</span></a></li>
       <li><a href="#index_e"><span>e</span></a></li>
+      <li><a href="#index_g"><span>g</span></a></li>
       <li><a href="#index_k"><span>k</span></a></li>
-      <li><a href="#index_l"><span>l</span></a></li>
       <li><a href="#index_m"><span>m</span></a></li>
       <li><a href="#index_o"><span>o</span></a></li>
-      <li><a href="#index_p"><span>p</span></a></li>
       <li><a href="#index_r"><span>r</span></a></li>
+      <li><a href="#index_s"><span>s</span></a></li>
       <li><a href="#index_t"><span>t</span></a></li>
       <li class="current"><a href="#index_u"><span>u</span></a></li>
     </ul>
@@ -111,11 +110,16 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <h3><a class="anchor" id="index_a"></a>- a -</h3><ul>
 <li>Accept()
 : <a class="el" href="class_arena.html#a4a677fcedab944a410d58da6385aae5f">Arena</a>
+, <a class="el" href="class_player.html#af751dac48ca086a55e5c888dfd67ed65">Player</a>
 , <a class="el" href="class_robot_battery.html#a8836b4c7536ebaeb3e4ae0696688ce4e">RobotBattery</a>
+, <a class="el" href="class_sensor_distress.html#a05d2c5c23d6c795c1d6257fffe726b27">SensorDistress</a>
+, <a class="el" href="class_sensor_entity_type.html#a55f19944eac22f80f8aa006076fefca6">SensorEntityType</a>
+, <a class="el" href="class_sensor_proximity.html#ab0b1b8679de08c8a68edfa1b4ed061d2">SensorProximity</a>
 , <a class="el" href="class_sensor_touch.html#a598eb6f4d7208b8d62adb8c1973fa8c2">SensorTouch</a>
+, <a class="el" href="class_superbot.html#a3925fe4fae43aa28e0f961ef4c9db49e">Superbot</a>
 </li>
 <li>AcceptCommand()
-: <a class="el" href="class_robot_motion_handler.html#a8ccb25224a5105811282cfb94b08a2b2">RobotMotionHandler</a>
+: <a class="el" href="class_player_motion_handler.html#ac7a2a4d1ba12d93c345e8d025ccfbf3d">PlayerMotionHandler</a>
 </li>
 <li>AdvanceTime()
 : <a class="el" href="class_arena.html#a458efec4ba1a72561796caace2bb22b8">Arena</a>
@@ -144,11 +148,27 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 : <a class="el" href="class_event_base_class.html#af3bc6589e7e97887fa13c745fc2df468">EventBaseClass</a>
 , <a class="el" href="class_event_collision.html#ac970a9a08d0ea2e456e183af68325658">EventCollision</a>
 , <a class="el" href="class_event_command.html#a83af4c67732e65257b3b08a68a068253">EventCommand</a>
+, <a class="el" href="class_event_distress_call.html#ae7ae7909a3592fda30a933f4c3221b55">EventDistressCall</a>
 , <a class="el" href="class_event_keypress.html#adc6b125c9884ab1d5eec2df612b66ffd">EventKeypress</a>
+, <a class="el" href="class_event_proximity.html#af1d4ed968a84cf9af9eb32c7fd028792">EventProximity</a>
 , <a class="el" href="class_event_recharge.html#a11d4f524a76f43072565db8169ae48b6">EventRecharge</a>
+, <a class="el" href="class_event_type_emit.html#a5015a3c8258744808a398ee049dc440b">EventTypeEmit</a>
+</li>
+<li>EventCmd()
+: <a class="el" href="class_player.html#a9714ab924bfcc1b87bdea62a360531a5">Player</a>
 </li>
 <li>EventRecharge()
 : <a class="el" href="class_robot_battery.html#abb51446ee0332d950a6fa177fa1a0a6c">RobotBattery</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_g"></a>- g -</h3><ul>
+<li>get_level()
+: <a class="el" href="class_robot_battery.html#ab84e56873bf0db7743e267d2aca832a1">RobotBattery</a>
+</li>
+<li>get_point_of_contact()
+: <a class="el" href="class_sensor_touch.html#a350209c0c2c878336544349db2cf626a">SensorTouch</a>
 </li>
 </ul>
 
@@ -162,13 +182,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </li>
 <li>kLINEAR_SCALE_FACTOR
 : <a class="el" href="class_robot_battery.html#a38bceef08664f00cc005c083aad894da">RobotBattery</a>
-</li>
-</ul>
-
-
-<h3><a class="anchor" id="index_l"></a>- l -</h3><ul>
-<li>level()
-: <a class="el" href="class_robot_battery.html#a5b96f703d13ae3877ec5f3d868144d48">RobotBattery</a>
 </li>
 </ul>
 
@@ -220,22 +233,32 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </ul>
 
 
-<h3><a class="anchor" id="index_p"></a>- p -</h3><ul>
-<li>point_of_contact()
-: <a class="el" href="class_sensor_touch.html#a383bc1311cc683aba1f65408b2857cd9">SensorTouch</a>
-</li>
-</ul>
-
-
 <h3><a class="anchor" id="index_r"></a>- r -</h3><ul>
 <li>Reset()
 : <a class="el" href="class_arena.html#a6ac584696fcbfebe3c1073585489da27">Arena</a>
 , <a class="el" href="class_arena_entity.html#a1cb260385454b645bc78cb946bd1121a">ArenaEntity</a>
 , <a class="el" href="class_home_base.html#aa83361d73959934354be045518700b4f">HomeBase</a>
+, <a class="el" href="class_motion_handler.html#acfd072d86c4f3113fbea0b630bdc5cc5">MotionHandler</a>
+, <a class="el" href="class_player.html#a159669caa4993e2cc4d56e895b6550e8">Player</a>
+, <a class="el" href="class_player_motion_handler.html#a070185f598df58d8709c0c9b254a65af">PlayerMotionHandler</a>
 , <a class="el" href="class_robot.html#a8a7ab36cb921f5cb9b17fc40e78610e0">Robot</a>
 , <a class="el" href="class_robot_battery.html#af9c73841506973f779a36a91d7ae7aed">RobotBattery</a>
 , <a class="el" href="class_robot_motion_handler.html#af4c7df1c5437c239859d05f851ef88ce">RobotMotionHandler</a>
+, <a class="el" href="class_sensor_distress.html#a432e87b785d6dfd0360ed3175a9ad4e0">SensorDistress</a>
+, <a class="el" href="class_sensor_entity_type.html#ac64fe9b6d04a073946d58272cb027750">SensorEntityType</a>
+, <a class="el" href="class_sensor_proximity.html#ac4ae2f6eefd9571416eba610a367b74f">SensorProximity</a>
 , <a class="el" href="class_sensor_touch.html#a5537f62b93bdc021b29f8e1baf5f0a34">SensorTouch</a>
+, <a class="el" href="class_superbot.html#a292b1989c2fb5961a3dd6870190ea180">Superbot</a>
+</li>
+<li>robots()
+: <a class="el" href="class_arena.html#a5b6dc9dac0518afe2541802ee77d4f6c">Arena</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_s"></a>- s -</h3><ul>
+<li>superbots()
+: <a class="el" href="class_arena.html#aa9cbf5a122e6ef7e4da93251b26721cd">Arena</a>
 </li>
 </ul>
 
@@ -244,6 +267,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>TimestepUpdate()
 : <a class="el" href="class_arena_entity.html#af01b8889f46572c25bae0b23358e03a5">ArenaEntity</a>
 , <a class="el" href="class_home_base.html#a02d49d102b61ba9ad543155263b95de8">HomeBase</a>
+, <a class="el" href="class_player.html#a46201d85916aa19e8fba53d2878d5ded">Player</a>
+, <a class="el" href="class_superbot.html#a3da22ed679851102f23ce8e418985fc3">Superbot</a>
 </li>
 </ul>
 
@@ -256,7 +281,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 : <a class="el" href="class_graphics_arena_viewer.html#a04589e5cf9a6a986b9724a70e4160240">GraphicsArenaViewer</a>
 </li>
 <li>UpdateVelocity()
-: <a class="el" href="class_robot_motion_handler.html#a79eb8f8b948a7dfb64aa611438e7cfa4">RobotMotionHandler</a>
+: <a class="el" href="class_motion_handler.html#ab8df46a2b75c59f90a5e24b44267b7f1">MotionHandler</a>
 </li>
 </ul>
 </div><!-- contents -->

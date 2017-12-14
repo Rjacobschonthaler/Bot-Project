@@ -36,7 +36,7 @@ double RobotBattery::Deplete(Position old_pos, Position new_pos, double dt) {
 } /* deplete() */
 
 /**
- * @brief Lose 20 charge for running into wall or obstacle
+ * @brief Lose 20 units charge for running into wall or obstacle
  */
 void RobotBattery::Accept(EventCollision * e) {
   charge_ = charge_ - 20;

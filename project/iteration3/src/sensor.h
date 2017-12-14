@@ -4,12 +4,11 @@
  * @copyright 2017 3081 Staff, All rights reserved.
  */
 
-#ifndef PROJECT_ITERATION1_SRC_SENSOR_H_
-#define PROJECT_ITERATION1_SRC_SENSOR_H_
+#ifndef PROJECT_ITERATION3_SRC_SENSOR_H_
+#define PROJECT_ITERATION3_SRC_SENSOR_H_
 
 /**
- * @brief A base class for snesors to inherit from. Currently, the only sensor
- * is SensorTouch.
+ * @brief A base class for sensors to inherit from.
  */
 
 class Sensor {
@@ -21,4 +20,4 @@ class Sensor {
   bool activated_;
 };
 
-#endif   // PROJECT_ITERATION1_SRC_SENSOR_H_
+#endif   // PROJECT_ITERATION3_SRC_SENSOR_H_

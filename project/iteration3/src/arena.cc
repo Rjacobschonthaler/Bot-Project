@@ -19,6 +19,9 @@
 #include "src/home_base.h"
 #include "src/robot.h"
 #include "src/event_recharge.h"
+#include "src/event_distress_call.h"
+#include "src/event_proximity.h"
+#include "src/event_type_emit.h"
 
 /*******************************************************************************
  * Namespaces
@@ -147,13 +150,20 @@ void Arena::UpdateEntitiesTimestep(void) {
     ent->TimestepUpdate(1);
   } /* for(ent..) */
 
-  /*
-   * Next, check if the player has run out of battery
-   */
-  if (player_->battery_level() <= 0) {
-    // R. Jacob Schonthaler added This for game completion
-    std::cout << "You Lose!" << std::endl;
-    set_gameover(true);
+  // Update robot and supberbot sensors
+  EventProximity ep;
+  EventDistressCall ed;
+  EventTypeEmit et;
+  for (size_t i = 0; i < robots().size(); i++) {
+    std::cout << robots()[i]->get_name() << std::endl;
+    for (size_t j = 0; j < entities_.size(); j++) {
+      ep.set_pos(entities_[j]->get_pos());
+      ep.set_radius(entities_[j]->get_radius());
+      ed.set_ent(entities_[j]);
+      et.set_ent(entities_[j]);
+      robots()[i]->Accept(&ed, &et, &ep);
+      superbots()[i]->Accept(&ed, &et, &ep);
+    }
   }
 
   /*
@@ -175,16 +185,25 @@ void Arena::UpdateEntitiesTimestep(void) {
    * Next, check if the player has frozen all the robots
    */
 
-   bool frozen = true;
-   for (size_t i = 0; i < robots().size(); i++) {
-     if (frozen && robots()[i]->get_speed() != 0) {
-       frozen = false;
-     }
-   }
-   if (frozen && !all_moving) {
-     std::cout << "You Win!" << std::endl;
-     set_gameover(true);
-   }
+  bool frozen = true;
+  for (size_t i = 0; i < robots().size(); i++) {
+    if (frozen && robots()[i]->get_speed() != 0) {
+      frozen = false;
+    }
+  }
+  if (frozen && !all_moving) {
+    std::cout << "You Win!" << std::endl;
+    set_gameover(true);
+  }
+
+   /*
+    * Next, check if the player has run out of battery
+    */
+  if (player_->battery_level() <= 0 && !get_gameover()) {
+    // R. Jacob Schonthaler added this for game completion
+    std::cout << "You Lose!" << std::endl;
+    set_gameover(true);
+  }
 
    /*
     * Next, check if the player has collided with the recharge station or robots
@@ -210,16 +229,16 @@ void Arena::UpdateEntitiesTimestep(void) {
    * @brief Check if the player has collided with a robot.
    */
 
-   for (size_t i = 0; i < robots().size(); i++) {
-     CheckForEntityCollision(player_, robots()[i],
-       &ec, player_->get_collision_delta());
-     if (ec.get_collided()) {
-       robots()[i]->set_speed(0);
-     }
-   }
+  for (size_t i = 0; i < robots().size(); i++) {
+    CheckForEntityCollision(player_, robots()[i],
+      &ec, player_->get_collision_delta());
+    if (ec.get_collided()) {
+      robots()[i]->set_speed(0);
+    }
+  }
 
    /**
-    * @brief Check if the player has collided with a robot.
+    * @brief Check if the player has collided with a superbot.
     */
 
     for (size_t i = 0; i < superbots().size(); i++) {
@@ -308,7 +327,8 @@ void Arena::UpdateEntitiesTimestep(void) {
         if (entities_[i] == ent) {
           continue;
         }
-        CheckForEntityCollision(ent, entities_[i], &ec, ent->get_collision_delta());
+        CheckForEntityCollision(
+          ent, entities_[i], &ec, ent->get_collision_delta());
         if (ec.get_collided()) {
           break;
         }
@@ -393,7 +413,6 @@ void Arena::CheckForEntityCollision(const ArenaMobileEntity* const ent1,
     double collision_x = ent1_x+ratio*(ent1_x-ent2_x);
     double collision_y = ent1_y+ratio*(ent1_y-ent2_y);
     event->set_point_of_contact(Position(collision_x, collision_y));
-    /// >>>>>>> FILL THIS IN
   }
 } /* entities_have_collided() */
 

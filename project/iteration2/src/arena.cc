@@ -127,9 +127,9 @@ void Arena::UpdateEntitiesTimestep(void) {
    * properly processed.
    */
 
-  EventCollision ec;
-  CheckForEntityCollision(player_, home_base_, &ec, player_->get_collision_delta());
-  if (ec.get_collided()) {
+  EventCollision event_collision;
+  CheckForEntityCollision(player_, home_base_, &event_collision, player_->get_collision_delta());
+  if (event_collision.get_collided()) {
     // R. Jacob Schonthaler added this for game completion
       std::cout << "You Win!" << std::endl;
       set_gameover(true);
@@ -140,8 +140,8 @@ void Arena::UpdateEntitiesTimestep(void) {
    */
 
   CheckForEntityCollision(player_, recharge_station_,
-    &ec, player_->get_collision_delta());
-  if (ec.get_collided()) {
+    &event_collision, player_->get_collision_delta());
+  if (event_collision.get_collided()) {
     EventRecharge er;
     // er.EmitMessage();
     player_->Accept(&er);
@@ -157,21 +157,21 @@ void Arena::UpdateEntitiesTimestep(void) {
   for (auto ent : mobile_entities_) {
     // Check if it is out of bounds. If so, use that as point of contact.
     assert(ent->is_mobile());
-    CheckForEntityOutOfBounds(ent, &ec);
+    CheckForEntityOutOfBounds(ent, &event_collision);
 
     // If not at wall, check if colliding with any other entities (not itself)
-    if (!ec.get_collided()) {
+    if (!event_collision.get_collided()) {
       for (size_t i = 0; i < entities_.size(); ++i) {
         if (entities_[i] == ent) {
           continue;
         }
-        CheckForEntityCollision(ent, entities_[i], &ec, ent->get_collision_delta());
-        if (ec.get_collided()) {
+        CheckForEntityCollision(ent, entities_[i], &event_collision, ent->get_collision_delta());
+        if (event_collision.get_collided()) {
           break;
         }
       } /* for(i..) */
     } /* else */
-    ent->Accept(&ec);
+    ent->Accept(&event_collision);
   } /* for(ent..) */
 } /* UpdateEntities() */
 
@@ -228,7 +228,8 @@ void Arena::CheckForEntityCollision(const ArenaMobileEntity* const ent1,
   double ent2_y = ent2->get_pos().y;
   double dist = std::sqrt(
     std::pow(ent2_x - ent1_x, 2) + std::pow(ent2_y - ent1_y, 2));
-  if (dist > ent1->get_radius() + ent2->get_radius() + collision_delta) {
+  if (dist >
+    ent1->get_radius() + ent2->get_radius() + collision_delta) {
     event->set_collided(false);
   } else {
     // Populate the collision event.
@@ -246,9 +247,9 @@ void Arena::CheckForEntityCollision(const ArenaMobileEntity* const ent1,
     event->set_angle_of_contact(-desired_heading);
 
     // Point of contact is point along perimeter of ent1
-    double ratio = ent1->get_radius()/ent2->get_radius();
-    double collision_x = ent1_x+ratio*(ent1_x-ent2_x);
-    double collision_y = ent1_y+ratio*(ent1_y-ent2_y);
+    double ratio_of_radii = ent1->get_radius()/ent2->get_radius();
+    double collision_x = ent1_x+ratio_of_radii*(ent1_x-ent2_x);
+    double collision_y = ent1_y+ratio_of_radii*(ent1_y-ent2_y);
     event->set_point_of_contact(Position(collision_x, collision_y));
     /// >>>>>>> FILL THIS IN
   }

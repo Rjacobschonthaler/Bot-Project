@@ -7,10 +7,11 @@
 /*******************************************************************************
  * Includes
  ******************************************************************************/
-#include "src/home_base.h"
+#include <math.h>
 #include <time.h>
 #include <cstdlib>
-#include <math.h>
+
+#include "src/home_base.h"
 /*******************************************************************************
  * Namespaces
  ******************************************************************************/
@@ -22,11 +23,12 @@ NAMESPACE_BEGIN(csci3081);
 HomeBase::HomeBase(const struct home_base_params* const params) :
   ArenaMobileEntity(params->radius, params->collision_delta,
     params->pos, params->color) {
+    motion_handler_ = RobotMotionHandler();
+    motion_behavior_ = RobotMotionBehavior();
     unsigned int seed = time(NULL);
-    heading_angle_ = rand_r(&seed)%360;
-    collision_delta_ = params->collision_delta;
-    pos_ = params->pos;
-    speed_ = 5;
+    motion_handler_.set_heading_angle(rand_r(&seed)%360);
+    motion_handler_.set_speed(5);
+    set_pos(params->pos);
     sensor_touch_ = SensorTouch();
   }
 
@@ -38,27 +40,22 @@ HomeBase::HomeBase(const struct home_base_params* const params) :
   * chance occurs. Update position.
   */
 void HomeBase::TimestepUpdate(uint dt) {
-  // If sensor activated change heading.
-  if (sensor_touch_.get_activated()) {
-    if (sensor_touch_.get_angle_of_contact() < 0) {
-      sensor_touch_.set_angle_of_contact(sensor_touch_.get_angle_of_contact()+360);
-    }
-    if (sensor_touch_.get_angle_of_contact() > 0) {
-      sensor_touch_.set_angle_of_contact(sensor_touch_.get_angle_of_contact()-360);
-    }
-    heading_angle_ = -sensor_touch_.get_angle_of_contact();
+  // Update heading and speed as indicated by touch sensor
+  motion_handler_.UpdateVelocity(sensor_touch_);
+  double positive_heading = fmod(motion_handler_.get_heading_angle(), 360);
+  if (positive_heading < 0) {
+    positive_heading += 360;
   }
+  motion_handler_.set_heading_angle(positive_heading);
 
-  // Update the position
-  double x = get_pos().x+cos(heading_angle_*M_PI/180.0)*speed_*dt;
-  double y = get_pos().y+sin(heading_angle_*M_PI/180.0)*speed_*dt;
-  set_pos(Position(x, y));
+  // Use velocity and position to update position
+  motion_behavior_.UpdatePosition(this, dt);
 
   // Random change of direction
   unsigned int seed = time(NULL);
   if (rand_r(&seed)%20 == 0) {
     seed = time(NULL);
-    heading_angle_ = rand_r(&seed)%360;
+    motion_handler_.set_heading_angle(rand_r(&seed)%360);
   }
 } /* TimestepUpdate() */
 
@@ -69,7 +66,8 @@ void HomeBase::TimestepUpdate(uint dt) {
 
 void HomeBase::Reset(void) {
   unsigned int seed = time(NULL);
-  heading_angle_ = rand_r(&seed)%360;
+  motion_handler_.Reset();
+  motion_handler_.set_heading_angle(rand_r(&seed)%360);
   set_pos(Position(400, 400));
   sensor_touch_.Reset();
 }

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['obstacle',['Obstacle',['../class_obstacle.html',1,'']]]
+  ['motionhandler',['MotionHandler',['../class_motion_handler.html',1,'']]]
 ];
