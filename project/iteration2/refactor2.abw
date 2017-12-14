@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE abiword PUBLIC "-//ABISOURCE//DTD AWML 1.0 Strict//EN" "http://www.abisource.com/awml.dtd">
+<abiword template="false" xmlns:ct="http://www.abisource.com/changetracking.dtd" xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:math="http://www.w3.org/1998/Math/MathML" xid-max="107" xmlns:dc="http://purl.org/dc/elements/1.1/" fileformat="1.1" xmlns:svg="http://www.w3.org/2000/svg" xmlns:awml="http://www.abisource.com/awml.dtd" xmlns="http://www.abisource.com/awml.dtd" xmlns:xlink="http://www.w3.org/1999/xlink" version="3.0.1" xml:space="preserve" props="dom-dir:ltr; document-footnote-restart-section:0; document-endnote-type:numeric; document-endnote-place-enddoc:1; document-endnote-initial:1; lang:en-US; document-endnote-restart-section:0; document-footnote-restart-page:0; document-footnote-type:numeric; document-footnote-initial:1; document-endnote-place-endsection:0">
+<!-- ======================================================================== -->
+<!-- This file is an AbiWord document.                                        -->
+<!-- AbiWord is a free, Open Source word processor.                           -->
+<!-- More information about AbiWord is available at http://www.abisource.com/ -->
+<!-- You should not edit this file by hand.                                   -->
+<!-- ======================================================================== -->
+
+<metadata>
+<m key="abiword.date_last_changed">Thu Dec 14 01:39:28 2017
+</m>
+<m key="abiword.generator">AbiWord</m>
+<m key="dc.date">Thu Dec 14 01:39:28 2017
+</m>
+<m key="dc.format">application/x-abiword</m>
+</metadata>
+<rdf>
+</rdf>
+<history version="2" edit-time="53" last-saved="1513237168" uid="ca88ea2e-e0a1-11e7-8124-88a2ee129c9e">
+<version id="2" started="1513237135" uid="eaa87f04-e0a1-11e7-8124-88a2ee129c9e" auto="0" top-xid="0"/>
+</history>
+<styles>
+<s type="P" name="Normal" basedon="" followedby="Current Settings" props="font-family:Liberation Serif; margin-top:0pt; font-variant:normal; margin-left:0pt; text-indent:0in; widows:2; font-style:normal; font-weight:normal; text-decoration:none; color:000000; line-height:1.0; text-align:left; margin-bottom:0pt; text-position:normal; margin-right:0pt; bgcolor:transparent; font-size:12pt; font-stretch:normal"/>
+</styles>
+<pagesize pagetype="A4" orientation="portrait" width="210.000000" height="297.000000" units="mm" page-scale="1.000000"/>
+<section xid="1">
+<p style="Normal" xid="2" props="text-align:left; dom-dir:ltr">	The only file that was changed was arena.cc in the function Arena::CheckForEntityCollision. One variable name change was from ration to ratio_of_radii and the other was from ec to event_collision. The reasons for these changes are as follows. The ratio_of_radii change made it more clear at a glance what the ratio was for and how that played out in the computations that it is involved in. The event_collision change was because after viewing the code for a while, I found myself rechecking what ec stood for, and it made it way easier to find all the places that it's used. The following changes are for ratio_of_radii:</p>
+<p style="Normal" xid="3" props="text-align:left; dom-dir:ltr">Before:</p>
+<p style="Normal" xid="4" props="text-align:left; dom-dir:ltr">  double ratio = ent1-&gt;get_radius()/ent2-&gt;get_radius();</p>
+<p style="Normal" xid="5" props="text-align:left; dom-dir:ltr">    double collision_x = ent1_x+ratio*(ent1_x-ent2_x);</p>
+<p style="Normal" xid="6" props="text-align:left; dom-dir:ltr">    double collision_y = ent1_y+ratio*(ent1_y-ent2_y);</p>
+<p style="Normal" xid="7" props="text-align:left; dom-dir:ltr">After:</p>
+<p style="Normal" xid="8" props="text-align:left; dom-dir:ltr">  double ratio_of_radii = ent1-&gt;get_radius()/ent2-&gt;get_radius();</p>
+<p style="Normal" xid="9" props="text-align:left; dom-dir:ltr">    double collision_x = ent1_x+ratio_of_radii*(ent1_x-ent2_x);</p>
+<p style="Normal" xid="10" props="text-align:left; dom-dir:ltr">    double collision_y = ent1_y+ratio_of_radii*(ent1_y-ent2_y);</p>
+<p style="Normal" xid="11"><c></c></p>
+<p style="Normal" xid="12" props="text-align:left; dom-dir:ltr">The following changes are for event_collision:</p>
+<p style="Normal" xid="13" props="text-align:left; dom-dir:ltr">Before:</p>
+<p style="Normal" xid="14" props="text-align:left; dom-dir:ltr">  EventCollision ec;</p>
+<p style="Normal" xid="15" props="text-align:left; dom-dir:ltr">  CheckForEntityCollision(player_, home_base_, &amp;ec, player_-&gt;get_collision_delta());</p>
+<p style="Normal" xid="16" props="text-align:left; dom-dir:ltr">  if (ec.get_collided()) {</p>
+<p style="Normal" xid="17" props="text-align:left; dom-dir:ltr">    // R. Jacob Schonthaler added this for game completion</p>
+<p style="Normal" xid="18" props="text-align:left; dom-dir:ltr">      std::cout &lt;&lt; "You Win!" &lt;&lt; std::endl;</p>
+<p style="Normal" xid="19" props="text-align:left; dom-dir:ltr">      set_gameover(true);</p>
+<p style="Normal" xid="20">  }</p>
+<p style="Normal" xid="21"><c></c></p>
+<p style="Normal" xid="22">  /**</p>
+<p style="Normal" xid="23" props="text-align:left; dom-dir:ltr">   * @brief Check if the player has collided with recharge station.</p>
+<p style="Normal" xid="24">   */</p>
+<p style="Normal" xid="25"><c></c></p>
+<p style="Normal" xid="26" props="text-align:left; dom-dir:ltr">  CheckForEntityCollision(player_, recharge_station_,</p>
+<p style="Normal" xid="27" props="text-align:left; dom-dir:ltr">    &amp;ec, player_-&gt;get_collision_delta());</p>
+<p style="Normal" xid="28" props="text-align:left; dom-dir:ltr">  if (ec.get_collided()) {</p>
+<p style="Normal" xid="29" props="text-align:left; dom-dir:ltr">    EventRecharge er;</p>
+<p style="Normal" xid="30" props="text-align:left; dom-dir:ltr">    // er.EmitMessage();</p>
+<p style="Normal" xid="31" props="text-align:left; dom-dir:ltr">    player_-&gt;Accept(&amp;er);</p>
+<p style="Normal" xid="32">  }</p>
+<p style="Normal" xid="33"><c></c></p>
+<p style="Normal" xid="34">  /*</p>
+<p style="Normal" xid="35" props="text-align:left; dom-dir:ltr">   * Finally, some pairs of entities may now be close enough to be considered</p>
+<p style="Normal" xid="36" props="text-align:left; dom-dir:ltr">   * colliding, send collision events as necessary.</p>
+<p style="Normal" xid="37">   *</p>
+<p style="Normal" xid="38" props="text-align:left; dom-dir:ltr">   * When something collides with an immobile entity, the immobile entity does</p>
+<p style="Normal" xid="39" props="text-align:left; dom-dir:ltr">   * not move (duh), so no need to send it a collision event.</p>
+<p style="Normal" xid="40">   */</p>
+<p style="Normal" xid="41" props="text-align:left; dom-dir:ltr">  for (auto ent : mobile_entities_) {</p>
+<p style="Normal" xid="42" props="text-align:left; dom-dir:ltr">    // Check if it is out of bounds. If so, use that as point of contact.</p>
+<p style="Normal" xid="43" props="text-align:left; dom-dir:ltr">    assert(ent-&gt;is_mobile());</p>
+<p style="Normal" xid="44" props="text-align:left; dom-dir:ltr">    CheckForEntityOutOfBounds(ent, &amp;ec);</p>
+<p style="Normal" xid="45"><c></c></p>
+<p style="Normal" xid="46" props="text-align:left; dom-dir:ltr">    // If not at wall, check if colliding with any other entities (not itself)</p>
+<p style="Normal" xid="47" props="text-align:left; dom-dir:ltr">    if (!ec.get_collided()) {</p>
+<p style="Normal" xid="48" props="text-align:left; dom-dir:ltr">      for (size_t i = 0; i &lt; entities_.size(); ++i) {</p>
+<p style="Normal" xid="49" props="text-align:left; dom-dir:ltr">        if (entities_[i] == ent) {</p>
+<p style="Normal" xid="50" props="text-align:left; dom-dir:ltr">          continue;</p>
+<p style="Normal" xid="51">        }</p>
+<p style="Normal" xid="52" props="text-align:left; dom-dir:ltr">        CheckForEntityCollision(ent, entities_[i], &amp;ec, ent-&gt;get_collision_delta());</p>
+<p style="Normal" xid="53" props="text-align:left; dom-dir:ltr">        if (ec.get_collided()) {</p>
+<p style="Normal" xid="54" props="text-align:left; dom-dir:ltr">          break;</p>
+<p style="Normal" xid="55">        }</p>
+<p style="Normal" xid="56" props="text-align:left; dom-dir:ltr">      } /* for(i..) */</p>
+<p style="Normal" xid="57" props="text-align:left; dom-dir:ltr">    } /* else */</p>
+<p style="Normal" xid="58" props="text-align:left; dom-dir:ltr">    ent-&gt;Accept(&amp;c);</p>
+<p style="Normal" xid="59" props="text-align:left; dom-dir:ltr">  } /* for(ent..) */</p>
+<p style="Normal" xid="60" props="text-align:left; dom-dir:ltr">After:</p>
+<p style="Normal" xid="61" props="text-align:left; dom-dir:ltr">  EventCollision event_collision;</p>
+<p style="Normal" xid="62" props="text-align:left; dom-dir:ltr">  CheckForEntityCollision(player_, home_base_, &amp;event_collision, player_-&gt;get_collision_delta());</p>
+<p style="Normal" xid="63" props="text-align:left; dom-dir:ltr">  if (event_collision.get_collided()) {</p>
+<p style="Normal" xid="64" props="text-align:left; dom-dir:ltr">    // R. Jacob Schonthaler added this for game completion</p>
+<p style="Normal" xid="65" props="text-align:left; dom-dir:ltr">      std::cout &lt;&lt; "You Win!" &lt;&lt; std::endl;</p>
+<p style="Normal" xid="66" props="text-align:left; dom-dir:ltr">      set_gameover(true);</p>
+<p style="Normal" xid="67">  }</p>
+<p style="Normal" xid="68"><c></c></p>
+<p style="Normal" xid="69">  /**</p>
+<p style="Normal" xid="70" props="text-align:left; dom-dir:ltr">   * @brief Check if the player has collided with recharge station.</p>
+<p style="Normal" xid="71">   */</p>
+<p style="Normal" xid="72"><c></c></p>
+<p style="Normal" xid="73" props="text-align:left; dom-dir:ltr">  CheckForEntityCollision(player_, recharge_station_,</p>
+<p style="Normal" xid="74" props="text-align:left; dom-dir:ltr">    &amp;event_collision, player_-&gt;get_collision_delta());</p>
+<p style="Normal" xid="75" props="text-align:left; dom-dir:ltr">  if (event_collision.get_collided()) {</p>
+<p style="Normal" xid="76" props="text-align:left; dom-dir:ltr">    EventRecharge er;</p>
+<p style="Normal" xid="77" props="text-align:left; dom-dir:ltr">    // er.EmitMessage();</p>
+<p style="Normal" xid="78" props="text-align:left; dom-dir:ltr">    player_-&gt;Accept(&amp;er);</p>
+<p style="Normal" xid="79">  }</p>
+<p style="Normal" xid="80"><c></c></p>
+<p style="Normal" xid="81">  /*</p>
+<p style="Normal" xid="82" props="text-align:left; dom-dir:ltr">   * Finally, some pairs of entities may now be close enough to be considered</p>
+<p style="Normal" xid="83" props="text-align:left; dom-dir:ltr">   * colliding, send collision events as necessary.</p>
+<p style="Normal" xid="84">   *</p>
+<p style="Normal" xid="85" props="text-align:left; dom-dir:ltr">   * When something collides with an immobile entity, the immobile entity does</p>
+<p style="Normal" xid="86" props="text-align:left; dom-dir:ltr">   * not move (duh), so no need to send it a collision event.</p>
+<p style="Normal" xid="87">   */</p>
+<p style="Normal" xid="88" props="text-align:left; dom-dir:ltr">  for (auto ent : mobile_entities_) {</p>
+<p style="Normal" xid="89" props="text-align:left; dom-dir:ltr">    // Check if it is out of bounds. If so, use that as point of contact.</p>
+<p style="Normal" xid="90" props="text-align:left; dom-dir:ltr">    assert(ent-&gt;is_mobile());</p>
+<p style="Normal" xid="91" props="text-align:left; dom-dir:ltr">    CheckForEntityOutOfBounds(ent, &amp;event_collision);</p>
+<p style="Normal" xid="92"><c></c></p>
+<p style="Normal" xid="93" props="text-align:left; dom-dir:ltr">    // If not at wall, check if colliding with any other entities (not itself)</p>
+<p style="Normal" xid="94" props="text-align:left; dom-dir:ltr">    if (!event_collision.get_collided()) {</p>
+<p style="Normal" xid="95" props="text-align:left; dom-dir:ltr">      for (size_t i = 0; i &lt; entities_.size(); ++i) {</p>
+<p style="Normal" xid="96" props="text-align:left; dom-dir:ltr">        if (entities_[i] == ent) {</p>
+<p style="Normal" xid="97" props="text-align:left; dom-dir:ltr">          continue;</p>
+<p style="Normal" xid="98">        }</p>
+<p style="Normal" xid="99" props="text-align:left; dom-dir:ltr">        CheckForEntityCollision(ent, entities_[i], &amp;event_collision, ent-&gt;get_collision_delta());</p>
+<p style="Normal" xid="100" props="text-align:left; dom-dir:ltr">        if (event_collision.get_collided()) {</p>
+<p style="Normal" xid="101" props="text-align:left; dom-dir:ltr">          break;</p>
+<p style="Normal" xid="102">        }</p>
+<p style="Normal" xid="103" props="text-align:left; dom-dir:ltr">      } /* for(i..) */</p>
+<p style="Normal" xid="104" props="text-align:left; dom-dir:ltr">    } /* else */</p>
+<p style="Normal" xid="105" props="text-align:left; dom-dir:ltr">    ent-&gt;Accept(&amp;event_collision);</p>
+<p style="Normal" xid="106" props="text-align:left; dom-dir:ltr">  } /* for(ent..) */</p>
+<p style="Normal" xid="107"></p>
+</section>
+</abiword>
