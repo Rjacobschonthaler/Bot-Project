@@ -27,7 +27,7 @@ In case of any questions or concerns, please contact me directly.
 | P3 - Implement functionality for SuperBot                            | 0/8       |   Class missed            |
 | P3 - Implement functionality for HomeBase and RechargeStation        | 2/2       |              |
 | P3 - Implement win / loss conditions                                 | 1/2       |   Should add new loss/win conditions           |
-| **Total**                                                            | 0/100   |              |
+| **Total**                                                            | 54/100   |              |
 
 ## Refactoring and Unit Tests
 
