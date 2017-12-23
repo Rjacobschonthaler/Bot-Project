@@ -41,7 +41,7 @@ This section corresponds to the requirement of having fully functional code for 
 | P1 - Interface & members for a Robot class | 5 / 5 |  |
 | P1 - Interface & members for a SuperBot class | 5 / 5 |  |
 | P2 - Interface for Arena Methods modeled after Observer pattern | 8 / 10 | much better |
-| P2 - Implement functionality in Arena for checking events | 4 / 10 | still miss other checking and notifying events |
+| P2 - Implement functionality in Arena for checking events | 3 / 10 | still miss other checking and notifying events |
 | P3 - Implement Accept methods for each sensor | 2 / 2 |  |
 | P3 - Implement functionality for Player, including sensors and events | 8 / 8 |  |
 | P3 - Implement functionality for Robot | 8 / 8 |  |
@@ -49,5 +49,5 @@ This section corresponds to the requirement of having fully functional code for 
 | P3 - Implement functionality for HomeBase and RechargeStation | 2 / 2 |  |
 | P3 - Implement win / loss conditions | 2 / 2 |  |
 | Additional Marks | 0 / 0 |  |
-| **Total** | 87 / 100 |   |
+| **Total** | 86 / 100 |   |
 
