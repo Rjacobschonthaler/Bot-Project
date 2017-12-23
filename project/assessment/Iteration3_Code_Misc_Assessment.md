@@ -15,7 +15,7 @@ This is scoring for the requirements of iteration 3 for having a bug report, hav
 | **Category**                                  | **Score** | **Comments** |
 |-----------------------------------------------|-----------|--------------|
 | Bug Report | 5 / 5 |  |
-| CppLint - No Errors | 0 / 5 | 136 errors |
+| CppLint - No Errors | 0 / 5 | more than errors except header_guard |
 | Doxygen Updated | 10 / 10 |  |
 | Structure of Submission | 5 / 5 |  |
 | **Total** | 20 / 25 |   |
